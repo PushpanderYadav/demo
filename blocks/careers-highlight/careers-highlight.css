@@ -1,0 +1,72 @@
+.careerImg {
+    border-radius: 0.5rem;
+    overflow: hidden;
+    height: 100px;
+    padding-bottom: 58%;
+    background: var(--light-grey);
+    position: relative;
+}
+.careerImg + .careerImg {
+    margin-top: 1.5rem;
+}
+
+.careerImg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition-duration: 0.3s;
+    transform: scale(1);
+}
+.careerImg:hover img {
+    transform: scale(1.1);
+}
+
+.careerImg.pictwo {
+    margin-top: 1.5rem;
+}
+
+.cardContent {
+    background: url("../../img/careerbg.svg") no-repeat center;
+    background-size: cover;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    padding: 2.875rem 4rem;
+    color: var(--white);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.cardContent h3 {
+    font-size: 2.25rem;
+    font-weight: 400;
+    line-height: 1.2;
+}
+.cardContent p {
+    font-size: 1.25rem;
+    font-weight: 400;
+    margin: 1.5rem 0 0;
+}
+.careerImg.picthree {
+    background: var(--light-grey);
+    height: 100%;
+}
+.careerImg.picthree img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+}
+.careerBtn .btn-lg {
+    padding: 1.5rem;
+    height: auto;
+    margin-top: 1.5rem;
+}
+
+.careerImg div {
+    height: 100%;
+}

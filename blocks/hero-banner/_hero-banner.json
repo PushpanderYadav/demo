@@ -1,0 +1,112 @@
+{
+  "definitions": [
+    {
+      "title": "Hero Banner",
+      "id": "hero-banner",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "hero-banner",
+              "model": "hero-banner",
+              "filter": "hero-banner"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Hero Banner Item",
+      "id": "hero-banner-items",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "hero-banner-items",
+              "model": "hero-banner-items"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "hero-banner",
+      "fields": [
+        {
+          "component": "text",
+          "name": "blockName",
+          "label": "Block Name",
+          "valueType": "string",
+          "comment": "Internal field to make the parent a valid model"
+        }
+      ]
+    },
+    {
+      "id": "hero-banner-items",
+      "fields": [
+        {
+          "component": "text",
+          "name": "title",
+          "label": "Title",
+          "valueType": "string"
+        },
+        {
+          "component": "richtext",
+          "name": "description",
+          "label": "Description",
+          "valueType": "string"
+        },
+        {
+          "component": "reference",
+          "name": "background-image",
+          "label": "Background Image",
+          "valueType": "string",
+          "multi": false
+        },
+        {
+          "component": "reference",
+          "name": "background-video",
+          "label": "Background Video (MP4)",
+          "valueType": "string",
+          "multi": false
+        },
+        {
+          "component": "text",
+          "name": "know-more-label",
+          "label": "Know More Label",
+          "valueType": "string"
+        },
+        {
+          "component": "aem-content",
+          "name": "know-more-link",
+          "label": "Know More Link URL",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "watch-video-label",
+          "label": "Watch Video Label",
+          "valueType": "string"
+        },
+        {
+          "component": "aem-content",
+          "name": "watch-video-link",
+          "label": "Watch Video Link URL",
+          "valueType": "string"
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "hero-banner",
+      "components": [
+        "hero-banner-items"
+      ]
+    }
+  ]
+}

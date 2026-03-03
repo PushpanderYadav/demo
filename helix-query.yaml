@@ -1,0 +1,40 @@
+version: 1
+
+indices:
+  pages:
+    include:
+      - '/**'
+    exclude:
+      - '**/*.json'
+    properties:
+      lastModified:
+        select: none
+        value: parseTimestamp(headers["last-modified"], "ddd, DD MMM YYYY hh:mm:ss GMT")
+
+      robots:
+        select: head > meta[name="robots"]
+        value: attribute(el, "content")
+
+      title:
+        select: head > meta[property="og:title"]
+        value: attribute(el, "content")
+
+      description:
+        select: head > meta[name="description"]
+        value: attribute(el, "content")
+
+      image:
+        select: head > meta[property="og:image"]
+        value: attribute(el, "content")
+
+      tags:
+        select: head > meta[property="article:tag"]
+        value: attribute(el, "content")
+
+      publicationDate:
+        select: head > meta[name="publicationDate"]
+        value: attribute(el, "content")
+
+      content:
+        select: main
+        value: textContent(el)

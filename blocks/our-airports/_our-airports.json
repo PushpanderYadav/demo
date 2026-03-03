@@ -1,0 +1,131 @@
+{
+  "definitions": [
+    {
+      "title": "Our Airports",
+      "id": "our-airports",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "our-airports",
+              "model": "our-airports",
+              "filter": "our-airports"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Airport Card",
+      "id": "our-airports-item",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "our-airports-item",
+              "model": "our-airports-item"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "our-airports",
+      "fields": [
+        {
+          "component": "text",
+          "name": "sectionTitle",
+          "label": "Section Heading",
+          "valueType": "string",
+          "defaultValue": "Our Airports"
+        },
+        {
+          "component": "text",
+          "name": "domesticBtnLabel",
+          "label": "Domestic Button Text",
+          "valueType": "string",
+          "defaultValue": "Domestic Network"
+        },
+        {
+          "component": "text",
+          "name": "internationalBtnLabel",
+          "label": "International Button Text",
+          "valueType": "string",
+          "defaultValue": "International Network"
+        }
+      ]
+    },
+    {
+      "id": "our-airports-item",
+      "itemLabel": "airportName",
+      "fields": [
+        {
+          "component": "select",
+          "name": "networkType",
+          "label": "Network Type (For Filtering)",
+          "valueType": "string",
+          "options": [
+            {
+              "name": "Domestic",
+              "value": "domestic"
+            },
+            {
+              "name": "International",
+              "value": "international"
+            }
+          ]
+        },
+        {
+          "component": "reference",
+          "name": "image",
+          "label": "Airport Image",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "statusBadge",
+          "label": "Image Badge (e.g. Operating Asset)",
+          "valueType": "string",
+          "defaultValue": "Operating Asset"
+        },
+        {
+          "component": "text",
+          "name": "airportName",
+          "label": "Airport Name",
+          "valueType": "string"
+        },
+        {
+          "component": "richtext",
+          "name": "description",
+          "label": "Description",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "ctaLabel",
+          "label": "Link Text",
+          "valueType": "string",
+          "defaultValue": "READ MORE"
+        },
+        {
+          "component": "text",
+          "name": "ctaUrl",
+          "label": "Link URL",
+          "valueType": "string"
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "our-airports",
+      "components": [
+        "our-airports-item"
+      ]
+    }
+  ]
+}

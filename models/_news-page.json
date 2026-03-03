@@ -1,0 +1,75 @@
+{
+  "definitions": [
+    {
+      "title": "News Article Page",
+      "id": "news-page",
+      "groups": ["pages"],
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/page/v1/page",
+            "template": {
+              "name": "News Article Page",
+              "model": "news-page"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "news-page",
+      "fields": [
+        {
+          "component": "tab",
+          "name": "tab-meta",
+          "label": "Settings & Tags",
+          "fields": [
+            {
+              "component": "text",
+              "name": "tags",
+              "label": "Category Tag (Filter)",
+              "valueType": "string",
+              "required": true,
+              "comment": "Type Aero, Energy, or Corporate"
+            },
+            {
+              "component": "reference",
+              "name": "image",
+              "label": "Thumbnail Image",
+              "valueType": "string"
+            },
+            {
+              "component": "text",
+              "name": "publicationDate",
+              "label": "Date",
+              "valueType": "string",
+              "defaultValue": "YYYY-MM-DD"
+            }
+          ]
+        },
+        {
+          "component": "tab",
+          "name": "tab-content",
+          "label": "Article Content",
+          "fields": [
+            {
+              "component": "text",
+              "name": "title",
+              "label": "Headline",
+              "valueType": "string"
+            },
+            {
+              "component": "richtext",
+              "name": "body",
+              "label": "Story Body",
+              "valueType": "string"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

@@ -1,0 +1,170 @@
+/* =====================================================
+   Hide authored rows (Success Stories pattern)
+===================================================== */
+.sdg-themes.sdg-themes-initialized > :not(.sdg-themes-runtime) {
+  display: none;
+}
+
+/* =====================================================
+   Section wrapper
+===================================================== */
+.sdg-themes-runtime {
+  padding: 80px 0;
+  background: #ffffff;
+}
+
+.sdg-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* =====================================================
+   Section title
+===================================================== */
+.sdg-title {
+  text-align: center;
+  font-size: 42px;
+  font-weight: 500;
+  color: #1a1a1a;
+  margin-bottom: 56px;
+}
+
+/* =====================================================
+   Responsive auto grid (ANY NUMBER OF ITEMS)
+===================================================== */
+.sdg-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px;
+}
+
+/* =====================================================
+   Card
+===================================================== */
+.sdg-card {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* =====================================================
+   Image container
+===================================================== */
+.sdg-image {
+  position: relative;
+  height: 260px;
+  background: linear-gradient(135deg,#0b2e4f 0%,#0a3d62 45%,#0f4c81 100%);;
+  overflow: hidden;
+}
+
+.sdg-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* =====================================================
+   Gradient overlay (for title readability)
+===================================================== */
+.sdg-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.65),
+    rgba(0, 0, 0, 0.25),
+    transparent
+  );
+  z-index: 1;
+}
+
+/* =====================================================
+   Item number (top-right)
+===================================================== */
+.sdg-number {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 2;
+  font-size: 32px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* =====================================================
+   Content container
+   (kept only for title overlay positioning)
+===================================================== */
+.sdg-content {
+  padding: 0;
+}
+
+/* =====================================================
+   Title ON IMAGE (bottom-left)
+===================================================== */
+.sdg-card .sdg-content h3 {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  z-index: 2;
+
+  margin: 0;
+  font-size: 20px;
+  font-weight: 500;
+  color: #ffffff;
+  line-height: 1.3;
+}
+
+/* =====================================================
+   Description (hidden – matches reference)
+   Enable later if needed
+===================================================== */
+.sdg-desc {
+  display: none;
+}
+
+/* =====================================================
+   Hover effect (subtle)
+===================================================== */
+.sdg-card:hover img {
+  transform: scale(1.04);
+  transition: transform 0.4s ease;
+}
+
+/* =====================================================
+   Responsive adjustments
+===================================================== */
+@media (max-width: 1024px) {
+  .sdg-title {
+    font-size: 36px;
+  }
+
+  .sdg-image {
+    height: 240px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sdg-title {
+    font-size: 32px;
+    margin-bottom: 40px;
+  }
+
+  .sdg-image {
+    height: 220px;
+  }
+
+  .sdg-card .sdg-content h3 {
+    font-size: 18px;
+  }
+
+  .sdg-number {
+    font-size: 26px;
+  }
+}

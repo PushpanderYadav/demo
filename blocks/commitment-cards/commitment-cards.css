@@ -1,0 +1,58 @@
+.sec-commitment {
+    background: var(--blue);
+    background: linear-gradient(180deg, var(--royal-blue) 0, var(--blue) 100%);
+    color: var(--white);
+    position: relative;
+}
+.sec-commitment:before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: url("../../img/listed-bg.svg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+    z-index: 1;
+    pointer-events: none;
+}
+.sec-commitment .container {
+    position: relative;
+    z-index: 2;
+}
+.comm-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+.comm-card-img {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    background-color: var(--white);
+    height: 100px;
+    padding: 0 0 45%;
+}
+.comm-card-img img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+}
+.comm-card-body {
+    background: var(--white);
+    color: var(--charcoal);
+    border-radius: 0.5rem;
+    padding: 2rem;
+    font-size: 1.125rem;
+    flex-grow: 1;
+}
+.comm-card-body h3 {
+    font-family: var(--font-secondary);
+    color: var(--blue);
+    font-weight: 400;
+}

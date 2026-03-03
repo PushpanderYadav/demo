@@ -1,0 +1,104 @@
+/* ---------- Global Section ---------- */
+.global-airport-network {
+  background-color: var(--royal-blue);
+  color: var(--white);
+  padding: 2rem 0;
+}
+
+/* ---------- Section Title & Description ---------- */
+.sec-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.sec-desc {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--white);
+}
+
+/* ---------- Map Wrap ---------- */
+.gan-map-wrap {
+  position: relative;
+  width: 100%;
+  min-height: 300px;
+}
+
+/* ---------- Lottie Animation ---------- */
+.gan-lottie {
+  width: 100%;
+  height: 100%;
+}
+
+/* ---------- Locations ---------- */
+.gan-locations {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  background: url("../../img/map-bg.png") no-repeat;
+  background-position: top center;
+  background-size: 100%;
+}
+
+.gan-location {
+  border-radius: 12px;
+  padding: 8px 16px;
+  color: var(--turquoise);
+  position: relative;
+  flex: 0 0 calc(50% - 16px);
+  max-width: calc(50% - 16px);
+  background: url("../../img/mpattern.svg") no-repeat center var(--white);
+  background-size: 85px;
+  min-height: 85px;
+  background-position: bottom right;
+}
+
+.gan-flag {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+}
+
+.gan-airport,
+.gan-country {
+  margin-bottom: 0;
+}
+
+.gan-airport {
+  font-weight: 500;
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+.gan-country {
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--yellow);
+}
+
+/* .gan-lottie svg {
+    max-width: 82%;
+    margin: -25px 0 0 100px;
+} */
+
+/* ---------- Responsive ---------- */
+@media (max-width: 767px) {
+  .gan-lottie {
+    display: none;
+  }
+
+  .gan-locations {
+    display: flex;
+  }
+}
+
+@media (min-width: 768px) {
+  .gan-lottie {
+    display: block; text-align: center;
+  }
+
+  .gan-locations {
+    display: none;
+  }
+}

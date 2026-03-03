@@ -1,0 +1,31 @@
+.news-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.news-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.news-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.news-content {
+  padding: 16px;
+}
+
+.news-content h3 {
+  margin: 0 0 8px;
+}
+
+.news-content span {
+  font-size: 12px;
+  color: #777;
+}

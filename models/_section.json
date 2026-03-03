@@ -1,0 +1,98 @@
+{
+  "definitions": [
+    {
+      "title": "Section",
+      "id": "section",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/section/v1/section",
+            "template": {
+              "model": "section"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "section",
+      "fields": [
+        {
+          "component": "text",
+          "name": "name",
+          "label": "Section Name",
+          "description": "The label shown for this section in the Content Tree"
+        },
+        {
+          "component": "multiselect",
+          "name": "style",
+          "label": "Style",
+          "options": [
+            {
+              "name": "Highlight",
+              "value": "highlight"
+            },
+            {
+              "name": "Sec-Grid-5",
+              "value": "sec-grid-5"
+            },
+            {
+              "name": "Sec-Grid-2",
+              "value": "sec-grid-2"
+            },
+            {
+              "name": "No-Margin",
+              "value": "no-margin"
+            },
+            {
+              "name": "Background Blue",
+              "value": "bg-primary"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "section",
+      "components": [
+        "text",
+        "image",
+        "button",
+        "title",
+        "hero",
+        "cards",
+        "columns",
+        "fragment",
+        "businesses-section",
+        "hero-banner",
+        "article-header",
+        "article-body",
+        "inner-banner",
+        "listed-companies",
+        "cookie-consent",
+        "privacy-request",
+        "news-updates",
+        "success-stories",
+        "careers-highlight",
+        "content-listing",
+        "aviation-infrastructure",
+        "key-highlightss",
+        "awards-recognitions",
+        "global-leaders-aviation",
+        "gmr-buisness-expertise",
+        "gmr-buisness-brand",
+        "aviation-services-header",
+        "our-airports",
+        "all-business-cards",
+        "global-airport-network",
+        "social-connect",
+        "image-title-desc-button",
+        "overlay-banner"
+      ]
+    }
+  ]
+}

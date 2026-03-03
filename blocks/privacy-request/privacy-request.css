@@ -1,0 +1,60 @@
+.privacy-form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 40px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.privacy-form-container h2 {
+    color: #003366;
+    margin-bottom: 10px;
+}
+
+.privacy-form-container .desc {
+    margin-bottom: 30px;
+    color: #666;
+}
+
+.form-group {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.form-group input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 60%;
+    font-size: 1rem;
+}
+
+.form-group button {
+    padding: 10px 20px;
+    background-color: #d9534f; /* Red for Delete action */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.form-group button:hover {
+    background-color: #c9302c;
+}
+
+.form-group button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+#form-status {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.success { color: green; }
+.error { color: red; }

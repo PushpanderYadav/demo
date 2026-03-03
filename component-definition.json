@@ -1,0 +1,1271 @@
+{
+  "groups": [
+    {
+      "title": "Default Content",
+      "id": "default",
+      "components": [
+        {
+          "title": "Text",
+          "id": "text",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/text/v1/text",
+                "template": {}
+              }
+            }
+          }
+        },
+        {
+          "title": "Title",
+          "id": "title",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/title/v1/title",
+                "template": {
+                  "model": "title"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Image",
+          "id": "image",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/image/v1/image",
+                "template": {}
+              }
+            }
+          }
+        },
+        {
+          "title": "Button",
+          "id": "button",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/button/v1/button",
+                "template": {
+                  "model": "button"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "title": "Sections",
+      "id": "sections",
+      "components": [
+        {
+          "title": "Section",
+          "id": "section",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/section/v1/section",
+                "template": {
+                  "model": "section"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "title": "Blocks",
+      "id": "blocks",
+      "components": [
+        {
+          "title": "Airport Hero",
+          "id": "airport-hero",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "airport-hero",
+                  "model": "airport-hero"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Airport Overview",
+          "id": "airport-overview",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Airport Overview",
+                  "model": "airport-overview",
+                  "filter": "airport-overview"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Airport Overview Item",
+          "id": "airport-overview-item",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Airport Overview Item",
+                  "model": "airport-overview-item"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "All Business Cards",
+          "id": "all-business-cards",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "all-business-cards",
+                  "model": "all-business-cards",
+                  "filter": "all-business-cards"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Business Card Item",
+          "id": "all-business-cards-item",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "all-business-cards-item",
+                  "model": "all-business-cards-item"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Aviation Infrastructures",
+          "id": "aviation-infrastructure",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "aviation-infrastructure",
+                  "model": "aviation-infrastructure"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Aviation Services Header",
+          "id": "aviation-services-header",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "aviation-services-header",
+                  "model": "aviation-services-header",
+                  "filter": "aviation-services-header"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Aviation Service Tab",
+          "id": "aviation-service-item",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "aviation-service-item",
+                  "model": "aviation-service-item"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Dropdown Link",
+          "id": "dropdown-link-item",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "dropdown-link-item",
+                  "model": "dropdown-link-item"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Aviation Services",
+          "id": "aviation-services",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "aviation-services",
+                  "model": "aviation-services",
+                  "filter": "aviation-services"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Awards & Global Recognition",
+          "id": "awards-recognitions",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "awards-recognitions",
+                  "model": "awards-recognitions",
+                  "filter": "awards-recognitions"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Award Card",
+          "id": "award-item",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "award-item",
+                  "model": "award-item"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Businesses Section",
+          "id": "businesses-section",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "businesses-section",
+                  "model": "businesses-section",
+                  "filter": "businesses-section"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Business Item",
+          "id": "business-item",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "business-item",
+                  "model": "business-item"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Cards",
+          "id": "cards",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Cards",
+                  "filter": "cards"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Card",
+          "id": "card",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Card",
+                  "model": "card"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Careers Highlight",
+          "id": "careers-highlight",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "careers-highlight",
+                  "model": "careers-highlight"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Carousel",
+          "id": "carousel",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Carousel",
+                  "filter": "carousel"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Slide",
+          "id": "slide",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Slide",
+                  "model": "slide"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Columns",
+          "id": "columns",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/columns/v1/columns",
+                "template": {
+                  "columns": "2",
+                  "rows": "1"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Commitment Cards",
+          "id": "commitment-cards",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Commitment Cards",
+                  "model": "commitment-cards",
+                  "filter": "commitment-card"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Commitment Card",
+          "id": "commitment-card",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Commitment Card",
+                  "model": "commitment-card"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Cookie Consent",
+          "id": "cookie-consent",
+          "groups": [
+            "General"
+          ],
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "cookie-consent",
+                  "model": "cookie-consent"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Factsheet",
+          "id": "factsheet",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Factsheet",
+                  "model": "factsheet",
+                  "filter": "factsheet"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Factsheet Item",
+          "id": "factsheet-item",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Factsheet Item",
+                  "model": "factsheet-item"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Footer Bootoms",
+          "id": "footerbottoms",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Footer Bottoms",
+                  "filter": "footerbottoms"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Footer Bottom",
+          "id": "footerbottom",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Footer Bottom",
+                  "model": "footerbottom"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Footer Link",
+          "id": "groupwebsitelink",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Groupwebsite Link",
+                  "model": "groupwebsitelink"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Footer Links",
+          "id": "footerlinks",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Footer Links",
+                  "filter": "footerlinks"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Footer Link",
+          "id": "footerlink",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Footer Link",
+                  "model": "footerlink"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Footer Topbars",
+          "id": "footertopbars",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Footer Topbars",
+                  "filter": "footertopbars"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Footer Topbar",
+          "id": "footertopbar",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Footer Topbar",
+                  "model": "footertopbar"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Fragment",
+          "id": "fragment",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Fragment",
+                  "model": "fragment"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "GAL Awards",
+          "id": "gal-awards",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "GAL Awards",
+                  "model": "gal-awards",
+                  "filter": "gal-awards"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "GAL Award Item",
+          "id": "gal-award-item",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "GAL Award Item",
+                  "model": "gal-award-item"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Global Airport Network",
+          "id": "global-airport-network",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "global-airport-network",
+                  "model": "global-airport-network",
+                  "filter": "global-airport-network"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Network Location Item",
+          "id": "network-location-item",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "network-location-item",
+                  "model": "network-location-item"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Global Leaders in Aviation Infrastructure",
+          "id": "global-leaders-aviation",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "global-leaders-aviation",
+                  "model": "global-leaders-aviation",
+                  "filter": "global-leaders-aviation"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Global Leader Card",
+          "id": "global-item",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "global-item",
+                  "model": "global-item"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "GMR Buisness Brand",
+          "id": "gmr-buisness-brand",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "gmr-buisness-brand",
+                  "model": "gmr-buisness-brand",
+                  "filter": "gmr-buisness-brand"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "GMR-Buisness Item",
+          "id": "gmr-buisness-item",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "GMR Buisness Item",
+                  "model": "gmr-buisness-item"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "GMR Buisness Expertise",
+          "id": "gmr-buisness-expertise",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "GMR Buisness Expertise",
+                  "model": "gmr-buisness-expertise",
+                  "filter": "gmr-buisness-expertise"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "GMR Buisness Item",
+          "id": "gmr-buisness-item",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "GMR Buisness Item",
+                  "model": "gmr-buisness-item"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Header Image",
+          "id": "header-img",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Header Image",
+                  "model": "header-img",
+                  "filter": "header-img"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Menu Item",
+          "id": "menu-img",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Menu Item",
+                  "model": "menu-img"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Header",
+          "id": "header",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Header",
+                  "model": "header",
+                  "filter": "header"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Navigation Item",
+          "id": "nav-item",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Navigation Item",
+                  "model": "nav-item"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Navigation Child Item",
+          "id": "nav-child",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Navigation Child Item",
+                  "model": "nav-child"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Hero Banner",
+          "id": "hero-banner",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "hero-banner",
+                  "model": "hero-banner",
+                  "filter": "hero-banner"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Hero Banner Item",
+          "id": "hero-banner-items",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "hero-banner-items",
+                  "model": "hero-banner-items"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Image Title Desc Button",
+          "id": "image-title-desc-button",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "image-title-desc-button",
+                  "model": "image-title-desc-button"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Infra Hero Banner",
+          "id": "infra-hero-banner",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Infra Hero Banner",
+                  "model": "infra-hero-banner",
+                  "filter": "infra-hero-banner"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Inner Banner",
+          "id": "inner-banner",
+          "groups": [
+            "General"
+          ],
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "inner-banner",
+                  "model": "inner-banner",
+                  "filter": "inner-banner"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Innovation Cards",
+          "id": "innovation-cards",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Innovation Cards",
+                  "model": "innovation-cards",
+                  "filter": "innovation-cards"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Innovation Card Item",
+          "id": "innovation-card-item",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Innovation Card Item",
+                  "model": "innovation-card-item"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Key Highlights",
+          "id": "key-highlightss",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "key-highlightss",
+                  "model": "key-highlightss",
+                  "filter": "key-highlightss"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Key Highlight Card",
+          "id": "key-highlight-item",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "key-highlight-item",
+                  "model": "key-highlight-item"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Listed Companies",
+          "id": "listed-companies",
+          "groups": [
+            "General"
+          ],
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "listed-companies",
+                  "model": "listed-companies",
+                  "filter": "listed-companies"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Company Card",
+          "id": "listed-company-item",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "listed-company-item",
+                  "model": "listed-company-item"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Message from Leadership",
+          "id": "message-from-leadership",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Message from Leadership",
+                  "model": "message-from-leadership",
+                  "filter": "message-from-leadership"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Leadership Message Item",
+          "id": "message-from-leadership-item",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Leadership Message Item",
+                  "model": "message-from-leadership-item"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "News & Updates",
+          "id": "news-updates",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "News & Updates",
+                  "model": "news-updates",
+                  "filter": "news-updates"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "News",
+          "id": "news",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "News",
+                  "model": "news",
+                  "filter": "news"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Our Airports",
+          "id": "our-airports",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "our-airports",
+                  "model": "our-airports",
+                  "filter": "our-airports"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Airport Card",
+          "id": "our-airports-item",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "our-airports-item",
+                  "model": "our-airports-item"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Our Approach",
+          "id": "our-approach",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Our Approach",
+                  "model": "our-approach",
+                  "filter": "our-approach"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Overlay Banner",
+          "id": "overlay-banner",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "overlay-banner",
+                  "model": "overlay-banner"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Page Tabs",
+          "id": "page-tabs",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Page Tabs",
+                  "model": "page-tabs",
+                  "filter": "page-tabs"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Page Tab Item",
+          "id": "page-tab-item",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Page Tab Item",
+                  "model": "page-tab-item"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Privacy Request Form",
+          "id": "privacy-request",
+          "groups": [
+            "General"
+          ],
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "privacy-request",
+                  "model": "privacy-request"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "SDG Themes",
+          "id": "sdg-themes",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "SDG Themes",
+                  "model": "sdg-themes",
+                  "filter": "sdg-themes"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "SDG Theme Item",
+          "id": "sdg-themes-item",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "SDG Theme Item",
+                  "model": "sdg-themes-item"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Social Connect",
+          "id": "social-connect",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "social-connect",
+                  "model": "social-connect",
+                  "filters": "social-connect"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Success Stories",
+          "id": "success-stories",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Success Stories",
+                  "model": "success-stories",
+                  "filter": "success-stories"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Sustainable Aviation",
+          "id": "sustainable-aviation",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Sustainable Aviation",
+                  "model": "sustainable-aviation",
+                  "filter": "sustainable-aviation"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Sustainable Aviation Item",
+          "id": "sustainable-aviation-item",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Sustainable Aviation Item",
+                  "model": "sustainable-aviation-item"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

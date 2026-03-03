@@ -1,0 +1,100 @@
+{
+  "definitions": [
+    {
+      "title": "GMR Buisness Expertise",
+      "id": "gmr-buisness-expertise",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "GMR Buisness Expertise",
+              "model": "gmr-buisness-expertise",
+              "filter": "gmr-buisness-expertise"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "GMR Buisness Item",
+      "id": "gmr-buisness-item",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "GMR Buisness Item",
+              "model": "gmr-buisness-item"
+            }
+          }
+        }
+      }
+    }
+  ],
+
+  "models": [
+    {
+      "id": "gmr-buisness-expertise",
+      "fields": [
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "sectionTitle",
+          "label": "Section Title"
+        },
+        {
+          "component": "richtext",
+          "valueType": "string",
+          "name": "sectionDescription",
+          "label": "Section Description"
+        }
+      ]
+    },
+
+    {
+      "id": "gmr-buisness-item",
+      "fields": [
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "image",
+          "label": "Card Image"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "title",
+          "label": "Title"
+        },
+        {
+          "component": "richtext",
+          "valueType": "string",
+          "name": "description",
+          "label": "Description"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "ctaText",
+          "label": "CTA Text"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "ctaLink",
+          "label": "CTA Link"
+        }
+      ]
+    }
+  ],
+
+  "filters": [
+    {
+      "id": "gmr-buisness-expertise",
+      "components": [
+        "gmr-buisness-item"
+      ]
+    }
+  ]
+}

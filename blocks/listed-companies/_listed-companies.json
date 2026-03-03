@@ -1,0 +1,129 @@
+{
+  "definitions": [
+    {
+      "title": "Listed Companies",
+      "id": "listed-companies",
+      "groups": [
+        "General"
+      ],
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "listed-companies",
+              "model": "listed-companies",
+              "filter": "listed-companies"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Company Card",
+      "id": "listed-company-item",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "listed-company-item",
+              "model": "listed-company-item"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "listed-companies",
+      "fields": [
+        {
+          "component": "text",
+          "name": "sectionTitle",
+          "label": "Section Title",
+          "valueType": "string",
+          "defaultValue": "Listed Companies"
+        },
+        {
+          "component": "richtext",
+          "name": "description",
+          "label": "Description",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "ctaText",
+          "label": "Top Button Label",
+          "valueType": "string",
+          "defaultValue": "Visit Investor Relations"
+        },
+        {
+          "component": "text",
+          "name": "ctaUrl",
+          "label": "Top Button Link",
+          "valueType": "string"
+        }
+      ]
+    },
+    {
+      "id": "listed-company-item",
+      "fields": [
+        {
+          "component": "text",
+          "name": "companyName",
+          "label": "Company Name",
+          "valueType": "string"
+        },
+        {
+          "component": "richtext",
+          "name": "companyDesc",
+          "label": "Company Description",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "stockSymbol",
+          "label": "Stock API Symbol / IDD",
+          "valueType": "string",
+          "required": true
+        },
+        {
+          "component": "text",
+          "name": "visitWebsiteText",
+          "label": "Visit Website Button Label",
+          "valueType": "string",
+          "defaultValue": "Visit Website"
+        },
+        {
+          "component": "text",
+          "name": "visitWebsiteUrl",
+          "label": "Visit Website URL",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "exploreHighlightsText",
+          "label": "Explore Highlights Button Label",
+          "valueType": "string",
+          "defaultValue": "Explore Highlights"
+        },
+        {
+          "component": "text",
+          "name": "exploreHighlightsUrl",
+          "label": "Explore Highlights URL",
+          "valueType": "string"
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "listed-companies",
+      "components": [
+        "listed-company-item"
+      ]
+    }
+  ]
+}

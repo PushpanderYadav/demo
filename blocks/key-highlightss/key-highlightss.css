@@ -1,0 +1,8 @@
+.sec-key {
+    background-color: var(--lpink);
+}
+@media screen and (min-width: 768px) {
+    .sec-grid-2 .key-col {
+        width: 34%;
+    }
+}

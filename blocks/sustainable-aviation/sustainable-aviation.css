@@ -1,0 +1,84 @@
+.sustainable-aviation-runtime {
+  padding: 80px 0;
+  background: #f7f8f5;
+}
+
+.sa-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sa-header {
+  display: grid;
+  grid-template-columns: 40% 60%;
+  gap: 48px;
+  margin-bottom: 64px;
+}
+
+.sa-header h2 {
+  font-size: 44px;
+  font-weight: 600;
+  color: #0b2e2a;
+}
+
+.sa-description {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #555;
+}
+
+.sa-items {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 36px;
+}
+
+.sa-card {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.sa-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+}
+
+.sa-card-image img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+}
+
+.sa-card-content {
+  padding: 24px 26px 30px;
+}
+
+.sa-card-content h3 {
+  font-size: 22px;
+  margin-bottom: 12px;
+  color: #0b2e2a;
+}
+
+.sa-card-content p {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.6;
+}
+
+@media (max-width: 992px) {
+  .sa-header {
+    grid-template-columns: 1fr;
+  }
+
+  .sa-items {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 🔑 THIS IS THE FIX */
+.sustainable-aviation.sa-initialized > :not(.sustainable-aviation-runtime) {
+  display: none;
+}

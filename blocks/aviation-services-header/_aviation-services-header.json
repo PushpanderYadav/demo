@@ -1,0 +1,122 @@
+{
+  "definitions": [
+    {
+      "title": "Aviation Services Header",
+      "id": "aviation-services-header",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "aviation-services-header",
+              "model": "aviation-services-header",
+              "filter": "aviation-services-header"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Aviation Service Tab",
+      "id": "aviation-service-item",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "aviation-service-item",
+              "model": "aviation-service-item"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Dropdown Link",
+      "id": "dropdown-link-item",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "dropdown-link-item",
+              "model": "dropdown-link-item"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "aviation-services-header",
+      "fields": [
+        {
+          "component": "text",
+          "name": "headerTitle",
+          "label": "Section Admin Title",
+          "valueType": "string",
+          "defaultValue": "Airport Navigation Header"
+        },
+        {
+          "component": "text",
+          "name": "dropdownButtonText",
+          "label": "Dropdown Button Label",
+          "valueType": "string",
+          "defaultValue": "Domestic Network"
+        }
+      ]
+    },
+    {
+      "id": "aviation-service-item",
+      "itemLabel": "airportName",
+      "fields": [
+        {
+          "component": "text",
+          "name": "airportName",
+          "label": "Airport Name",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "navigationLink",
+          "label": "URL",
+          "valueType": "string"
+        },
+        {
+          "component": "checkbox",
+          "name": "isActive",
+          "label": "Show Underline (Active)",
+          "valueType": "boolean"
+        }
+      ]
+    },
+    {
+      "id": "dropdown-link-item",
+      "itemLabel": "linkText",
+      "fields": [
+        {
+          "component": "text",
+          "name": "linkText",
+          "label": "Link Text",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "linkUrl",
+          "label": "Link URL",
+          "valueType": "string"
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "aviation-services-header",
+      "components": [
+        "aviation-service-item",
+        "dropdown-link-item"
+      ]
+    }
+  ]
+}

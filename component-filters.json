@@ -1,0 +1,274 @@
+[
+  {
+    "id": "main",
+    "components": [
+      "section"
+    ]
+  },
+  {
+    "id": "section",
+    "components": [
+      "text",
+      "image",
+      "button",
+      "title",
+      "hero",
+      "cards",
+      "columns",
+      "fragment",
+      "businesses-section",
+      "hero-banner",
+      "article-header",
+      "article-body",
+      "inner-banner",
+      "listed-companies",
+      "cookie-consent",
+      "privacy-request",
+      "news-updates",
+      "success-stories",
+      "careers-highlight",
+      "content-listing",
+      "aviation-infrastructure",
+      "key-highlightss",
+      "awards-recognitions",
+      "global-leaders-aviation",
+      "gmr-buisness-expertise",
+      "gmr-buisness-brand",
+      "aviation-services-header",
+      "our-airports",
+      "all-business-cards",
+      "global-airport-network",
+      "social-connect",
+      "image-title-desc-button",
+      "overlay-banner"
+    ]
+  },
+  {
+    "id": "airport-overview",
+    "components": [
+      "airport-overview-item"
+    ]
+  },
+  {
+    "id": "all-business-cards",
+    "components": [
+      "all-business-cards-item"
+    ]
+  },
+  {
+    "id": "aviation-infrastructure",
+    "components": []
+  },
+  {
+    "id": "aviation-services-header",
+    "components": [
+      "aviation-service-item",
+      "dropdown-link-item"
+    ]
+  },
+  {
+    "id": "aviation-services",
+    "components": [
+      "image",
+      "text",
+      "richtext"
+    ]
+  },
+  {
+    "id": "awards-recognitions",
+    "components": [
+      "award-item"
+    ]
+  },
+  {
+    "id": "businesses-section",
+    "components": [
+      "business-item"
+    ]
+  },
+  {
+    "id": "cards",
+    "components": [
+      "card"
+    ]
+  },
+  {
+    "id": "carousel",
+    "components": [
+      "slide"
+    ]
+  },
+  {
+    "id": "columns",
+    "components": [
+      "column"
+    ]
+  },
+  {
+    "id": "column",
+    "components": [
+      "text",
+      "image",
+      "button",
+      "title"
+    ]
+  },
+  {
+    "id": "commitment-cards",
+    "components": [
+      "commitment-card"
+    ]
+  },
+  {
+    "id": "factsheet",
+    "components": [
+      "factsheet-item"
+    ]
+  },
+  {
+    "id": "footerbottoms",
+    "components": [
+      "footerbottom"
+    ]
+  },
+  {
+    "id": "footerlinks",
+    "components": [
+      "footerlinks"
+    ]
+  },
+  {
+    "id": "footertopbars",
+    "components": [
+      "footertopbar"
+    ]
+  },
+  {
+    "id": "gal-awards",
+    "components": [
+      "gal-award-item"
+    ]
+  },
+  {
+    "id": "global-airport-network",
+    "components": [
+      "network-location-item"
+    ]
+  },
+  {
+    "id": "global-leaders-aviation",
+    "components": [
+      "global-item"
+    ]
+  },
+  {
+    "id": "gmr-buisness-brand",
+    "components": [
+      "gmr-buisness-item"
+    ]
+  },
+  {
+    "id": "gmr-buisness-expertise",
+    "components": [
+      "gmr-buisness-item"
+    ]
+  },
+  {
+    "id": "header-img",
+    "components": [
+      "menu-img"
+    ]
+  },
+  {
+    "id": "header",
+    "components": [
+      "nav-item"
+    ]
+  },
+  {
+    "id": "nav-item",
+    "components": [
+      "nav-child"
+    ]
+  },
+  {
+    "id": "hero-banner",
+    "components": [
+      "hero-banner-items"
+    ]
+  },
+  {
+    "id": "infra-hero-banner",
+    "components": []
+  },
+  {
+    "id": "inner-banner",
+    "components": []
+  },
+  {
+    "id": "innovation-cards",
+    "components": [
+      "innovation-card-item"
+    ]
+  },
+  {
+    "id": "key-highlightss",
+    "components": [
+      "key-highlight-item"
+    ]
+  },
+  {
+    "id": "listed-companies",
+    "components": [
+      "listed-company-item"
+    ]
+  },
+  {
+    "id": "message-from-leadership",
+    "components": [
+      "message-from-leadership-item"
+    ]
+  },
+  {
+    "id": "news-updates",
+    "components": []
+  },
+  {
+    "id": "news",
+    "components": [
+      "news"
+    ]
+  },
+  {
+    "id": "our-airports",
+    "components": [
+      "our-airports-item"
+    ]
+  },
+  {
+    "id": "our-approach",
+    "components": []
+  },
+  {
+    "id": "page-tabs",
+    "components": [
+      "page-tab-item"
+    ]
+  },
+  {
+    "id": "sdg-themes",
+    "components": [
+      "sdg-themes-item"
+    ]
+  },
+  {
+    "id": "success-stories",
+    "components": []
+  },
+  {
+    "id": "sustainable-aviation",
+    "components": [
+      "sustainable-aviation-item"
+    ]
+  }
+]

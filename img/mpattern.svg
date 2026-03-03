@@ -1,0 +1,31 @@
+<svg width="87" height="85" viewBox="0 0 87 85" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g opacity="0.15">
+<g clip-path="url(#clip0_9223_10509)">
+<path d="M37.459 85.9363L90.7322 0.918945L142.685 85.6585" stroke="#FAA519" stroke-miterlimit="10"/>
+<path d="M40.377 85.9361L90.7841 5.58984L139.906 85.6583" stroke="#FAA519" stroke-miterlimit="10"/>
+<path d="M43.2949 85.9359L90.8361 10.2607L137.109 85.6581" stroke="#FAA519" stroke-miterlimit="10"/>
+<path d="M46.2129 85.9367L90.888 14.9326L134.313 85.6589" stroke="#FAA519" stroke-miterlimit="10"/>
+<path d="M49.1318 85.9357L90.941 19.6201L131.517 85.6579" stroke="#FAA519" stroke-miterlimit="10"/>
+<path d="M52.0498 85.9365L90.9929 24.292L128.72 85.6587" stroke="#FAA519" stroke-miterlimit="10"/>
+<path d="M54.9678 85.9363L91.0622 28.9629L125.923 85.6585" stroke="#FAA519" stroke-miterlimit="10"/>
+<path d="M57.8857 85.9361L91.1142 33.6338L123.127 85.6583" stroke="#FAA519" stroke-miterlimit="10"/>
+<path d="M60.8037 85.9359L91.1661 38.3047L120.33 85.6581" stroke="#FAA519" stroke-miterlimit="10"/>
+<path d="M63.7227 85.9367L91.2191 42.9766L117.534 85.6589" stroke="#FAA519" stroke-miterlimit="10"/>
+<path d="M0.25293 85.9363L53.5261 0.918945L105.497 85.6585" stroke="#FAA519" stroke-miterlimit="10"/>
+<path d="M3.1709 85.9361L53.5955 5.58984L102.7 85.6583" stroke="#FAA519" stroke-miterlimit="10"/>
+<path d="M6.08887 85.9359L53.6474 10.2607L99.9032 85.6581" stroke="#FAA519" stroke-miterlimit="10"/>
+<path d="M9.00684 85.9367L53.6994 14.9326L97.1239 85.6589" stroke="#FAA519" stroke-miterlimit="10"/>
+<path d="M11.9258 85.9357L53.7523 19.6201L94.3281 85.6579" stroke="#FAA519" stroke-miterlimit="10"/>
+<path d="M14.8438 85.9365L53.8042 24.292L91.5315 85.6587" stroke="#FAA519" stroke-miterlimit="10"/>
+<path d="M17.7617 85.9363L53.8562 28.9629L88.7348 85.6585" stroke="#FAA519" stroke-miterlimit="10"/>
+<path d="M20.6797 85.9361L53.9255 33.6338L85.9381 85.6583" stroke="#FAA519" stroke-miterlimit="10"/>
+<path d="M23.5977 85.9359L53.9775 38.3047L83.1414 85.6581" stroke="#FAA519" stroke-miterlimit="10"/>
+<path d="M26.5166 85.9367L54.0304 42.9766L80.3456 85.6589" stroke="#FAA519" stroke-miterlimit="10"/>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_9223_10509">
+<path d="M0 0H75C81.6274 0 87 5.37258 87 12V73C87 79.6274 81.6274 85 75 85H0V0Z" fill="white"/>
+</clipPath>
+</defs>
+</svg>

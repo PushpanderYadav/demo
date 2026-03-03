@@ -1,0 +1,91 @@
+.footer-top {
+    padding-top: 1.5rem;
+    transition-duration: 0.3s;
+}
+.social-links a {
+    display: inline-flex;
+    width: 44px;
+    height: 44px;
+    border-radius: 0.875rem;
+    background-color: rgba(224, 224, 224, 0.3);
+    justify-content: center;
+    align-items: center;
+}
+.group-btn .btn {
+    margin: 0 0 1.5rem;
+    height: auto;
+    min-height: 44px;
+    padding: 0.5rem 1rem;
+}
+.group-btn .btn span {
+    content: "";
+    width: 24px;
+    height: 24px;
+    border-radius: 0.4rem;
+    background: var(--black);
+    position: relative;
+}
+.group-btn .btn span:before,
+.group-btn .btn span:after {
+    content: "";
+    width: 11px;
+    height: 2px;
+    background: var(--white);
+    position: absolute;
+    top: 11px;
+    left: 6px;
+    transition-duration: 0.3s;
+}
+.group-btn .btn span:after {
+    transform: rotate(90deg);
+}
+.group-btn .btn[aria-expanded="true"] {
+    background: var(--royal-blue);
+    border-color: var(--royal-blue);
+    color: var(--white);
+    padding: 0.5rem 1rem 2.2rem;
+    margin: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.group-btn .btn[aria-expanded="true"] span {
+    background: var(--white);
+}
+.group-btn .btn[aria-expanded="true"] span:before {
+    transform: rotate(45deg);
+    background: var(--blue);
+    height: 2px;
+}
+.group-btn .btn[aria-expanded="true"] span:after {
+    transform: rotate(135deg);
+    background: var(--blue);
+    height: 2px;
+}
+.footer-collapse h3 {
+    font-size: var(--fs-large);
+    margin: 0 0 1rem;
+}
+.footer-collapse h4 {
+    font-size: var(--fs-medium);
+    margin: 0 0 1rem;
+}
+.footer-collapse h5 {
+    font-size: 1.125rem;
+    margin: 0 0 1rem;
+}
+.footer-collapse ul {
+    list-style: none;
+    margin: 0 0 1.5rem;
+    padding: 0;
+}
+.footer-collapse li a {
+    color: #e0e0e0;
+    text-decoration: none;
+    padding: 0.35rem 1.5rem 0.35rem 0;
+    background: url(../../icons/external-icon.svg) no-repeat right center;
+    display: inline-block;
+}
+.footer-collapse li a:hover {
+    color: var(--white);
+}
+

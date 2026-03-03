@@ -1,0 +1,77 @@
+{
+  "definitions": [
+    {
+      "title": "Careers Highlight",
+      "id": "careers-highlight",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "careers-highlight",
+              "model": "careers-highlight"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "careers-highlight",
+      "fields": [
+        {
+          "component": "text",
+          "name": "sectionTitle",
+          "label": "Section Title",
+          "valueType": "string",
+          "defaultValue": "Grow With a Purpose-Driven Team"
+        },
+        {
+          "component": "reference",
+          "name": "imageOffice",
+          "label": "Image 1 (Top Left)",
+          "valueType": "string",
+          "comment": "The office interior shot (e.g., Green Wall)"
+        },
+        {
+          "component": "reference",
+          "name": "imageTeamSmall",
+          "label": "Image 2 (Bottom Left)",
+          "valueType": "string",
+          "comment": "The smaller group photo (e.g., Team in suits)"
+        },
+        {
+          "component": "reference",
+          "name": "imageTeamLarge",
+          "label": "Image 3 (Right Side)",
+          "valueType": "string",
+          "comment": "The large vertical group photo"
+        },
+        {
+          "component": "richtext",
+          "name": "cardContent",
+          "label": "Blue Card Text",
+          "valueType": "string",
+          "defaultValue": "<h2>Be part of a team that values Innovation...</h2><p>Build your career in a company...</p>",
+          "comment": "The content inside the center blue box"
+        },
+        {
+          "component": "text",
+          "name": "ctaLabel",
+          "label": "CTA Button Label",
+          "valueType": "string",
+          "defaultValue": "Explore Life at GMR"
+        },
+        {
+          "component": "text",
+          "name": "ctaLink",
+          "label": "CTA Link URL",
+          "valueType": "string",
+          "defaultValue": "/careers"
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

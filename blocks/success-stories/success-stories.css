@@ -1,0 +1,23 @@
+.success-stories.success-stories-initialized > :not(.success-stories-runtime) {
+    display: none;
+}
+
+.success-stories .inner-container {
+    margin: 0 auto;
+    padding: 6rem 2rem 6rem 6rem;
+    background: var(--white);
+    border-radius: 10px;
+    margin-top: -4rem;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);
+}
+
+.success-stories .swiper-slide {
+    padding: 0.5rem 0;
+}
+
+.success-stories .card-ui:hover {
+    background: #e5f2ff;
+    border-color: #cce5ff;
+}

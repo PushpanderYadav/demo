@@ -1,0 +1,105 @@
+{
+  "definitions": [
+    {
+      "title": "Cookie Consent",
+      "id": "cookie-consent",
+      "groups": ["General"],
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "cookie-consent",
+              "model": "cookie-consent"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "cookie-consent",
+      "fields": [
+        {
+          "component": "richtext",
+          "name": "message",
+          "label": "Main Consent Message",
+          "valueType": "string",
+          "defaultValue": "We use cookies and similar technologies to enhance your experience, analyze site performance, personalize content, and serve relevant advertisements."
+        },
+        {
+          "component": "text",
+          "name": "policyLabel",
+          "label": "Privacy Policy Link Text",
+          "valueType": "string",
+          "defaultValue": "Read Privacy Policy"
+        },
+        {
+          "component": "text",
+          "name": "policyLink",
+          "label": "Privacy Policy URL",
+          "valueType": "string",
+          "defaultValue": "/privacy-policy"
+        },
+        {
+          "component": "text",
+          "name": "acceptLabel",
+          "label": "Accept All Button Text",
+          "valueType": "string",
+          "defaultValue": "Allow all cookies"
+        },
+        {
+          "component": "text",
+          "name": "declineLabel",
+          "label": "Decline Button Text",
+          "valueType": "string",
+          "defaultValue": "Decline"
+        },
+        {
+          "component": "text",
+          "name": "customizeLabel",
+          "label": "Customize Button Text",
+          "valueType": "string",
+          "defaultValue": "Customize"
+        },
+        {
+          "component": "richtext",
+          "name": "analyticsDesc",
+          "label": "Analytics Cookies Description",
+          "valueType": "string",
+          "defaultValue": "These cookies help us understand how visitors use our website and improve performance (e.g., Google Analytics)."
+        },
+        {
+          "component": "richtext",
+          "name": "marketingDesc",
+          "label": "Marketing Cookies Description",
+          "valueType": "string",
+          "defaultValue": "These allow us and our partners to show you relevant advertisements based on your interests."
+        },
+        {
+          "component": "richtext",
+          "name": "personalizationDesc",
+          "label": "Personalization Cookies Description",
+          "valueType": "string",
+          "defaultValue": "These enable tailored content and experiences, such as recommendations (e.g., Adobe Target)."
+        },
+        {
+          "component": "richtext",
+          "name": "thirdPartyDesc",
+          "label": "Third-Party Cookies Description",
+          "valueType": "string",
+          "defaultValue": "Used by social media and partners for sharing, login, and embedded content."
+        },
+        {
+          "component": "richtext",
+          "name": "functionalDesc",
+          "label": "Functional Cookies Description",
+          "valueType": "string",
+          "defaultValue": "These remember your preferences (language, region, etc.) to make your visit more convenient."
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

@@ -1,0 +1,49 @@
+{
+  "definitions": [
+    {
+      "title": "Privacy Request Form",
+      "id": "privacy-request",
+      "groups": ["General"],
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "privacy-request",
+              "model": "privacy-request"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "privacy-request",
+      "fields": [
+        {
+          "component": "text",
+          "name": "title",
+          "label": "Title",
+          "valueType": "string",
+          "defaultValue": "Request Data Deletion"
+        },
+        {
+          "component": "richtext",
+          "name": "description",
+          "label": "Description",
+          "valueType": "string",
+          "defaultValue": "Enter your Record ID to permanently erase your data from our systems."
+        },
+        {
+          "component": "text",
+          "name": "btnLabel",
+          "label": "Button Label",
+          "valueType": "string",
+          "defaultValue": "Erase My Data"
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

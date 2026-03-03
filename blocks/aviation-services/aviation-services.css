@@ -1,0 +1,47 @@
+.aviation-services .aviation-services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    padding: 40px 0;
+}
+
+.aviation-services .service-card {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+}
+
+.aviation-services .card-image img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+.aviation-services .card-content {
+    padding: 24px;
+    flex-grow: 1;
+}
+
+.aviation-services h3 {
+    font-size: 1.25rem;
+    margin-bottom: 12px;
+    color: #000;
+}
+
+.aviation-services p {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.aviation-services .read-more {
+    color: #ffb81c; /* GMR Yellow */
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+}

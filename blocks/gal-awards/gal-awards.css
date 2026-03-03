@@ -1,0 +1,68 @@
+.gal-awards-wrapper {
+  text-align: center;
+  padding: 80px 0;
+}
+
+.gal-awards-title {
+  font-size: 40px;
+  margin-bottom: 48px;
+}
+
+.gal-awards-viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+.gal-awards-track {
+  display: flex;
+  transition: transform 0.5s ease;
+  width: 100%;
+}
+
+.gal-award-card {
+  flex: 0 0 33.3333%;
+  padding: 0 16px;
+}
+
+.gal-award-card img {
+  width: 100%;
+  border-radius: 16px;
+  display: block;
+}
+
+.gal-award-card p {
+  margin-top: 16px;
+  font-size: 18px;
+}
+
+.gal-awards-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 32px 0;
+}
+
+.gal-awards-dots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #cbd5e1;
+  cursor: pointer;
+}
+
+.gal-awards-dots span.active {
+  background: #003366;
+  width: 22px;
+  border-radius: 8px;
+}
+
+.gal-awards-cta {
+  display: inline-block;
+  margin-top: 32px;
+  padding: 14px 28px;
+  background: #fbbf24;
+  border-radius: 12px;
+  color: #000;
+  font-weight: 600;
+  text-decoration: none;
+}

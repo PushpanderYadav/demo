@@ -1,0 +1,43 @@
+.aviation-tabs-section {
+  border-bottom: 1px solid rgba(231,231,231);
+}
+
+.aviation-tabs-list {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+  margin: 0;
+  padding: 16px 0;
+}
+
+.aviation-tabs-list li {
+  position: relative;
+}
+
+.aviation-tabs-list a {
+  display: inline-block;
+  padding: 0 0 4px 0;
+  font-size: 1rem;
+  font-weight: 400;
+  text-decoration: none;
+  color: var(--yellow);
+  transition: color 0.3s ease;
+}
+
+.aviation-tabs-list a:hover {
+  color: var(--blue);
+}
+
+.aviation-tabs-list li.active a {
+  color: var(--blue); font-weight: 600;
+}
+
+.aviation-tabs-list li.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height: 2px;
+  background-color: var(--blue);
+}

@@ -1,0 +1,22 @@
+.sec-expertise {
+    background: #f6f6f6;
+}
+/* Desktop */
+.expertise-swiper-only {
+  display: none;
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .expertise-static {
+    display: none;
+  }
+  .expertise-swiper-only {
+    display: block;
+  }
+}
+
+/* Swiper safety */
+.expertise-swiper {
+  overflow: hidden;
+}

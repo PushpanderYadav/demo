@@ -1,0 +1,27 @@
+.cf-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+.cf-card {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.cf-card img {
+  width: 100%;
+  border-radius: 6px;
+}
+
+.cf-card h3 {
+  margin: 15px 0 5px;
+}
+
+.cf-card .cta {
+  display: inline-block;
+  margin-top: 10px;
+  color: #0056d2;
+}

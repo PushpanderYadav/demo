@@ -1,0 +1,8 @@
+{
+  "path": "/",
+  "properties": [
+    "title",
+    "description",
+    "content"
+  ]
+}
