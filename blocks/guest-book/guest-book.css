@@ -1,0 +1,72 @@
+/* section */
+
+.guestbook-title {
+  text-align: center;
+  margin-bottom: 50px; font-weight: var(--fw-regular);
+}
+
+/* card */
+.gBook-card {
+    background: var(--white);
+    border-radius: 8px;
+    padding: 2rem;
+    height: 100%;
+    position: relative;
+    border: 1px solid var(--lgrey); min-height: 520px;
+}
+
+/* quote icon effect */
+.gBook-card::before {
+  content: "";
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  width: 64px;
+  height: 55px;
+  background-image: url("data:image/svg+xml;utf8,<svg width='64' height='55' viewBox='0 0 64 55' fill='none' xmlns='http://www.w3.org/2000/svg'><rect opacity='0.5' width='64' height='55' fill='url(%23pattern0_21139_27495)'/><defs><pattern id='pattern0_21139_27495' patternContentUnits='objectBoundingBox' width='1' height='1'><use href='%23image0_21139_27495' transform='scale(0.015625 0.0181818)'/></pattern><image id='image0_21139_27495' width='64' height='55' preserveAspectRatio='none' href='data:image/png;base64,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'/></defs></svg>");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* date */
+.gBook-date {
+  display: flex;
+    align-items: center; justify-content: flex-end;
+    gap: .4rem;
+  margin: 1.5rem 0;
+}
+
+/* description */
+.gBook-desc {
+  font-size: var(--fs-medium);
+  line-height: 1.7;
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 2;
+}
+
+/* name */
+.gBook-name {
+  color: var(--royal-blue);
+  font-size: var(--fs-large); font-weight: 400;
+  margin: 0;
+}
+.gBook-date .icon {
+    line-height: 15px;
+}
+
+.gBook-role {
+  display: block;
+  font-size: var(--fs-normal);
+  color: var(--charcoal);
+  font-weight: 400;
+  margin-top: 6px;
+}
+
+/* swiper nav */
+.guestbook-nav {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 30px;
+}

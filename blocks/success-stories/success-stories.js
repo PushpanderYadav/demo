@@ -1,16 +1,15 @@
 import { getApiHost } from "../../scripts/api.js";
 import { loadCSS, loadScript } from "../../scripts/aem.js";
+import { getLangFromURL } from "../../scripts/common.js";
 
-const SWIPER_JS = "../../scripts/swiper-bundle.min.js";
-// const SWIPER_CSS = "../../styles/swiper-bundle.min.css";
+const SWIPER_JS = "https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js";
 
 export default async function decorate(block) {
-  // await loadCSS(SWIPER_CSS);
   await loadScript(SWIPER_JS);
 
-  /* ================================
-     1️⃣ Read authored fields (UE SAFE)
-     ================================ */
+  /* -----------------------------
+     1️⃣ Read authored fields
+     ----------------------------- */
   const [titleEl, descEl, ctaTextEl, ctaLinkEl, categoryEl] = [
     ...block.children,
   ];
@@ -21,37 +20,38 @@ export default async function decorate(block) {
   const ctaLink = ctaLinkEl?.textContent?.trim() || "#";
   const category = categoryEl?.textContent?.trim().toLowerCase() || "";
 
-  /* ================================
-     2️⃣ Runtime wrapper (DO NOT clear)
-     ================================ */
+  /* -----------------------------
+     2️⃣ Runtime wrapper
+     ----------------------------- */
   const runtime = document.createElement("div");
   runtime.className = "success-stories-runtime container";
 
   block.append(runtime);
   block.classList.add("success-stories-initialized");
 
-  /* ================================
-     3️⃣ Bootstrap layout
-     ================================ */
+  /* -----------------------------
+     3️⃣ Layout
+     ----------------------------- */
   runtime.innerHTML = `
   <div class="inner-container">
     <div class="row">
       <div class="col-lg-4">
         <h2 class="text-primary sec-title">${title}</h2>
         <div class="sec-desc">${description}</div>
-       <div class="my-5">
-        <a href="${ctaLink}" class="btn btn-primary">
-          ${ctaText}
-        </a>
-       </div>
+        <div class="my-5">
+          <a href="${ctaLink}" class="btn btn-primary">${ctaText}</a>
+        </div>
 
         <div class="swiper-button">
-          <button class="swiper-button-prev">
-            
-          </button>
-          <button class="swiper-button-next">
-            
-          </button>
+          <button class="swiper-button-prev"></button>
+
+          <div class="swiper-pagination-fraction d-md-none">
+            <span class="current-slide">01</span>
+            <span>/</span>
+            <span class="total-slide">03</span>
+          </div>
+
+          <button class="swiper-button-next"></button>
         </div>
       </div>
 
@@ -61,18 +61,31 @@ export default async function decorate(block) {
         </div>
       </div>
     </div>
-    </div>
+  </div>
   `;
 
   const wrapper = runtime.querySelector(".swiper-wrapper");
 
-  /* ================================
-     4️⃣ Fetch API data
-     ================================ */
+  /* -----------------------------
+     4️⃣ Fetch API
+     ----------------------------- */
   try {
-    const apiUrl = `${getApiHost()}/api/v1/web/gmr/success-story?category=${encodeURIComponent(
-      category
-    )}`;
+        let limit = 10;
+        let offset = 0;
+        let subCategory = "";
+        let publishyear = "";
+        let publishmonth = "";
+        let tag = "";
+        let orderby = "desc";
+      const apiUrl = `${getApiHost()}/api/v1/web/gmr-api/success-stories` +
+        `?lang=${getLangFromURL()}` +
+        `&limit=${encodeURIComponent(limit)}` +
+        `&offset=${encodeURIComponent(offset)}` +
+        `&subcategory=${encodeURIComponent(subCategory)}` +
+        `&publishyear=${encodeURIComponent(publishyear)}` +
+        `&publishmonth=${encodeURIComponent(publishmonth.toLowerCase())}` +
+        `&tag=${encodeURIComponent(tag.toLowerCase())}` +
+        `&orderby=${encodeURIComponent(orderby)}`;
 
     const res = await fetch(apiUrl);
     if (!res.ok) throw new Error(res.status);
@@ -85,28 +98,31 @@ export default async function decorate(block) {
       return;
     }
 
-    /* ================================
-       5️⃣ Build Swiper slides
-       ================================ */
+    /* -----------------------------
+       5️⃣ Build Slides
+       ----------------------------- */
     items.forEach((item) => {
       const slide = document.createElement("div");
       slide.className = "swiper-slide";
 
+      const link = item?.slugUrl || "#";
+
       slide.innerHTML = `
         <div class="card card-ui h-100 p-4">
           <div class="card-img">
-            <img
-              src="${item.storyImage?._publishUrl || ""}"           
-              alt="${item.title || ""}"
-            />
+            <a href="story-update?post=${link}">
+              <img
+                src="${item.storyImage?._publishUrl || ""}"
+                alt="${item.title || ""}"
+              />
+            </a>
           </div>
           <div class="card-body">
-            <h5 class="card-title">${item.title || ""}</h5>
-            <p class="card-text">
-              ${item.description?.plaintext || ""}
-            </p>
-            <a href="${item.ctaLink || "#"}"
-               class="btn-link">
+            <h5 class="card-title">
+            <a href="story-update?post=${link}">${item.title || ""}</a>
+            </h5>
+            <p class="card-text">${item.description?.plaintext || ""}</p>
+            <a href="story-update?post=${link}" class="btn-link">
               ${item.ctaText?.plaintext || "READ MORE"}
             </a>
           </div>
@@ -116,9 +132,9 @@ export default async function decorate(block) {
       wrapper.append(slide);
     });
 
-    /* ================================
+    /* -----------------------------
        6️⃣ Init Swiper
-       ================================ */
+       ----------------------------- */
     const swiper = new Swiper(".stories-swiper", {
       slidesPerView: 1.2,
       spaceBetween: 24,
@@ -132,6 +148,25 @@ export default async function decorate(block) {
         prevEl: runtime.querySelector(".swiper-button-prev"),
       },
     });
+
+    /* -----------------------------
+       7️⃣ Fraction Pagination
+       ----------------------------- */
+    const currentEl = runtime.querySelector(".current-slide");
+    const totalEl = runtime.querySelector(".total-slide");
+
+    const pad = (n) => (n < 10 ? "0" + n : n);
+
+    // Set total
+    totalEl.textContent = pad(swiper.slides.length);
+
+    // Update current slide
+    swiper.on("slideChange", () => {
+      currentEl.textContent = pad(swiper.realIndex + 1);
+    });
+
+    // Initial load
+    currentEl.textContent = pad(1);
   } catch (e) {
     console.error("Success Stories error", e);
     wrapper.innerHTML = "<p>Error loading stories</p>";

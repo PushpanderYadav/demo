@@ -47,8 +47,104 @@
               "value": "no-margin"
             },
             {
+              "name": "Default Section",
+              "value": "Default-section"
+            },
+            {
+              "name": "Background Gray",
+              "value": "bg-gray"
+            },
+            {
+              "name": "Background White",
+              "value": "bg-white"
+            },
+            {
               "name": "Background Blue",
               "value": "bg-primary"
+            },
+            {
+              "name": "GMR Impact",
+              "value": "gmr-impact"
+            },
+            {
+              "name": "BG Sky Blue",
+              "value": "bg-sky-blue"
+            },
+            {
+              "name": "Alignment Left",
+              "value": "alignment-left"
+            },
+            {
+              "name": "Alignment Center",
+              "value": "alignment-center"
+            },
+            {
+              "name": "Alignment Right",
+              "value": "alignment-right"
+            },
+            {
+              "name": "Padding Top 0",
+              "value": "pt-0"
+            },
+            {
+              "name": "Padding Bottom 0",
+              "value": "pb-0"
+            },
+            {
+              "name": "Margin Top 0",
+              "value": "mt-0"
+            },
+            {
+              "name": "Margin Bottom 0",
+              "value": "mb-0"
+            },
+            {
+              "name": "Background Pink",
+              "value": "background-pink"
+            },
+            {
+              "name": "Big Padding Bottom",
+              "value": "big-padding-bottom"
+            },
+            {
+              "name": "Leadership Banner",
+              "value": "leadership-banner"
+            },
+            {
+              "name": "Leadership Message",
+              "value": "leadership-message"
+            },
+            {
+              "name": "Navigation Left",
+              "value": "navigation-left"
+            },
+            {
+              "name": "Navigation-Right",
+              "value": "navigation-right"
+            },
+            {
+              "name": "Sec Grid 3",
+              "value": "Sec-Grid-3"
+            },
+            {
+              "name": "Sec Grid 4",
+              "value": "Sec-Grid-4"
+            },
+            {
+              "name": "Minus Margin Top",
+              "value": "minus-margin-top"
+            },
+            {
+              "name": "Swiper Slider",
+              "value": "sec-swiper-slider"
+            },
+            {
+              "name": "Job Fraud",
+              "value": "job-fraud-sec"
+            },
+            {
+              "name": "Hidden",
+              "value": "d-none"
             }
           ]
         }
@@ -91,7 +187,46 @@
         "global-airport-network",
         "social-connect",
         "image-title-desc-button",
-        "overlay-banner"
+        "overlay-banner",
+        "header-utility",
+        "common-cards",
+        "listing-filter",
+        "values-and-beliefs",
+        "our-presence",
+        "corporate-governance",
+        "header",
+        "partners-filter",
+        "craft-filter",
+        "breadcrumbs",
+        "message-from-leadership",
+        "gmr-tabs",
+        "fraud-alert-tabs",
+        "image-slider",
+        "media-contact-header",
+        "integrity-decision",
+        "press-release-featured",
+        "press-release-listing",
+        "career-faqs-list",
+        "contact-reachout-list",
+        "image-scroll-card",
+        "key-highlight-button",
+        "contact-us",
+        "lottie-animation",
+        "media-cards",
+        "photo-gallery-slider",
+        "impact-stories",
+        "csr-engine",
+        "guest-book",
+        "innovation-cards",
+        "business-cards-slider",
+        "our-capabilities",
+        "cards-and-image",
+        "image-richtext",
+        "business-enablers",
+        "business-tabs",
+        "global-way-team",
+        "aero-richtext-cards",
+        "aero-value-chain"
       ]
     }
   ]

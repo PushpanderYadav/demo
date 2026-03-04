@@ -1,0 +1,214 @@
+{
+    "definitions": [
+        {
+            "title": "Global Way Team",
+            "id": "global-way-team",
+            "plugins": {
+                "xwalk": {
+                    "page": {
+                        "resourceType": "core/franklin/components/block/v1/block",
+                        "template": {
+                            "name": "global-way-team",
+                            "model": "global-way-team",
+                            "filter": "global-way-team"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "title": "Global Way Team Item",
+            "id": "global-way-team-item",
+            "plugins": {
+                "xwalk": {
+                    "page": {
+                        "resourceType": "core/franklin/components/block/v1/block/item",
+                        "template": {
+                            "name": "global-way-team-item",
+                            "model": "global-way-team-item"
+                        }
+                    }
+                }
+            }
+        }
+    ],
+    "models": [
+        {
+            "id": "global-way-team",
+            "fields": [
+                {
+                    "component": "reference",
+                    "name": "image",
+                    "label": "Background Image",
+                    "valueType": "string"
+                },
+                {
+                    "component": "text",
+                    "name": "imageAlt",
+                    "label": "Alt Text"
+                },
+                {
+                    "component": "richtext",
+                    "name": "content",
+                    "label": "Section Title",
+                    "valueType": "string",
+                    "defaultValue": "Global Way Team"
+                },
+                {
+                    "component": "richtext",
+                    "name": "description",
+                    "label": "Section Content",
+                    "valueType": "string",
+                    "defaultValue": "<p>GMR Group is a leading Global infrastructure conglomerate with interests in Airports, Energy, Transportation and Urban Infrastructure.</p>"
+                },
+                {
+                "component": "text",
+                "name": "linkLabel",
+                "label": "Link Text / Button Label",
+                "valueType": "string"
+                },
+                {
+                "component": "text",
+                "name": "linknUrl",
+                "label": "Link URL / Button Link",
+                "valueType": "string"
+                },
+                {
+                    "component": "text",
+                    "name": "footerTag",
+                    "label": "Footer Tag (e.g. FY 2025-26)",
+                    "valueType": "string"
+                },
+                {
+                    "component": "header",
+                    "label": "Team Members (8 Slots)"
+                },
+                {
+                    "component": "reference",
+                    "name": "member1-image",
+                    "label": "Member 1 Image",
+                    "valueType": "string"
+                },
+                {
+                    "component": "text",
+                    "name": "member1-name",
+                    "label": "Member 1 Name"
+                },
+                {
+                    "component": "reference",
+                    "name": "member2-image",
+                    "label": "Member 2 Image",
+                    "valueType": "string"
+                },
+                {
+                    "component": "text",
+                    "name": "member2-name",
+                    "label": "Member 2 Name"
+                },
+                {
+                    "component": "reference",
+                    "name": "member3-image",
+                    "label": "Member 3 Image",
+                    "valueType": "string"
+                },
+                {
+                    "component": "text",
+                    "name": "member3-name",
+                    "label": "Member 3 Name"
+                },
+                {
+                    "component": "reference",
+                    "name": "member4-image",
+                    "label": "Member 4 Image",
+                    "valueType": "string"
+                },
+                {
+                    "component": "text",
+                    "name": "member4-name",
+                    "label": "Member 4 Name"
+                },
+                {
+                    "component": "reference",
+                    "name": "member5-image",
+                    "label": "Member 5 Image",
+                    "valueType": "string"
+                },
+                {
+                    "component": "text",
+                    "name": "member5-name",
+                    "label": "Member 5 Name"
+                },
+                {
+                    "component": "reference",
+                    "name": "member6-image",
+                    "label": "Member 6 Image",
+                    "valueType": "string"
+                },
+                {
+                    "component": "text",
+                    "name": "member6-name",
+                    "label": "Member 6 Name"
+                },
+                {
+                    "component": "reference",
+                    "name": "member7-image",
+                    "label": "Member 7 Image",
+                    "valueType": "string"
+                },
+                {
+                    "component": "text",
+                    "name": "member7-name",
+                    "label": "Member 7 Name"
+                },
+                {
+                    "component": "reference",
+                    "name": "member8-image",
+                    "label": "Member 8 Image",
+                    "valueType": "string"
+                },
+                {
+                    "component": "text",
+                    "name": "member8-name",
+                    "label": "Member 8 Name"
+                },
+                {
+                    "component": "reference",
+                    "name": "member9-image",
+                    "label": "Member 9 Image",
+                    "valueType": "string"
+                },
+                {
+                    "component": "text",
+                    "name": "member9-name",
+                    "label": "Member 9 Name"
+                }
+            ]
+        },
+        {
+            "id": "global-way-team-item",
+            "itemLabel": "title",
+            "fields": [
+                {
+                    "component": "text",
+                    "name": "title",
+                    "label": "Stat Number (Title)",
+                    "valueType": "string"
+                },
+                {
+                    "component": "richtext",
+                    "name": "description",
+                    "label": "Stat Subtext (Description)",
+                    "valueType": "string"
+                }
+            ]
+        }
+    ],
+    "filters": [
+        {
+            "id": "global-way-team",
+            "components": [
+                "global-way-team-item"
+            ]
+        }
+    ]
+}

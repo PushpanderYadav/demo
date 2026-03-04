@@ -2,14 +2,21 @@
     display: none;
 }
 
+.hero-banner-initialized {
+    position: relative;
+}
+
 .hero-swiper {
     position: relative;
     overflow: hidden;
+    margin-top: -80px;
 }
+
 .hero-slide {
     padding: 0 0 47%;
     height: 100px !important;
 }
+
 .hero-media {
     position: absolute;
     top: 0;
@@ -17,6 +24,7 @@
     width: 100%;
     height: 100%;
 }
+
 .hero-media img {
     position: absolute;
     top: 0;
@@ -25,6 +33,7 @@
     height: 100%;
     object-fit: cover;
 }
+
 .hero-content {
     position: absolute;
     top: 0;
@@ -42,29 +51,36 @@
         rgba(0, 0, 0, 0.9) 0%,
         rgba(0, 0, 0, 0) 100%
     );
-    font-size: 1.25rem;
+    font-size: var(--fs-medium);
     font-weight: 300;
 }
+
 .hero-content-inner {
     max-width: 550px;
 }
+
 .hero-content h3 {
     font-family: var(--font-secondary);
     font-weight: var(--fw-light);
     font-style: italic;
 }
-.hero-content h2 {
+
+.hero-content h2,
+.hero-content h1 {
     font-weight: var(--fw-light);
-    font-size: 3.5rem;
+    font-size: var(--fs-xxxl);
 }
+
 .hero-content p {
     color: #e0e0e0;
 }
+
 .hero-actions {
     display: inline-flex;
     gap: 1rem;
     margin-top: 1rem;
 }
+
 .hero-actions .btn {
     min-width: 180px;
 }
@@ -76,6 +92,7 @@
     width: 100%;
     z-index: 5;
 }
+
 .hero-nav .container {
     display: flex;
     align-items: center;
@@ -91,18 +108,22 @@
     background: none;
     border-radius: 0.75rem;
     margin: 0;
+    min-width: inherit !important;
 }
+
 .hero-nav .swiper-button-next:before,
 .hero-nav .swiper-button-prev:before {
     background: url(../../icons/nav-arrow-yellow.svg) no-repeat center;
     background-size: 1rem;
 }
+
 .hero-numbers {
     display: flex;
     align-items: center;
     gap: 1rem;
     position: relative;
 }
+
 .hero-num {
     font-weight: 600;
     color: var(--lorange);
@@ -110,10 +131,12 @@
     position: relative;
     transition-duration: 0.4s;
 }
+
 .hero-num.active {
     color: var(--white);
     padding-right: 60px;
 }
+
 .hero-num:before,
 .hero-num:after {
     content: "";
@@ -125,10 +148,12 @@
     left: 30px;
     display: none;
 }
+
 .hero-num:after {
     background: var(--yellow);
     animation: myAnimation 4s alternate;
 }
+
 .hero-num.active:before,
 .hero-num.active:after {
     display: block;
@@ -138,7 +163,105 @@
     0% {
         width: 0;
     }
+
     100% {
         width: 45px;
+    }
+}
+
+/* Wrapper */
+.quick-links-wrapper {
+    position: absolute;
+    bottom: 112px;
+    display: block !important;
+    right: 20px;
+    z-index: 50;
+}
+
+/* Dropdown */
+.quick-links-dropdown {
+    position: absolute;
+    bottom: 50px;
+    right: 0;
+    width: 250px;
+    background: var(--white);
+    border: 1px solid var(--yellow);
+    border-radius: 8px;
+    padding: 20px 24px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(20px);
+    transition: 0.3s ease;
+}
+
+/* Show dropdown */
+.quick-links-dropdown.open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+/* Links */
+.quick-links-dropdown a {
+    display: flex;
+    padding: 0.5rem 0;
+    font-weight: 500;
+    color: var(--charcoal);
+    text-decoration: none;
+    font-size: var(--fs-normal);
+    justify-content: space-between;
+}
+
+.quick-links-dropdown a:hover {
+    color: var(--yellow);
+}
+
+@media screen and (max-width: 1199px) {
+    .hero-swiper {
+        margin-top: 0;
+    }
+}
+
+@media screen and (max-width: 767.5px) {
+    .hero-slide {
+        padding: 0 0 130%;
+    }
+
+    .hero-content h2,
+    .hero-content h1 {
+        font-weight: var(--fw-light);
+        font-size: var(--fs-large);
+    }
+
+    .hero-actions .btn {
+        min-width: inherit;
+    }
+
+    .hero-nav .swiper-button-prev,
+    .hero-nav .swiper-button-next {
+        width: 2.5rem !important;
+        height: 2.5rem !important;
+    }
+
+    .hero-content {
+        padding-top: 2rem;
+        justify-content: flex-start;
+    }
+    .hero-nav .container {
+        justify-content: center;
+    }
+    .quick-links-wrapper {
+        bottom: 60px;
+        right: 0;
+        width: 90%;
+        left: 0;
+        margin: auto;
+    }
+    .quick-links-wrapper .btn-primary.quick-links-btn {
+        width: 100%;
+        justify-content: space-between;
+    }
+    .quick-links-dropdown {
+        width: 100%;
     }
 }

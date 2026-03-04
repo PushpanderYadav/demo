@@ -1,0 +1,46 @@
+name: Index EDS pages to Algolia (Branch Aware)
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+      - "stage"
+  schedule:
+    - cron: "*/1 * * * *"
+  workflow_dispatch:
+
+jobs:
+  index:
+    runs-on: ubuntu-latest
+
+    # Map branch → environment
+    environment: ${{ 
+      github.ref_name == 'main' && 'prod' ||
+      github.ref_name == 'develop' && 'stage' ||
+      'dev'
+    }}
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm ci || npm install
+
+      - name: Resolve branch EDS URL
+        run: |
+          echo "EDS_BRANCH=${GITHUB_REF_NAME}" >> $GITHUB_ENV
+
+      - name: Push EDS data to Algolia
+        env:
+          ALGOLIA_APP_ID: ${{ secrets.ALGOLIA_APP_ID }}
+          ALGOLIA_ADMIN_API_KEY: ${{ secrets.ALGOLIA_ADMIN_API_KEY }}
+          ALGOLIA_INDEX_NAME: ${{ secrets.ALGOLIA_INDEX_NAME }}
+          EDS_INDEX_URL: ${{ secrets.EDS_INDEX_URL }}
+        run: echo "✅ algolia-index workflow is running on branch: $GITHUB_REF_NAME"

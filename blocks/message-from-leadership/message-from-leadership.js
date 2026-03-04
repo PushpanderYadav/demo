@@ -1,70 +1,123 @@
-export default function decorate(block) {
-  const runtime = block.querySelector('.mfl-runtime');
-  if (!runtime) return;
+import { loadCSS, loadScript } from '../../../scripts/aem.js';
 
-  const slidesWrapper = runtime.querySelector('.mfl-slides');
-  const prevBtn = runtime.querySelector('.mfl-prev');
-  const nextBtn = runtime.querySelector('.mfl-next');
+const SWIPER_JS = 'https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js';
+const SWIPER_CSS = 'https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css';
 
-  /* ==============================
-     1️⃣ Collect item components
-     ============================== */
-  const items = [...block.children].filter((child) =>
-    child.dataset?.aueModel === 'message-from-leadership-item'
-  );
+export default async function decorate(block) {
+  const isAuthorMode =
+    document.body.classList.contains('aem-AuthorLayer-Edit') ||
+    window.location.search.includes('wcmmode=edit');
+
+  const rows = [...block.children];
+  if (!rows.length) return;
+
+  /* ================================
+     1️⃣ GET SECTION TITLE (BLOCK FIELD)
+  ================================ */
+  let sectionTitle = '';
+
+  const firstRow = rows[0];
+  if (firstRow?.children?.length === 1 && !firstRow.querySelector('img')) {
+    sectionTitle = firstRow.textContent.trim();
+  }
+
+  /* ================================
+     2️⃣ COLLECT AUTHORED ITEMS
+  ================================ */
+  const items = rows.filter((row, index) => {
+    if (index === 0 && sectionTitle) return false; // skip title row
+
+    return (
+      row.tagName === 'DIV' &&
+      row.children.length >= 4 &&
+      row.querySelector('img, picture')
+    );
+  });
 
   if (!items.length) return;
 
-  /* ==============================
-     2️⃣ Build slides
-     ============================== */
-  items.forEach((item) => {
+  /* ================================
+     3️⃣ READ ITEM DATA
+  ================================ */
+  const slidesData = items.map((item) => {
     const cells = [...item.children];
-    if (cells.length < 4) return;
 
-    const image = cells[0].querySelector('img');
-    const subtitle = cells[1].textContent.trim();
-    const message = cells[2].innerHTML;
-    const designation = cells[3].textContent.trim();
+    return {
+      image: cells[0].innerHTML.trim(),
+      subtitle: cells[1].textContent.trim(),
+      message: cells[2].innerHTML.trim(),
+      designation: cells[3].textContent.trim(),
+    };
+  });
 
+  /* ================================
+     4️⃣ BUILD RUNTIME UI
+  ================================ */
+  block.classList.add('mfl-initialized');
+
+  const container = document.createElement('div');
+  container.className = 'mfl-runtime';
+
+  container.innerHTML = `
+    ${
+      sectionTitle
+        ? `<div class="mfl-section-header mb-5">
+            <h2 class="sec-title">${sectionTitle}</h2>
+           </div>`
+        : ''
+    }
+
+    <div class="swiper mfl-swiper">
+      <div class="swiper-wrapper"></div>
+
+      <div class="mfl-navigation">
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+    </div>
+  `;
+
+  block.append(container);
+
+  const swiperWrapper = container.querySelector('.swiper-wrapper');
+
+  slidesData.forEach((data) => {
     const slide = document.createElement('div');
-    slide.className = 'mfl-slide';
+    slide.className = 'swiper-slide';
 
     slide.innerHTML = `
-      <div class="mfl-image">
-        ${image ? image.outerHTML : ''}
-      </div>
-      <div class="mfl-content">
-        <h4 class="mfl-subtitle">${subtitle}</h4>
-        <div class="mfl-message">${message}</div>
-        <div class="mfl-author">${designation}</div>
+      <div class="mfl-card">
+        <div class="mfl-image">${data.image}</div>
+
+        <div class="mfl-content">
+          <h3 class="mfl-title">${data.subtitle}</h3>
+          <div class="mfl-message">${data.message}</div>
+          <div class="mfl-author">${data.designation}</div>
+        </div>
       </div>
     `;
 
-    slidesWrapper.append(slide);
+    swiperWrapper.appendChild(slide);
   });
 
-  /* ==============================
-     3️⃣ Slider logic
-     ============================== */
-  let index = 0;
-  const slides = [...slidesWrapper.children];
+  /* ================================
+     5️⃣ AUTHOR MODE SAFE
+  ================================ */
+  if (isAuthorMode) return;
 
-  function update() {
-    slides.forEach((slide, i) => {
-      slide.style.display = i === index ? 'grid' : 'none';
-    });
-  }
+  /* ================================
+     6️⃣ LOAD SWIPER
+  ================================ */
+  await loadCSS(SWIPER_CSS);
+  await loadScript(SWIPER_JS);
 
-  prevBtn?.addEventListener('click', () => {
-    index = (index - 1 + slides.length) % slides.length;
-    update();
+  new Swiper(container.querySelector('.mfl-swiper'), {
+    slidesPerView: 1,
+    spaceBetween: 24,
+    loop: true,
+    navigation: {
+      nextEl: container.querySelector('.swiper-button-next'),
+      prevEl: container.querySelector('.swiper-button-prev'),
+    },
   });
-
-  nextBtn?.addEventListener('click', () => {
-    index = (index + 1) % slides.length;
-    update();
-  });
-
-  update();
 }

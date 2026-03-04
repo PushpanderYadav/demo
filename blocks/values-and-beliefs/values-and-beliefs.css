@@ -1,0 +1,284 @@
+/* ===============================
+   AEM AUTHORING SUPPORT
+================================ */
+
+/* Hide authored content AFTER JS decoration */
+.values-and-beliefs.values-initialized > :not(.values-runtime) {
+  display: none;
+}
+
+/* ===============================
+   WRAPPER & SECTION
+================================ */
+.values-and-beliefs-wrapper {
+  background: var(--lgrey);
+}
+
+.values-and-beliefs .block {
+  background-color: var(--lgrey) !important;
+}
+
+/* .values-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px 64px;
+} */
+
+/* ===============================
+   GRID
+================================ */
+.values-cards {
+  display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 24px;
+}
+
+/* ===============================
+   CARD BASE
+================================ */
+.value-card {
+  position: relative;
+  cursor: pointer;
+  border-radius: 8px;
+  overflow: hidden; min-width: 260px; max-width: 260px;
+}
+
+/* ===============================
+   IMAGE
+================================ */
+.value-card-image {
+  height: 225px;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;     padding: 1.5rem;
+}
+
+.value-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* ===============================
+   BOTTOM BAR (DEFAULT STATE)
+================================ */
+.value-card-overlay {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 52px;
+  background: var(--blue);
+  color: #fff;
+  padding: 0 16px;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 0 0 8px 8px;
+  z-index: 4;
+}
+
+/* PLUS ICON (BOTTOM RIGHT) */
+.value-card-overlay::after {
+  content: "+";
+  width: 24px;
+  height: 24px;
+  /* background: #faa519; */
+  color: #faa519;
+  font-size: 18px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  flex-shrink: 0;
+  border: 2px solid #faa519;
+}
+
+/* ===============================
+   EXPANDED CONTENT
+================================ */
+.value-card-content {
+  position: absolute;
+  inset: 0;
+  background: var(--blue);
+  color: #fff;
+  padding: 52px 15px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  border-radius: 8px;
+  z-index: 3;
+}
+
+.value-card-content .quote {
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 16px;     height: 100%;
+    overflow: auto;
+}
+
+.value-card-content .quote h5 
+{ font-family: var(--font-secondary); font-weight: 600;
+}
+ 
+
+.value-card-content .author {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+/* ===============================
+   ACTIVE STATE
+================================ */
+
+/* Show expanded content */
+.value-card.active .value-card-content {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Hide bottom bar when active */
+.value-card.active .value-card-overlay {
+  display: none;
+}
+
+/* MINUS ICON (TOP RIGHT) */
+.value-card.active::after {
+  content: "–";
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 28px;
+  height: 28px;
+  background: #faa519;
+  color: var( --white);
+  font-size: 22px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  z-index: 6;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+@media (max-width: 1024px) {
+  .values-cards {
+    grid-template-columns: repeat(2, 260px);
+  }
+}
+
+@media (max-width: 767px) {
+  .values-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .values-title {
+    font-size: 26px;
+  }
+
+  .value-card-overlay {
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 8px;
+}
+.value-card-content .quote h5 {
+    font-size: 20px;
+    line-height: 25px;
+}
+.value-card-content .quote p strong {
+    font-size: 22px;
+}
+.value-card-content .quote {
+    height: auto;
+}
+.value-card-content {
+    padding: 48px 15px 20px;
+    justify-content: start;
+}
+ .value-card-image {
+    height: auto;
+    background: none;
+    padding: 0 0;
+}
+  .value-card { max-width: 100%;
+}
+
+  .value-card.active .value-card-content {
+    transform: translateY(0);
+    background: url(../../img/mpatternw.svg) var(--blue);
+    background-repeat: no-repeat;
+    background-position: bottom right;
+  }
+
+  /* .value-card-image {
+    margin-bottom: 48px;
+  } */
+}
+
+/* ===============================
+   SPECIAL CASE – 7 CARDS
+================================ */
+@media (min-width: 1200px) {
+  .values-cards:has(> .value-card:nth-child(7)) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+  }
+
+  .values-cards:has(> .value-card:nth-child(7)) > .value-card {
+    flex: 0 0 260px;
+  }
+}
+
+
+
+/* ===============================
+   SCROLL ONLY WHEN ACTIVE
+================================ */
+
+/* Default: no scroll */
+.value-card-content {
+  overflow: hidden;
+}
+
+/* When active → enable scroll */
+.value-card.active .value-card-content {
+  overflow-y: auto;
+  max-height: 100%;
+  scrollbar-width: thin;
+  scrollbar-color: var(--lorange) transparent;
+}
+
+/* Webkit Scrollbar */
+.value-card.active .value-card-content::-webkit-scrollbar {
+  width: 5px;
+}
+
+.value-card.active .value-card-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.value-card.active .value-card-content::-webkit-scrollbar-thumb {
+  background-color: var(--lorange);
+  border-radius: 10px;
+}
+
+.value-card.active .value-card-content::-webkit-scrollbar-thumb:hover {
+  background-color: var(--lorange);
+}

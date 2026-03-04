@@ -48,6 +48,23 @@
           "name": "sectionDescription",
           "label": "Description Text",
           "valueType": "string"
+        },
+        {
+          "component": "reference",
+          "name": "mapImage",
+          "label": "Background Map Image",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "imageAlt",
+          "label": "Alt Text"
+        },
+        {
+          "component": "reference",
+          "name": "lottiePath",
+          "label": "Lottie Path",
+          "valueType": "string"
         }
       ]
     },
@@ -72,6 +89,11 @@
           "name": "flagIcon",
           "label": "Country Flag Icon",
           "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "imageAlt",
+          "label": "Alt Text"
         }
       ]
     }

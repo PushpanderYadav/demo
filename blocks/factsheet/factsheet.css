@@ -1,23 +1,27 @@
+ /* Hide authored content after JS decoration */
 .factsheet.factsheet-initialized > :not(.factsheet-runtime) {
   display: none;
 }
 
 /* ===============================
-   Container
+   Section wrapper
 ================================ */
 .factsheet-runtime {
   padding: 4rem 2rem;
   background: #fff6e5;
 }
 
+/* ===============================
+   Header
+================================ */
 .factsheet-header {
   text-align: center;
   margin-bottom: 3rem;
 }
 
 .factsheet-header h2 {
-  font-size: 2.5rem;
-  font-weight: 600;
+  font-size: var(--fs-xxl);
+  font-weight: 400;
   margin-bottom: 1.5rem;
 }
 
@@ -42,41 +46,94 @@
 
 .factsheet-tab.active {
   background: #2b2b2b;
-  color: #fff;
+  color: #ffffff;
   border-color: #2b2b2b;
 }
 
 /* ===============================
-   Cards Grid
+   Grid
 ================================ */
 .factsheet-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  /* grid-template-columns: repeat(3, minmax(0, 1fr)); */
   gap: 1.5rem;
   margin-top: 3rem;
+  display: block;
+  column-count: 3;
+  column-gap: 18px;
 }
 
+/* ===============================
+   Card
+================================ */
 .factsheet-card {
-  background: linear-gradient(135deg, #1f5aa6, #00a6c7);
-  color: #fff;
-  border-radius: 12px;
-  padding: 1.75rem;
   position: relative;
-  min-height: 200px;
+  background: linear-gradient(135deg, #1f5aa6, #00a6c7);
+  color: #ffffff;
+  border-radius: 12px;
+  padding: 22px;
+  overflow: hidden;
+  margin-bottom: 18px;
 }
 
-.factsheet-card img {
-  width: 48px;
-  height: 48px;
-  margin-bottom: 1rem;
+/* ===============================
+   Icon (TOP RIGHT)
+================================ */
+.factsheet-icon {
+  text-align: right;
 }
 
+.factsheet-icon img {
+  width: 90px;
+  height: 80px;
+  object-fit: contain;
+}
+
+/* ===============================
+   Text content
+================================ */
 .factsheet-card h4 {
-  font-size: 1.2rem;
+  font-size: var(--fs-large);
   margin-bottom: 0.5rem;
+  padding-right: 120px; /* space for icon */
 }
 
 .factsheet-card p {
-  font-size: 0.95rem;
+  font-size: 21px;
   opacity: 0.95;
+  font-weight: 400;
+  opacity: 0.95;
+  line-height: 1.4;
+}
+
+.factsheet-card strong {
+  font-weight: 600;
+}
+
+/* ===============================
+   Responsive
+================================ */
+@media (max-width: 1024px) {
+  .factsheet-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .factsheet-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .factsheet-card {
+    padding: 1.5rem;
+  }
+
+  .factsheet-card h4,
+  .factsheet-card p {
+    padding-right: 0;
+  }
+
+  .factsheet-icon {
+    position: static;
+    margin-bottom: 1rem;
+  }
 }

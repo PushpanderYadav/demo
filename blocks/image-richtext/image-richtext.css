@@ -1,0 +1,26 @@
+.image-richtext {
+    padding: 60px 0;
+}
+
+.image-richtext-text {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: var(--text-main, #333);
+}
+
+.image-richtext-text p {
+    margin-bottom: 1.5rem;
+}
+
+.image-richtext-img-col img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+@media (max-width: 991px) {
+    .image-richtext-content-col {
+        margin-bottom: 30px;
+    }
+}

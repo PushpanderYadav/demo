@@ -1,52 +1,115 @@
 export default function decorate(block) {
-  console.log("Decorating Our Airports block");
+  console.log("Decorating Our Airports block (label/value tabs)");
 
   const rows = [...block.children];
-  if (rows.length < 2) return;
+  if (rows.length < 5) return;
 
   /* ================================
-     1️⃣ Read authored content
+     1️⃣ Header content
      ================================ */
-  const configRow = rows[0];
-  const configCells = [...configRow.children];
-
-  const title = configCells[0]?.textContent?.trim();
-  const domesticBtnLabel =
-    configCells[1]?.textContent?.trim() || "Domestic Network";
-  const internationalBtnLabel =
-    configCells[2]?.textContent?.trim() || "International Network";
-
-  const itemRows = rows.slice(1);
+  const title = rows[0]?.textContent?.trim() || "";
+  const description = rows[1]?.innerHTML?.trim() || "";
 
   /* ================================
-     2️⃣ Hide authored rows (AEM SAFE)
+     2️⃣ Card rows
+     ================================ */
+  const itemRows = rows.slice(2).filter((row) =>
+    row.textContent?.trim()
+  );
+
+  /* ================================
+     3️⃣ Helpers
+     ================================ */
+  const formatLabel = (val) =>
+    val
+      .replace(/([A-Z])/g, " $1")
+      .replace(/^./, (s) => s.toUpperCase())
+      .trim();
+
+  /* ================================
+     4️⃣ Build tabs map
+     ================================ */
+  const tabsMap = {};
+  const tabsMeta = {};
+
+  itemRows.forEach((row) => {
+    const cells = [...row.children];
+    if (cells.length < 7) return;
+
+    const value = cells[0]?.textContent?.trim();
+    if (!value) return;
+
+    if (!tabsMap[value]) {
+      tabsMap[value] = [];
+      tabsMeta[value] = formatLabel(value);
+    }
+
+    const img = cells[1]?.querySelector("img");
+    const imageAlt = img?.getAttribute("alt") || "";
+
+    const getText = (cell) =>
+      cell?.innerText?.trim() || cell?.textContent?.trim() || "";
+
+    tabsMap[value].push({
+      image: img ? img.src : "",
+      imageAlt,
+      badge: getText(cells[2]),
+      name: getText(cells[3]),
+      desc: getText(cells[4]),
+      ctaLabel: getText(cells[5]) || "READ MORE",
+      link: cells[6]?.querySelector("a")?.href || "",
+    });
+  });
+
+  const tabValues = Object.keys(tabsMap);
+  if (!tabValues.length) return;
+
+  const hasOnlyNoneTab = tabValues.length === 1 && tabValues[0] === "none";
+
+  /* ================================
+     5️⃣ Hide authored HTML
      ================================ */
   rows.forEach((row) => (row.style.display = "none"));
 
   /* ================================
-     3️⃣ Runtime wrapper
+     6️⃣ Runtime markup
      ================================ */
   const runtime = document.createElement("section");
   runtime.className = "airport-overview-runtime";
 
   runtime.innerHTML = `
     <div class="container">
-      <div class="airport-overview-header text-center mb-5">
-        ${title ? `<h2 class="sec-title">${title}</h2>` : ""}
-        <div class="airport-tabs">
-          <button class="tab-btn active" data-filter="domestic">
-            ${domesticBtnLabel}
-          </button>
-          <button class="tab-btn" data-filter="international">
-            ${internationalBtnLabel}
-          </button>
+      <div class="airport-overview-header text-center mb-4">
+        <div class="airport-overview-headerHead">
+          ${title ? `<h2 class="sec-title">${title}</h2>` : ""}
+          ${description ? `<div class="sec-desc mb-0">${description}</div>` : ""}
         </div>
+
+        ${
+          !hasOnlyNoneTab
+            ? `
+          <div class="airport-tabs">
+            ${tabValues
+              .map(
+                (value, i) => `
+                  <button
+                    class="tab-btn ${i === 0 ? "active" : ""}"
+                    data-filter="${value}">
+                    ${tabsMeta[value]}
+                  </button>
+                `
+              )
+              .join("")}
+          </div>
+        `
+            : ""
+        }
       </div>
 
-      <div class="airport-cards row"></div>
+      <div class="airport-cards row justify-content-center"></div>
 
       <div class="load-more-wrap text-center">
-        <button class="load-more-btn btn-link">Load More</button>
+        <button class="load-more-btn btn btn-primary">Load More</button>
       </div>
     </div>
   `;
@@ -54,74 +117,54 @@ export default function decorate(block) {
   block.after(runtime);
 
   const cardList = runtime.querySelector(".airport-cards");
+  const tabsContainer = runtime.querySelector(".airport-tabs");
   const tabButtons = runtime.querySelectorAll(".tab-btn");
   const loadMoreBtn = runtime.querySelector(".load-more-btn");
 
   /* ================================
-     4️⃣ Build cards (SAMPLE STRUCTURE)
+     7️⃣ Render cards
      ================================ */
-  itemRows.forEach((row) => {
-    if (!row.textContent?.trim()) return;
+  function renderCards(type) {
+    cardList.innerHTML = "";
 
-    const cells = [...row.children];
-    const type = cells[0]?.textContent?.trim().toLowerCase();
-    if (!["domestic", "international"].includes(type)) return;
+    tabsMap[type]?.forEach((card) => {
+      const div = document.createElement("div");
+      div.className = "airport-card col-md-6 mt-4";
 
-    /* Image */
-    let imageUrl = "";
-    const img = cells[1]?.querySelector("img");
-    if (img) imageUrl = img.src;
-
-    const badge = cells[2]?.textContent?.trim();
-    const name = cells[3]?.textContent?.trim();
-    if (!name) return;
-
-    const desc = cells[4]?.textContent?.trim();
-    const ctaLabel = cells[5]?.textContent?.trim() || "READ MORE";
-
-    let linkUrl = "";
-    const link = cells[6]?.querySelector("a");
-    if (link) linkUrl = link.href;
-
-    /* LI wrapper for filtering */
-    const li = document.createElement("div");
-    li.className = "airport-card col-md-6 mt-4";
-    li.dataset.type = type;
-
-    li.innerHTML = `
-      <div class="card card-ui-one">
-        ${
-          imageUrl
-            ? `
-          <div class="card-img">
-            ${badge ? `<span class="badge">${badge}</span>` : ""}
-            <img src="${imageUrl}" alt="${name}" loading="lazy" />
-          </div>
-        `
-            : ""
-        }
-
-        <div class="card-body">
-          <h3 class="card-title">${name}</h3>
-          ${desc ? `<p class="card-desc">${desc}</p>` : ""}
+      div.innerHTML = `
+        <div class="card card-ui-one">
           ${
-            linkUrl
+            card.image
               ? `
-            <div class="card-cta">
-              <a href="${linkUrl}" class="btn-link">${ctaLabel}</a>
-            </div>
-          `
+              <div class="card-img">
+                ${card.badge ? `<span class="badge">${card.badge}</span>` : ""}
+                <img src="${card.image}" alt="${card.imageAlt}" loading="lazy" />
+              </div>
+            `
               : ""
           }
+          <div class="card-body">
+            ${card.name ? `<h3 class="card-title">${card.name}</h3>` : ""}
+            ${card.desc ? `<p class="card-desc">${card.desc}</p>` : ""}
+            ${
+              card.link
+                ? `
+              <div class="card-cta">
+                <a href="${card.link}" class="btn-link">${card.ctaLabel}</a>
+              </div>
+            `
+                : ""
+            }
+          </div>
         </div>
-      </div>
-    `;
+      `;
 
-    cardList.appendChild(li);
-  });
+      cardList.appendChild(div);
+    });
+  }
 
   /* ================================
-     5️⃣ Load More (Mobile Only)
+     8️⃣ Load More
      ================================ */
   const MOBILE_LIMIT = 3;
   let visibleCount = MOBILE_LIMIT;
@@ -130,10 +173,8 @@ export default function decorate(block) {
     return window.innerWidth <= 768;
   }
 
-  function applyLoadMore(filterType, reset = false) {
-    const cards = [...cardList.querySelectorAll(".airport-card")].filter(
-      (card) => card.dataset.type === filterType
-    );
+  function applyLoadMore(type, reset = false) {
+    const cards = [...cardList.querySelectorAll(".airport-card")];
 
     if (!isMobile()) {
       cards.forEach((c) => (c.style.display = "block"));
@@ -143,8 +184,8 @@ export default function decorate(block) {
 
     if (reset) visibleCount = MOBILE_LIMIT;
 
-    cards.forEach((card, index) => {
-      card.style.display = index < visibleCount ? "block" : "none";
+    cards.forEach((card, i) => {
+      card.style.display = i < visibleCount ? "block" : "none";
     });
 
     loadMoreBtn.style.display =
@@ -154,19 +195,21 @@ export default function decorate(block) {
   loadMoreBtn.addEventListener("click", () => {
     visibleCount += MOBILE_LIMIT;
     const active =
-      runtime.querySelector(".tab-btn.active").dataset.filter;
-    applyLoadMore(active);
+      runtime.querySelector(".tab-btn.active")?.dataset.filter;
+    if (active) applyLoadMore(active);
   });
 
   /* ================================
-     6️⃣ Tab filtering
+     9️⃣ Tabs logic
      ================================ */
-  function filterCards(type) {
-    const cards = cardList.querySelectorAll(".airport-card");
-    cards.forEach((card) => {
-      card.style.display =
-        card.dataset.type === type ? "block" : "none";
-    });
+  function toggleTabsVisibility(type) {
+    if (!tabsContainer) return;
+    tabsContainer.style.display = type === "none" ? "none" : "";
+  }
+
+  function activateTab(type) {
+    toggleTabsVisibility(type);
+    renderCards(type);
     applyLoadMore(type, true);
   }
 
@@ -174,20 +217,18 @@ export default function decorate(block) {
     btn.addEventListener("click", () => {
       tabButtons.forEach((b) => b.classList.remove("active"));
       btn.classList.add("active");
-      filterCards(btn.dataset.filter);
+      activateTab(btn.dataset.filter);
     });
   });
 
   /* ================================
-     7️⃣ Init
+     🔁 Initial load
      ================================ */
-  filterCards("domestic");
+  activateTab(tabValues[0]);
 
   window.addEventListener("resize", () => {
     const active =
-      runtime.querySelector(".tab-btn.active").dataset.filter;
-    applyLoadMore(active, true);
+      runtime.querySelector(".tab-btn.active")?.dataset.filter;
+    if (active) applyLoadMore(active, true);
   });
-
-  console.log("Our Airports block initialized");
 }

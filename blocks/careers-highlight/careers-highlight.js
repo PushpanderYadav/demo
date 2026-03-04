@@ -11,20 +11,18 @@ export default function decorate(block) {
   const pictureNodes = [];
   let blueCardNode = null;
 
-  // NEW: CTA fields captured separately
-  let ctaLabelNode = null; // The p tag: CTA Button Label
-  let ctaLinkNode = null; // The <a class="button">
+  // CTA fields
+  let ctaLabelNode = null;
+  let ctaLinkNode = null;
 
-  // CLASSIFY ALL CHILD NODES
-  original.forEach((child) => {
+  /* ================================
+     CLASSIFY ALL CHILD NODES
+     (LANGUAGE SAFE + STRUCTURE BASED)
+  ================================ */
+
+  original.forEach((child, index) => {
     const p = child.querySelector && child.querySelector("p");
     const a = child.querySelector && child.querySelector("a.button");
-
-    // Section title (first text node but not CTA)
-    if (!sectionTitleNode && p && !p.textContent.includes("Explore Life")) {
-      sectionTitleNode = child;
-      return;
-    }
 
     // Pictures
     if (hasPicture(child)) {
@@ -32,15 +30,21 @@ export default function decorate(block) {
       return;
     }
 
-    // CTA label text (p field)
-    if (p && p.textContent.includes("Explore Life")) {
-      ctaLabelNode = child;
+    // CTA link field
+    if (a) {
+      ctaLinkNode = child;
+
+      // CTA label = previous paragraph node
+      const prev = original[index - 1];
+      if (prev?.querySelector?.("p")) {
+        ctaLabelNode = prev;
+      }
       return;
     }
 
-    // CTA button link (a field)
-    if (a) {
-      ctaLinkNode = child;
+    // Section title (first paragraph only)
+    if (!sectionTitleNode && p) {
+      sectionTitleNode = child;
       return;
     }
 
@@ -56,9 +60,13 @@ export default function decorate(block) {
     }
   });
 
-  // MAIN WRAPPERS
+  /* ================================
+     MAIN WRAPPERS
+  ================================ */
+
   const section = document.createElement("div");
   section.className = "sec-career spacer";
+
   const container = document.createElement("div");
   container.className = "container";
 
@@ -66,19 +74,19 @@ export default function decorate(block) {
   row.className = "row";
 
   const col1 = document.createElement("div");
-  col1.className = "col-md-4";
+  col1.className = "col-md-6 col-lg-4";
 
   const col2 = document.createElement("div");
-  col2.className = "col-md-4";
+  col2.className = "col-md-6 col-lg-4";
 
   const col3 = document.createElement("div");
-  col3.className = "col-md-4 d-flex flex-column";
+  col3.className =
+    "col-md-12 col-lg-4 d-flex flex-md-column flex-column-reverse";
 
   /* -------------------------
      COLUMN 1 – TWO IMAGES
   ------------------------- */
 
-  // Image 1 (top left)
   if (pictureNodes[0]) {
     const wrap1 = document.createElement("div");
     wrap1.className = "careerImg picone";
@@ -94,7 +102,6 @@ export default function decorate(block) {
     col1.appendChild(wrap1);
   }
 
-  // Image 2 (bottom left)
   if (pictureNodes[1]) {
     const wrap2 = document.createElement("div");
     wrap2.className = "careerImg pictwo";
@@ -125,7 +132,6 @@ export default function decorate(block) {
      COLUMN 3 – LARGE IMAGE + CTA
   ------------------------- */
 
-  // Image 3 (right side)
   if (pictureNodes[2]) {
     const wrap3 = document.createElement("div");
     wrap3.className = "careerImg picthree";
@@ -141,27 +147,37 @@ export default function decorate(block) {
     col3.appendChild(wrap3);
   }
 
-  // --- CTA MERGE FIX ---
+  /* ================================
+     CTA MERGE
+     LABEL → translated
+     LINK → always original
+  ================================ */
+
   const ctaWrap = document.createElement("div");
   ctaWrap.className = "cta careerBtn";
 
   const finalBtn = document.createElement("a");
   finalBtn.className = "btn btn-primary btn-lg w-100";
 
-  // CTA LABEL (from text field)
+  // CTA LABEL (can change per language)
   if (ctaLabelNode) {
     const p = ctaLabelNode.querySelector("p");
-    if (p) {
+    if (p?.textContent?.trim()) {
       finalBtn.textContent = p.textContent.trim();
     }
   }
 
-  // CTA URL/TITLE (from button field)
+  // CTA LINK (always keep original resolved URL)
   if (ctaLinkNode) {
     const a = ctaLinkNode.querySelector("a");
     if (a) {
-      finalBtn.href = a.href;
+      // browser resolved URL → prevents /ja/# rewrite
+      finalBtn.href = new URL(a.href, window.location.origin).href;
+
       if (a.title) finalBtn.title = a.title;
+
+      // optional flag to prevent other scripts rewriting
+      finalBtn.setAttribute("data-fixed-link", "true");
     }
   }
 
@@ -176,26 +192,25 @@ export default function decorate(block) {
   row.appendChild(col2);
   row.appendChild(col3);
 
-  // Clear AEM block first
   block.innerHTML = "";
 
-  // Add header wrapper
   if (sectionTitleNode) {
     const header = document.createElement("header");
-    header.className = "mb-5 text-center";
+    header.className = "mb-md-5 mb-4 text-center";
 
     const p = sectionTitleNode.querySelector("p");
 
     if (p) {
       const h2 = document.createElement("h2");
       h2.className = "sec-title";
-      h2.innerHTML = p.innerHTML; // preserve authored content
+      h2.innerHTML = p.innerHTML;
       p.replaceWith(h2);
     }
 
     header.appendChild(sectionTitleNode);
     container.appendChild(header);
   }
+
   container.appendChild(row);
   section.appendChild(container);
   block.appendChild(section);

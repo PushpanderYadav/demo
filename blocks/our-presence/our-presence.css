@@ -1,0 +1,356 @@
+ /* .global-airport-network-container {
+    background-color: var(--royal-blue);
+    color: var(--white);
+    padding: 0
+}
+
+.global-airport-network {
+    overflow: hidden;
+    background-color: var(--royal-blue);
+}
+
+.global-airport-network .sec-desc {
+    font-size: var(--fs-medium);
+    line-height: 1.5;
+    color: var(--white)
+}
+
+.gan-map-wrap {
+    position: relative;
+    width: 100%;
+    min-height: 300px;
+    overflow: hidden;
+}
+
+.gan-lottie {
+    width: 100%;
+    height: 100%
+}
+
+.gan-locations {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.gan-tabs {
+    display: flex;
+    gap: 10px;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.gan-tab-btn {
+    padding: 8px 20px;
+    border: 2px solid var(--turquoise, #00b8c8);
+    border-radius: 30px;
+    background: transparent;
+    color: var(--white);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.25s, color 0.25s;
+    white-space: nowrap;
+}
+
+.gan-tab-btn:hover,
+.gan-tab-btn.active {
+    background: var(--yellow, #f5c400);
+    border-color: var(--yellow, #f5c400);
+    color: #000;
+}
+
+
+.gan-location {
+    border-radius: 12px;
+    padding: 8px 16px;
+    color: var(--turquoise);
+    position: relative;
+    flex: 0 0 calc(50% - 16px);
+    max-width: calc(50% - 16px);
+    background: url("../../img/mpattern.svg") no-repeat center var(--white);
+    background-size: 85px;
+    min-height: 85px;
+    background-position: bottom right
+}
+
+.gan-flag {
+    position: absolute;
+    bottom: 16px;
+    right: 16px
+}
+
+.gan-airport,
+.gan-country {
+    margin-bottom: 0
+}
+
+.gan-airport {
+    font-weight: 500;
+    font-size: 12px;
+    margin-bottom: 4px
+}
+
+.gan-country {
+    font-weight: 600;
+    font-size: 12px;
+    color: var(--yellow)
+}
+
+.gan-map-image {
+    display: none;
+}
+
+.gan-intl-panel {
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.gan-sub-section {
+    width: 100%;
+}
+
+.gan-sub-heading {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--turquoise, #00b8c8);
+    margin-bottom: 0.5rem;
+}
+
+.gan-sub-cards {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+
+@media (min-width:768px) {
+    .gan-lottie {
+        display: block;
+        text-align: center
+    }
+
+    .gan-locations {
+        display: none
+    }
+}
+
+@media (max-width:767px) {
+    .gan-lottie {
+        display: none
+    }
+
+    .gan-locations {
+        display: flex;
+        position: relative;
+        z-index: 2;
+    }
+
+    .gan-map-image {
+        display: block;
+        position: absolute;
+        z-index: 1;
+    }
+
+    .gan-wrapper.spacer .col-lg-4.col-md-5 {
+        text-align: center;
+    }
+
+    .gan-wrapper.spacer .col-lg-4.col-md-5 .sec-title.mb-4 {
+        margin-bottom: 1rem !important;
+    }
+
+    .gan-locations {
+        padding: 6rem 0 0 0;
+    }
+
+    .gan-map-wrap {
+        padding-top: 1rem;
+    }
+}  
+
+
+
+
+/* =========================================
+   Section Background
+========================================= */
+.global-airport-network {
+  background: linear-gradient(135deg, #2f5fa7 0%, #1e4e96 100%);
+  padding: 100px 20px;
+}
+
+/* =========================================
+   Center Content Properly
+========================================= */
+.gan-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Remove flex override from column */
+.col-lg-4.col-md-5 {
+  display: block;
+}
+
+/* =========================================
+   Section Title
+========================================= */
+.sec-title { 
+  /* color: #ffffff; */
+  font-size: 48px;
+  font-weight: 300;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+ .sec-titles  {
+    color: white;
+    font-weight: 400;
+}
+
+/* =========================================
+   Dropdown Card
+========================================= */
+.gan-dropdown {
+  background: #e9e9e9;
+  max-width: 360px;
+  margin: 0 auto;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* =========================================
+   Dropdown Section
+========================================= */
+.gan-dd-section {
+  margin-bottom: 15px;
+}
+
+.gan-dd-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 500;
+  color: #222;
+  cursor: pointer;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #cfcfcf;
+}
+
+/* Plus / Minus Icon */
+.gan-dd-icon {
+  width: 22px;
+  height: 22px;
+  background: #f39c12;
+  color: #fff;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+/* =========================================
+   Dropdown Items
+========================================= */
+.gan-dd-body {
+  padding-top: 15px;
+}
+
+.gan-dd-item {
+  font-size: 15px;
+  color: #333;
+  padding: 12px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 8px;
+  transition: all 0.25s ease;
+}
+
+/* Hover */
+.gan-dd-item:hover {
+  background: var(--lpink);
+}
+
+/* Active item */
+.gan-dd-item.active {
+  background: #2f2f2f;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.gan-dd-item.active::after {
+  content: "→";
+  font-size: 16px;
+}
+
+/* =========================================
+   Hide Right Side (as per screenshot)
+========================================= */
+.col-lg-8.col-md-7 {
+  display: none !important;
+}
+
+
+/* =========================================
+   Hover Arrow Effect (Like Screenshot)
+========================================= */
+
+.gan-dd-item {
+  position: relative;
+  padding-right: 40px; /* space for arrow */
+}
+
+/* Arrow hidden by default */
+.gan-dd-item::after {
+  content: "→";
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%) translateX(-8px);
+  opacity: 0;
+  transition: all 0.25s ease;
+  font-size: 20px;
+  color: #f39c12; /* orange arrow */
+}
+
+/* Show arrow on hover */
+.gan-dd-item:hover::after {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+/* Keep active arrow white */
+.gan-dd-item.active::after {
+  opacity: 1;
+  transform: translateY(-50%);
+  color: #ffffff;
+}
+
+/* =========================================
+   Active Dropdown Item Styling
+========================================= */
+
+.gan-dd-item.active {
+  background: #2f2f2f;
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.gan-dd-item.active::after {
+  content: "→";
+  opacity: 1;
+  transform: translateY(-50%);
+  color: #ffffff; /* arrow white */
+  font-size: 20px;
+}

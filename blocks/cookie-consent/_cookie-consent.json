@@ -22,81 +22,77 @@
       "id": "cookie-consent",
       "fields": [
         {
-          "component": "richtext",
-          "name": "message",
-          "label": "Main Consent Message",
+          "component": "text",
+          "name": "title",
+          "label": "Title",
           "valueType": "string",
-          "defaultValue": "We use cookies and similar technologies to enhance your experience, analyze site performance, personalize content, and serve relevant advertisements."
+          "defaultValue": "Your Privacy Matters"
+        },
+        {
+          "component": "richtext",
+          "name": "description",
+          "label": "Description",
+          "valueType": "string",
+          "defaultValue": "We use cookies to ensure the website works properly, understand how it’s used, and remember your preferences. We do not use cookies for advertising, cross-site tracking, or profiling."
         },
         {
           "component": "text",
-          "name": "policyLabel",
-          "label": "Privacy Policy Link Text",
+          "name": "essentialTitle",
+          "label": "Essential Cookies Title",
           "valueType": "string",
-          "defaultValue": "Read Privacy Policy"
+          "defaultValue": "Essential Cookies"
+        },
+        {
+          "component": "richtext",
+          "name": "essentialDescription",
+          "label": "Essential Cookies Description (Dropdown)",
+          "valueType": "string",
+          "defaultValue": "<p>These cookies are necessary for the website to function correctly. They support security, session management, and storing your cookie consent choice.</p>"
+        },
+
+        {
+          "component": "text",
+          "name": "analyticsCookies",
+          "label": "Analytics Cookies (ON / OFF)",
+          "valueType": "string",
+          "defaultValue": "OFF"
+        },
+        {
+          "component": "richtext",
+          "name": "analyticsDescription",
+          "label": "Analytics Cookies Description (Dropdown)",
+          "valueType": "string",
+          "defaultValue": "<p>Analytics cookies help us understand how visitors interact with the website by collecting and reporting information anonymously.</p>"
+        },
+
+        {
+          "component": "text",
+          "name": "preferenceCookies",
+          "label": "Preference Cookies (ON / OFF)",
+          "valueType": "string",
+          "defaultValue": "OFF"
+        },
+        {
+          "component": "richtext",
+          "name": "preferenceDescription",
+          "label": "Preference Cookies Description (Dropdown)",
+          "valueType": "string",
+          "defaultValue": "<p>Preference cookies allow the website to remember choices you make, such as language or region, to provide a more personalized experience.</p>"
+        },
+
+        {
+          "component": "text",
+          "name": "acceptAllLabel",
+          "label": "Accept All Button Label",
+          "valueType": "string",
+          "defaultValue": "Accept All"
         },
         {
           "component": "text",
-          "name": "policyLink",
-          "label": "Privacy Policy URL",
+          "name": "saveLabel",
+          "label": "Save Preferences & Close Button Label",
           "valueType": "string",
-          "defaultValue": "/privacy-policy"
-        },
-        {
-          "component": "text",
-          "name": "acceptLabel",
-          "label": "Accept All Button Text",
-          "valueType": "string",
-          "defaultValue": "Allow all cookies"
-        },
-        {
-          "component": "text",
-          "name": "declineLabel",
-          "label": "Decline Button Text",
-          "valueType": "string",
-          "defaultValue": "Decline"
-        },
-        {
-          "component": "text",
-          "name": "customizeLabel",
-          "label": "Customize Button Text",
-          "valueType": "string",
-          "defaultValue": "Customize"
-        },
-        {
-          "component": "richtext",
-          "name": "analyticsDesc",
-          "label": "Analytics Cookies Description",
-          "valueType": "string",
-          "defaultValue": "These cookies help us understand how visitors use our website and improve performance (e.g., Google Analytics)."
-        },
-        {
-          "component": "richtext",
-          "name": "marketingDesc",
-          "label": "Marketing Cookies Description",
-          "valueType": "string",
-          "defaultValue": "These allow us and our partners to show you relevant advertisements based on your interests."
-        },
-        {
-          "component": "richtext",
-          "name": "personalizationDesc",
-          "label": "Personalization Cookies Description",
-          "valueType": "string",
-          "defaultValue": "These enable tailored content and experiences, such as recommendations (e.g., Adobe Target)."
-        },
-        {
-          "component": "richtext",
-          "name": "thirdPartyDesc",
-          "label": "Third-Party Cookies Description",
-          "valueType": "string",
-          "defaultValue": "Used by social media and partners for sharing, login, and embedded content."
-        },
-        {
-          "component": "richtext",
-          "name": "functionalDesc",
-          "label": "Functional Cookies Description",
-          "valueType": "string",
-          "defaultValue": "These remember your preferences (language, region, etc.) to make your visit more convenient."
+          "defaultValue": "Save Preferences & Close"
         }
       ]
     }

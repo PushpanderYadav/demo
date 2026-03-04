@@ -1,33 +1,28 @@
-.banner-overlay {
-    position: relative;
-    padding: 0 0 33%;
-    background-color: var(--black);
-    overflow: hidden;
-    border-radius: 0.5rem;
-    color: var(--white);
-    margin: -4rem 0 80px;
-}
+.banner-overlay{position:relative;padding:0 0 33%;background-color:var(--black);overflow:hidden;border-radius:.5rem;color:var(--white);margin: 40px 0;}
+.no-margin .banner-overlay{margin:80px 0}
+.banner-overlay-img{position:absolute;top:0;left:0;width:100%;height:100%;z-index:1;transition:opacity .3s ease}
+.banner-overlay-img img{width:100%;height:100%;object-fit:cover;object-position:bottom right}
+.banner-overlay-img.desktop-only{opacity:1;visibility:visible}
+.banner-overlay-img.mobile-only{opacity:0;visibility:hidden}
+.banner-overlay-img:not(.desktop-only):not(.mobile-only){opacity:1;visibility:visible}
+.banner-overlay-text{position:absolute;top:0;left:0;width:100%;height:100%;padding:1rem 5rem;display:flex;align-items:center;z-index:2}
+.banner-overlay-text:before{position:absolute;content:"";width:100%;height:100%;left:0;top:0;z-index:2;background:linear-gradient(90deg,rgba(0,0,0,.7) 0,rgba(0,0,0,0) 80%)}
+.banner-overlay-text .row{ position: relative; z-index: 3;}
+.banner-overlay-text .sec-desc { color:var(--white); font-weight: 300; }
+.minus-margin-top.overlay-banner-container .banner-overlay { margin-top: -4rem; }
+.page-corporate-governance .banner-overlay-text .sec-title { position: relative; }
+.page-corporate-governance .banner-overlay-text .sec-title:before { position: absolute; content: ''; left:0; top:-55px; width: 109px; height: 40px; background: url(../../img/wlogo.svg); background-repeat: no-repeat  ; }
 
-.no-margin .banner-overlay {
-    margin: 80px 0;
+@media (max-width:991px){
+.banner-overlay{padding:0 0 45%}
 }
-.banner-overlay-img,
-.banner-overlay-text {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-.banner-overlay-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.banner-overlay-text {
-    padding: 1rem 5rem;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
+@media (max-width:767px){
+.banner-overlay-img.desktop-only{opacity:0;visibility:hidden}
+.banner-overlay-img.mobile-only{opacity:1;visibility:visible}
+.banner-overlay-img:not(.desktop-only):not(.mobile-only){opacity:1;visibility:visible}
+.banner-overlay-img img{height:100%;object-fit:cover;object-position:bottom right}
+.banner-overlay-text{position:relative;padding:2rem}
+.banner-overlay{padding-bottom:100%;margin:40px 0;}
+.banner-overlay-text:before{background:linear-gradient(180deg,rgba(0,0,0,.7) 0,rgba(0,0,0,0) 80%)}
+.page-corporate-governance .banner-overlay-text .col-lg-7.col-md-8>div { padding-top: 75px; }
 }

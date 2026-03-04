@@ -40,7 +40,59 @@
       "global-airport-network",
       "social-connect",
       "image-title-desc-button",
-      "overlay-banner"
+      "overlay-banner",
+      "header-utility",
+      "common-cards",
+      "listing-filter",
+      "values-and-beliefs",
+      "our-presence",
+      "corporate-governance",
+      "header",
+      "partners-filter",
+      "craft-filter",
+      "breadcrumbs",
+      "message-from-leadership",
+      "gmr-tabs",
+      "fraud-alert-tabs",
+      "image-slider",
+      "media-contact-header",
+      "integrity-decision",
+      "press-release-featured",
+      "press-release-listing",
+      "career-faqs-list",
+      "contact-reachout-list",
+      "image-scroll-card",
+      "key-highlight-button",
+      "contact-us",
+      "lottie-animation",
+      "media-cards",
+      "photo-gallery-slider",
+      "impact-stories",
+      "csr-engine",
+      "guest-book",
+      "innovation-cards",
+      "business-cards-slider",
+      "our-capabilities",
+      "cards-and-image",
+      "image-richtext",
+      "business-enablers",
+      "business-tabs",
+      "global-way-team",
+      "document-preview"
+      "aero-richtext-cards",
+      "aero-value-chain"
+    ]
+  },
+  {
+    "id": "aero-richtext-cards",
+    "components": [
+      "aero-richtext-cards-item"
+    ]
+  },
+  {
+    "id": "aero-value-chain",
+    "components": [
+      "aero-value-chain-item"
     ]
   },
   {
@@ -53,6 +105,12 @@
     "id": "all-business-cards",
     "components": [
       "all-business-cards-item"
+    ]
+  },
+  {
+    "id": "article-hero",
+    "components": [
+      "text"
     ]
   },
   {
@@ -75,9 +133,21 @@
     ]
   },
   {
+    "id": "only-awards-items",
+    "components": [
+      "award-listing-item"
+    ]
+  },
+  {
     "id": "awards-recognitions",
     "components": [
       "award-item"
+    ]
+  },
+  {
+    "id": "breadcrumbs",
+    "components": [
+      "breadcrumb-item"
     ]
   },
   {
@@ -87,9 +157,21 @@
     ]
   },
   {
+    "id": "cards-and-image",
+    "components": [
+      "cards-and-image-item"
+    ]
+  },
+  {
     "id": "cards",
     "components": [
       "card"
+    ]
+  },
+  {
+    "id": "career-faqs-list",
+    "components": [
+      "career-faqs-item"
     ]
   },
   {
@@ -120,9 +202,66 @@
     ]
   },
   {
+    "id": "only-common-items",
+    "components": [
+      "common-card-item"
+    ]
+  },
+  {
+    "id": "only-press-release-items",
+    "components": [
+      "contact-reachout-item"
+    ]
+  },
+  {
+    "id": "contact-us",
+    "components": []
+  },
+  {
+    "id": "corporate-governance",
+    "components": [
+      "governance-section"
+    ]
+  },
+  {
+    "id": "only-craft-items",
+    "components": [
+      "craft-listing-item"
+    ]
+  },
+  {
+    "id": "csr-engine",
+    "components": [
+      "csr-engine-item"
+    ]
+  },
+  {
+    "id": "document-preview",
+    "components": []
+  },
+  {
     "id": "factsheet",
     "components": [
       "factsheet-item"
+    ]
+  },
+  {
+    "id": "filter-by",
+    "components": []
+  },
+  {
+    "id": "filter-panel",
+    "components": [
+      "years",
+      "months",
+      "tags",
+      "sub-category"
+    ]
+  },
+  {
+    "id": "financial-reports",
+    "components": [
+      "financial-report-item"
     ]
   },
   {
@@ -144,10 +283,20 @@
     ]
   },
   {
+    "id": "fraud-alert-tabs",
+    "components": [
+      "fraud-alert-item"
+    ]
+  },
+  {
     "id": "gal-awards",
     "components": [
       "gal-award-item"
     ]
+  },
+  {
+    "id": "gal-investor-overview",
+    "components": []
   },
   {
     "id": "global-airport-network",
@@ -162,6 +311,12 @@
     ]
   },
   {
+    "id": "global-way-team",
+    "components": [
+      "global-way-team-item"
+    ]
+  },
+  {
     "id": "gmr-buisness-brand",
     "components": [
       "gmr-buisness-item"
@@ -171,6 +326,18 @@
     "id": "gmr-buisness-expertise",
     "components": [
       "gmr-buisness-item"
+    ]
+  },
+  {
+    "id": "gmr-tabs",
+    "components": [
+      "gmr-tabs-item"
+    ]
+  },
+  {
+    "id": "guest-book",
+    "components": [
+      "guest-book-item"
     ]
   },
   {
@@ -198,6 +365,32 @@
     ]
   },
   {
+    "id": "hero-press",
+    "components": []
+  },
+  {
+    "id": "image-richtext",
+    "components": []
+  },
+  {
+    "id": "image-scroll-card",
+    "components": [
+      "image-scroll-card-item"
+    ]
+  },
+  {
+    "id": "image-slider",
+    "components": [
+      "image-slider-item"
+    ]
+  },
+  {
+    "id": "impact-stories",
+    "components": [
+      "impact-story-item"
+    ]
+  },
+  {
     "id": "infra-hero-banner",
     "components": []
   },
@@ -206,9 +399,37 @@
     "components": []
   },
   {
+    "id": "inner-slider-horizontal",
+    "components": [
+      "inner-slider-horizontal-item"
+    ]
+  },
+  {
     "id": "innovation-cards",
     "components": [
       "innovation-card-item"
+    ]
+  },
+  {
+    "id": "integrity-decision",
+    "components": [
+      "integrity-decision-item"
+    ]
+  },
+  {
+    "id": "internal-slider",
+    "components": [
+      "internal-slider-item"
+    ]
+  },
+  {
+    "id": "investors-trust",
+    "components": []
+  },
+  {
+    "id": "key-highlight-button",
+    "components": [
+      "key-highlight-items"
     ]
   },
   {
@@ -218,9 +439,51 @@
     ]
   },
   {
+    "id": "latest-press-update",
+    "components": []
+  },
+  {
     "id": "listed-companies",
     "components": [
       "listed-company-item"
+    ]
+  },
+  {
+    "id": "listing-blog",
+    "components": []
+  },
+  {
+    "id": "listing-brand",
+    "components": []
+  },
+  {
+    "id": "listing-press",
+    "components": []
+  },
+  {
+    "id": "listing-stories",
+    "components": []
+  },
+  {
+    "id": "lottie-animation",
+    "components": []
+  },
+  {
+    "id": "media-cards",
+    "components": [
+      "media-cards-item"
+    ]
+  },
+  {
+    "id": "media-contact-header",
+    "components": [
+      "media-contact-item"
+    ]
+  },
+  {
+    "id": "media-contact-header",
+    "components": [
+      "media-contact"
     ]
   },
   {
@@ -228,6 +491,10 @@
     "components": [
       "message-from-leadership-item"
     ]
+  },
+  {
+    "id": "news-update-page",
+    "components": []
   },
   {
     "id": "news-updates",
@@ -250,16 +517,78 @@
     "components": []
   },
   {
+    "id": "our-capabilities",
+    "components": []
+  },
+  {
+    "id": "our-presence",
+    "components": [
+      "networks-item"
+    ]
+  },
+  {
     "id": "page-tabs",
     "components": [
       "page-tab-item"
     ]
   },
   {
+    "id": "only-partners-items",
+    "components": [
+      "partner-listing-item"
+    ]
+  },
+  {
+    "id": "photo-gallery-slider",
+    "components": [
+      "photo-gallery-slider-item"
+    ]
+  },
+  {
+    "id": "press-hero",
+    "components": [
+      "press-hero"
+    ]
+  },
+  {
+    "id": "press-nav",
+    "components": []
+  },
+  {
+    "id": "press-release-detail",
+    "components": []
+  },
+  {
+    "id": "press-release-featured",
+    "components": []
+  },
+  {
+    "id": "only-press-release-items",
+    "components": [
+      "press-release-item"
+    ]
+  },
+  {
+    "id": "recent-posts",
+    "components": []
+  },
+  {
     "id": "sdg-themes",
     "components": [
       "sdg-themes-item"
     ]
+  },
+  {
+    "id": "search-results",
+    "components": []
+  },
+  {
+    "id": "story-update-page",
+    "components": []
+  },
+  {
+    "id": "success-stories-page",
+    "components": []
   },
   {
     "id": "success-stories",
@@ -269,6 +598,12 @@
     "id": "sustainable-aviation",
     "components": [
       "sustainable-aviation-item"
+    ]
+  },
+  {
+    "id": "values-and-beliefs",
+    "components": [
+      "value-cards"
     ]
   }
 ]

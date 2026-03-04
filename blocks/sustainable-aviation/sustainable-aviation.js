@@ -12,8 +12,9 @@ export default async function decorate(block) {
   const titleEl = rows[0];
   const descEl = rows[1];
 
-  const sectionTitle = titleEl?.textContent?.trim() || '';
-  const sectionDescription = descEl?.innerHTML || '';
+  // ✅ Keep author HTML exactly as authored
+  const sectionTitleHTML = titleEl?.innerHTML || '';
+  const sectionDescriptionHTML = descEl?.innerHTML || '';
 
   const itemRows = rows.slice(2);
 
@@ -28,8 +29,12 @@ export default async function decorate(block) {
   runtime.innerHTML = `
     <div class="sa-container">
       <div class="sa-header">
-        <h2>${sectionTitle}</h2>
-        <div class="sa-description">${sectionDescription}</div>
+        <div class="sa-title">
+          ${sectionTitleHTML}
+        </div>
+        <div class="sa-description">
+          ${sectionDescriptionHTML}
+        </div>
       </div>
       <div class="sa-items"></div>
     </div>
@@ -48,7 +53,7 @@ export default async function decorate(block) {
     const title = cells[1].textContent?.trim() || '';
     const desc = cells[2].textContent?.trim() || '';
 
-    // ✅ CLONE DATA, NOT DOM
+    // ✅ Clone image data (not DOM)
     const imgSrc = imgEl?.getAttribute('src') || '';
     const imgAlt = imgEl?.getAttribute('alt') || '';
 
@@ -75,3 +80,8 @@ export default async function decorate(block) {
     row.style.display = 'none';
   });
 }
+
+
+
+
+

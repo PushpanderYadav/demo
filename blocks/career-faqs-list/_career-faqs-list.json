@@ -1,0 +1,80 @@
+{
+  "definitions": [
+    {
+      "title": "Career FAQs List",
+      "id": "career-faqs-list",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Career FAQs List",
+              "model": "career-faqs-list",
+              "filter": "career-faqs-list"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Career FAQs Item",
+      "id": "career-faqs-item",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Career FAQs Item",
+              "model": "career-faqs-item"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "career-faqs-list",
+      "fields": [
+        {
+          "component": "text",
+          "name": "sectionTitle",
+          "label": "Section Title",
+          "valueType": "string"
+        },
+        {
+          "component": "richtext",
+          "name": "sectionDescription",
+          "label": "Section Description",
+          "valueType": "string"
+        }
+      ]
+    },
+    {
+      "id": "career-faqs-item",
+      "itemLabel": "question",
+      "fields": [
+        {
+          "component": "text",
+          "name": "question",
+          "label": "FAQ Question",
+          "valueType": "string"
+        },
+        {
+          "component": "richtext",
+          "name": "answer",
+          "label": "Answer",
+          "valueType": "string"
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "career-faqs-list",
+      "components": [
+        "career-faqs-item"
+      ]
+    }
+  ]
+}

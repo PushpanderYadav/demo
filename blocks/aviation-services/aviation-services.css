@@ -26,13 +26,13 @@
 }
 
 .aviation-services h3 {
-    font-size: 1.25rem;
+    font-size: var(--fs-large);
     margin-bottom: 12px;
     color: #000;
 }
 
 .aviation-services p {
-    font-size: 0.95rem;
+    font-size: var(--fs-normal);
     color: #555;
     line-height: 1.6;
     margin-bottom: 20px;
@@ -42,6 +42,6 @@
     color: #ffb81c; /* GMR Yellow */
     text-decoration: none;
     font-weight: bold;
-    font-size: 0.85rem;
+    font-size: var(--fs-regular);
     text-transform: uppercase;
 }

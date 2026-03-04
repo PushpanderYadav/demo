@@ -1,0 +1,86 @@
+{
+  "definitions": [
+    {
+      "title": "Values and Beliefs",
+      "id": "values-and-beliefs",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "values-and-beliefs",
+              "model": "values-and-beliefs",
+              "filter": "values-and-beliefs"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Value Card",
+      "id": "value-cards",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "value-cards",
+              "model": "value-cards"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "values-and-beliefs",
+      "fields": [
+        {
+          "component": "text",
+          "name": "sectionTitle",
+          "label": "Section Title",
+          "valueType": "string",
+          "comment": "Internal label for the container"
+        }
+      ]
+    },
+    {
+      "id": "value-cards",
+      "fields": [
+        {
+          "component": "reference",
+          "name": "backgroundImage",
+          "label": "Card Background Image",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "title",
+          "label": "Value Title (e.g. Humility)",
+          "valueType": "string"
+        },
+        {
+          "component": "richtext",
+          "name": "quoteDescription",
+          "label": "Quote Description",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "quoteAuthor",
+          "label": "Quote Author",
+          "valueType": "string"
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "values-and-beliefs",
+      "components": [
+        "value-cards"
+      ]
+    }
+  ]
+}

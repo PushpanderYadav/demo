@@ -44,6 +44,12 @@
           "defaultValue": "Our Airports"
         },
         {
+          "component": "richtext",
+          "name": "descriptionHead",
+          "label": "Description Head",
+          "valueType": "string"
+        },
+        {
           "component": "text",
           "name": "domesticBtnLabel",
           "label": "Domestic Button Text",
@@ -70,12 +76,36 @@
           "valueType": "string",
           "options": [
             {
-              "name": "Domestic",
-              "value": "domestic"
+              "name": "None",
+              "value": "none"
             },
             {
-              "name": "International",
-              "value": "international"
+              "name": "Domestic Network",
+              "value": "domesticNetwork"
+            },
+            {
+              "name": "International Network",
+              "value": "internationalNetwork"
+            },
+            {
+              "name": "Wind Energy",
+              "value": "windEnergy"
+            },
+            {
+              "name": "Solar Energy",
+              "value": "solarEnergy"
+            },
+            {
+              "name": "Hydro Energy",
+              "value": "hydroEnergy"
+            },
+            {
+              "name": "Hyderabad International Airport",
+              "value": "hyderabadIntlAirport"
+            },
+            {
+              "name": "Goa International Airport",
+              "value": "goaIntlAirport"
             }
           ]
         },
@@ -84,6 +114,11 @@
           "name": "image",
           "label": "Airport Image",
           "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "imageAlt",
+          "label": "Alt Text"
         },
         {
           "component": "text",

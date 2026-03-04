@@ -17,6 +17,9 @@
     min-height: 44px;
     padding: 0.5rem 1rem;
 }
+.group-btn .btn:focus:not(:focus-visible) {
+    background: var(--lorange);
+}
 .group-btn .btn span {
     content: "";
     width: 24px;
@@ -39,7 +42,8 @@
 .group-btn .btn span:after {
     transform: rotate(90deg);
 }
-.group-btn .btn[aria-expanded="true"] {
+.group-btn .btn[aria-expanded="true"],
+.group-btn .btn[aria-expanded="true"]:focus:not(:focus-visible) {
     background: var(--royal-blue);
     border-color: var(--royal-blue);
     color: var(--white);
@@ -89,3 +93,28 @@
     color: var(--white);
 }
 
+@media screen and (max-width: 1199.5px) {
+}
+@media screen and (max-width: 767.5px) {
+    .footertopbar-image {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+    .footertopbar-image img {
+        height: 1.5rem;
+    }
+    .social-links {
+        margin-top: -1rem;
+    }
+    .social-links a {
+        width: 40px;
+        height: 40px;
+    }
+    .social-links a img {
+        height: 18px;
+        width: auto;
+    }
+    .footer-collapse li a {
+        display: block;
+    }
+}

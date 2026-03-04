@@ -71,6 +71,11 @@
           "comment": "The large image displayed on the left when this item is active"
         },
         {
+          "component": "text",
+          "name": "imageAlt",
+          "label": "Alt Text"
+        },
+        {
           "component": "text-input",
           "valueType": "string",
           "name": "title",

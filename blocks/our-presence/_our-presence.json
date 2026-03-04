@@ -1,0 +1,171 @@
+{
+  "definitions": [
+    {
+      "title": "Our Presence",
+      "id": "our-presence",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "our-presence",
+              "model": "our-presence",
+              "filter": "our-presence"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Networks Item",
+      "id": "networks-item",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "networks-item",
+              "model": "networks-item"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "our-presence",
+      "fields": [
+        {
+          "component": "text",
+          "name": "sectionTitle",
+          "label": "Section Heading",
+          "valueType": "string",
+          "defaultValue": "Our Presence"
+        },
+        {
+          "component": "richtext",
+          "name": "sectionDescription",
+          "label": "Description Text",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "indiaTabLabel",
+          "label": "India Tab Label",
+          "valueType": "string",
+          "defaultValue": "India Presence"
+        },
+        {
+          "component": "text",
+          "name": "internationalTabLabel",
+          "label": "International Tab Label",
+          "valueType": "string",
+          "defaultValue": "International Presence"
+        },
+        {
+          "component": "reference",
+          "name": "mapImage",
+          "label": "Background Map Image",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "imageAlt",
+          "label": "Alt Text"
+        },
+        {
+          "component": "reference",
+          "name": "lottiePath",
+          "label": "Lottie Path",
+          "valueType": "string"
+        }
+      ]
+    },
+    {
+      "id": "networks-item",
+      "itemLabel": "airportName",
+      "fields": [
+        {
+          "component": "select",
+          "name": "presenceGroup",
+          "label": "1. Presence Group",
+          "valueType": "string",
+          "options": [
+            {
+              "name": "India Presence",
+              "value": "india"
+            },
+            {
+              "name": "International Presence",
+              "value": "international"
+            }
+          ]
+        },
+        {
+          "component": "select",
+          "name": "presenceCategory",
+          "label": "2. Sub-Category",
+          "valueType": "string",
+          "options": [
+            {
+              "name": "Airports",
+              "value": "airports"
+            },
+            {
+              "name": "Corporate Office",
+              "value": "corporate-office"
+            },
+            {
+              "name": "Energy",
+              "value": "energy"
+            },
+            {
+              "name": "Highways",
+              "value": "highways"
+            },
+            {
+              "name": "Special Investment Region",
+              "value": "sir"
+            },
+            {
+              "name": "Office",
+              "value": "office"
+            }
+          ]
+        },
+        {
+          "component": "text",
+          "name": "airportName",
+          "label": "Airport / Location Name",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "countryName",
+          "label": "Country Name",
+          "valueType": "string"
+        },
+        {
+          "component": "reference",
+          "name": "flagIcon",
+          "label": "Country Flag Icon",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "imageAlt",
+          "label": "Alt Text"
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "our-presence",
+      "components": [
+        "networks-item"
+      ]
+    }
+  ]
+}

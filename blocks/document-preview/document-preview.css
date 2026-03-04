@@ -1,0 +1,83 @@
+/* ── Document Preview Block ──────────────────────────────── */
+.document-preview-wrapper {
+  margin: 16px 0;
+}
+
+.doc-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  border: 1px solid #dde1e7;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  max-width: 520px;
+}
+
+.doc-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.doc-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow: hidden;
+}
+
+.doc-filename {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.doc-type {
+  font-size: 0.78rem;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.doc-download-btn {
+  flex-shrink: 0;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #0066cc;
+  border: 1px solid #0066cc;
+  border-radius: 5px;
+  padding: 6px 14px;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+}
+
+.doc-download-btn:hover {
+  background: #0066cc;
+  color: #fff;
+}
+
+/* Error state */
+.doc-error {
+  color: #c0392b;
+  font-size: 0.9rem;
+  padding: 10px 0;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .doc-card {
+    flex-wrap: wrap;
+  }
+
+  .doc-download-btn {
+    width: 100%;
+    text-align: center;
+  }
+}

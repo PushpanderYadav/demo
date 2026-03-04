@@ -1,107 +1,143 @@
 import { loadCSS, loadScript } from "../../scripts/aem.js";
 
+const SWIPER_JS =
+  "https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js";
+const SWIPER_CSS =
+  "https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css";
+
 export default async function decorate(block) {
-  /* ----------------------------------
-     Load Swiper (UI Safe)
-  ---------------------------------- */
-  //   await loadCSS('/libs/swiper/swiper-bundle.min.css');
-  await loadScript("../../scripts/swiper-bundle.min.js");
-
-  /* ----------------------------------
-     Read authored content
-  ---------------------------------- */
+  /* ================================
+     1️⃣ Read authored content
+  ================================ */
   const rows = [...block.children];
+  if (rows.length < 3) return;
 
-  const sectionTitle = rows[0]?.querySelector("p")?.textContent || "";
-  const sectionDesc = rows[1]?.querySelector("p")?.textContent || "";
-
+  const sectionTitle = rows[0]?.textContent?.trim() || "";
+  const sectionDesc = rows[1]?.textContent?.trim() || "";
   const itemRows = rows.slice(2);
 
-  /* ----------------------------------
-     Build Swiper Markup
-  ---------------------------------- */
-  const section = document.createElement("div");
+  /* ================================
+     2️⃣ UNIVERSAL EDITOR SAFE
+  ================================ */
+  const isUE = document.querySelector(
+    "aem-extension, [data-aue-resource], [data-aue-prop]"
+  );
+
+  if (isUE) {
+    block.dataset.aueType = "container";
+    block.dataset.aueLabel = "GMR Business Brand";
+
+    rows[0].dataset.aueProp = "sectionTitle";
+    rows[1].dataset.aueProp = "sectionDescription";
+
+    itemRows.forEach((row, i) => {
+      row.dataset.aueType = "item";
+      row.dataset.aueLabel = `GMR Business Item ${i + 1}`;
+    });
+  }
+
+  /* Hide authored rows */
+  rows.forEach((row) => (row.style.display = "none"));
+
+  /* ================================
+     3️⃣ Create Swiper UI
+  ================================ */
+  const section = document.createElement("section");
   section.className = "sec-brand spacer";
 
-  const container = document.createElement("div");
-  container.className = "container";
+  section.innerHTML = `
+    <div class="container">
 
-  container.innerHTML = `
-    <div class="row">
+      <div class="row">
         <div class="col-md-7 text-center mx-auto mb-5">
-         <h2 class="sec-title">${sectionTitle}</h2>
-          <p class="sec-desc">${sectionDesc}</p>        
+          <h2 class="sec-title">${sectionTitle}</h2>
+          <div class="sec-desc">${sectionDesc}</div>
         </div>
-    </div>
-    <div class="swiper gmr-brand-swiper">
-      <div class="swiper-wrapper"></div>
-      <div class="gmr-swiper-nav d-flex gap-3 justify-content-center mt-4">
-        <button class="swiper-button-prev"></button>
-        <button class="swiper-button-next"></button>
       </div>
+
+      <div class="swiper gmr-brand-swiper">
+        <div class="swiper-wrapper"></div>
+        <div class="gmr-swiper-nav d-flex gap-3 justify-content-center mt-4">
+          <button class="swiper-button-prev"></button>
+          <button class="swiper-button-next"></button>
+        </div>
+      </div>
+
     </div>
   `;
 
-  const swiperWrapper = container.querySelector(".swiper-wrapper");
+  block.after(section);
 
-  /* ----------------------------------
-     Build Slides from UE content
-  ---------------------------------- */
+  const wrapper = section.querySelector(".swiper-wrapper");
+
+  /* ================================
+     4️⃣ Build Slides (FIXED CTA)
+  ================================ */
   itemRows.forEach((row) => {
-    const img = row.querySelector("picture");
-    const title = row.children[1]?.textContent || "";
-    const desc = row.children[2]?.innerHTML || "";
-    const ctaText = row.children[3]?.textContent || "Read More";
-    const ctaLink = row.children[3]?.querySelector("a")?.href || "#";
+    const cells = [...row.children];
+
+    // Need 6 cells → image, alt, title, desc, label, link
+    if (cells.length < 6) return;
+
+    const img = cells[0]?.querySelector("img");
+    const alt = cells[1]?.textContent?.trim() || "";
+    const title = cells[2]?.textContent?.trim() || "";
+    const desc = cells[3]?.textContent?.trim() || "";
+
+    // FIXED CTA extraction
+    const ctaText = cells[4]?.textContent?.trim() || "Read More";
+    const linkEl = cells[5]?.querySelector("a");
+    const ctaLink = linkEl?.href || "";
 
     const slide = document.createElement("div");
     slide.className = "swiper-slide";
 
     slide.innerHTML = `
       <div class="card card-ui-two h-100 p-4">
-        <div class="card-img">${img?.outerHTML || ""}</div>
+        ${
+          img
+            ? `
+        <div class="card-img">
+          <img src="${img.src}" alt="${alt || title}">
+        </div>`
+            : ""
+        }
 
         <div class="card-body">
           <h5 class="card-title">${title}</h5>
           <div class="card-text mb-3">${desc}</div>
+
+          ${
+            ctaLink
+              ? `
           <div class="card-cta mt-auto">
-            <a href="${ctaLink}" class="btn-link">
-                ${ctaText}
-            </a>
-          </div>
+            <a href="${ctaLink}" class="btn-link">${ctaText}</a>
+          </div>`
+              : ""
+          }
         </div>
       </div>
     `;
 
-    swiperWrapper.appendChild(slide);
+    wrapper.append(slide);
   });
 
-  /* ----------------------------------
-     Replace block HTML
-  ---------------------------------- */
-  block.innerHTML = "";
-  section.appendChild(container);
-  block.appendChild(section);
+  /* ================================
+     5️⃣ Load Swiper
+  ================================ */
+  await loadCSS(SWIPER_CSS);
+  await loadScript(SWIPER_JS);
 
-  /* ----------------------------------
-     Init Swiper
-  ---------------------------------- */
-  // eslint-disable-next-line no-undef
-  new Swiper(".gmr-brand-swiper", {
-    slidesPerView: 1.1,
+  new window.Swiper(section.querySelector(".gmr-brand-swiper"), {
+    slidesPerView: 1,
     spaceBetween: 24,
-    loop: false,
     navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
+      nextEl: section.querySelector(".swiper-button-next"),
+      prevEl: section.querySelector(".swiper-button-prev"),
     },
     breakpoints: {
-      768: {
-        slidesPerView: 2.2,
-      },
-      1024: {
-        slidesPerView: 3,
-      },
+      768: { slidesPerView: 2 },
+      1024: { slidesPerView: 3 },
     },
   });
 }

@@ -54,6 +54,12 @@
         },
         {
           "component": "text",
+          "name": "whatsappUrl",
+          "label": "WhatsApp URL",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
           "name": "facebookUrl",
           "label": "Facebook URL",
           "valueType": "string"

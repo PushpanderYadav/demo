@@ -1,0 +1,126 @@
+{
+  "definitions": [
+    {
+      "title": "GMR Tabs",
+      "id": "gmr-tabs",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "gmr-tabs",
+              "model": "gmr-tabs",
+              "filter": "gmr-tabs"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "GMR Tab Item",
+      "id": "gmr-tabs-item",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "gmr-tabs-item",
+              "model": "gmr-tabs-item"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "gmr-tabs",
+      "fields": [
+        {
+          "component": "text",
+          "name": "mainTitle",
+          "label": "Section Title",
+          "valueType": "string",
+          "defaultValue": "What Makes GMR Different"
+        },
+        {
+          "component": "text",
+          "name": "buttonLabel",
+          "label": "Button Label",
+          "valueType": "string",
+          "comment": "Text shown on the CTA button"
+        },
+        {
+          "component": "text",
+          "name": "buttonLink",
+          "label": "Button Link",
+          "valueType": "string",
+          "comment": "URL or page link for the CTA button"
+        }
+      ]
+    },
+    {
+      "id": "gmr-tabs-item",
+      "fields": [
+        {
+          "component": "text",
+          "name": "tabTitle",
+          "label": "Tab Title",
+          "valueType": "string",
+          "placeholder": "e.g. Work That Makes A Difference",
+          "required": true
+        },
+        {
+          "component": "text",
+          "name": "tabId",
+          "label": "Tab ID (optional - for JS/anchors)",
+          "valueType": "string",
+          "placeholder": "e.g. work, life-beyond-job",
+          "description": "Lowercase kebab-case recommended"
+        },
+        {
+          "component": "reference",
+          "name": "cardIcon",
+          "label": "Card Icon (repeated for each card)",
+          "valueType": "string",
+          "description": "Repeat this + next two fields for each card in the tab"
+        },
+        {
+          "component": "text",
+          "name": "cardTitle",
+          "label": "Card Title (repeated)",
+          "valueType": "string",
+          "required": false,
+          "description": "Repeat for each card"
+        },
+        {
+          "component": "richtext",
+          "name": "cardDesc",
+          "label": "Card Description (repeated)",
+          "valueType": "string",
+          "description": "Repeat for each card"
+        },
+        {
+          "component": "text",
+          "name": "buttonLabel",
+          "label": "Button Label",
+          "valueType": "string",
+          "comment": "Text shown on the CTA button"
+        },
+        {
+          "component": "text",
+          "name": "buttonLink",
+          "label": "Button Link",
+          "valueType": "string",
+          "comment": "URL or page link for the CTA button"
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "gmr-tabs",
+      "components": ["gmr-tabs-item"]
+    }
+  ]
+}

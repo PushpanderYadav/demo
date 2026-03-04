@@ -1,3 +1,7 @@
-.sec-expertise {
-    background: #f6f6f6;
+.sec-expertise { background: #f6f6f6; }
+.bg-sky-blue.gmr-buisness-expertise-container .sec-expertise { background:none; }
+.sec-grid-2.gmr-buisness-expertise-container .col-md-6.col-lg-4 { flex: 0 0 auto; width: 50%; }
+
+@media screen and (max-width: 767px) {
+.sec-grid-2.gmr-buisness-expertise-container .col-md-6.col-lg-4 { flex: 0 0 auto; width: 100%; }
 }

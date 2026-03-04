@@ -1,71 +1,355 @@
-.businesses-section-container{background-color:var(--sky-blue);}
-.businesses-section-wrapper .accordion{width:100%; position: relative;}
-.businesses-section-wrapper .accordion-item{background-color:transparent;border:none;border-bottom:1px solid var(--turquoise);padding:0 1rem;border-radius:0!important}
-.businesses-section-wrapper .accordion-button,.businesses-section-wrapper .accordion-button:not(.collapsed){border:none;text-align:left;width:100%;display:flex;justify-content:space-between;align-items:center;cursor:pointer;transition:color .15s ease-in-out;color:var(--black);background-color:transparent;box-shadow:none;font-size:1.875rem;font-weight:400;padding:1rem 0}
-.businesses-section-wrapper .accordion-button:not(.collapsed){background-color:transparent;box-shadow:none}
-.businesses-section-wrapper .accordion-button::after{display:none}
-.businesses-section-wrapper .accordion-button .accordion-icon{font-size:1rem;font-weight:400;line-height:normal;width:2.25rem;height:2.25rem;display:flex;align-items:center;justify-content:center;transition:transform .2s ease-in-out;color:var(--white);background-color:transparent;border:1px solid var(--yellow);border-radius:8px}
-.businesses-section-wrapper .accordion-item.active .accordion-button .accordion-icon{background-color:var(--yellow)}
-.businesses-section-wrapper .accordion-header .accordion-button .accordion-icon .plus-icon{color:var(--yellow)}
-.businesses-section-wrapper .accordion-collapse{transition:height .35s ease}
-.businesses-section-wrapper .accordion-body{padding:0 1rem 1.5rem 0}
-.business-accordion-wrapper{margin:0 auto;padding:6rem;background:var(--white);border-radius:10px;top:-5rem;position:relative;z-index:2}
-.business-accordion-header{margin-bottom:4rem}
-.business-accordion-header h2{font-size:2.8rem;font-weight:400;color:var(--blue);margin-bottom:1rem;display:flex;align-items:center;gap:8px}
-.business-accordion-header h2 .subtitle{display:inline-block;font-size:2rem;font-weight:300;font-style:italic;color:var(--turquoise);font-family:var(--font-secondary);position:relative}
-.business-accordion-header .title{position:relative;text-transform:uppercase}
+.businesses-section-container {
+    background-color: var(--sky-blue);
+}
+.businesses-section-wrapper .accordion {
+    width: 100%;
+    position: relative;
+}
+
+.businesses-section-wrapper .accordion-item {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid var(--turquoise);
+    padding: 0 1rem;
+    border-radius: 0 !important;
+}
+.businesses-section-wrapper .accordion-button,
+.businesses-section-wrapper .accordion-button:not(.collapsed) {
+    border: none;
+    text-align: left;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: color 0.15s ease-in-out;
+    color: var(--black);
+    background-color: transparent;
+    box-shadow: none;
+    font-size: var(--fs-xlarge);
+    font-weight: 400;
+    padding: 1rem 0;
+}
+.businesses-section-wrapper .accordion-button:not(.collapsed) {
+    background-color: transparent;
+    box-shadow: none;
+}
+.businesses-section-wrapper .accordion-button::after {
+    display: none;
+}
+.businesses-section-wrapper .accordion-button .accordion-icon {
+    font-size: var(--fs-normal);
+    font-weight: 400;
+    line-height: normal;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease-in-out;
+    color: var(--white);
+    background-color: transparent;
+    border: 1px solid var(--yellow);
+    border-radius: 8px;
+}
+.businesses-section-wrapper
+    .accordion-item.active
+    .accordion-button
+    .accordion-icon {
+    background-color: var(--yellow);
+}
+.businesses-section-wrapper
+    .accordion-header
+    .accordion-button
+    .accordion-icon
+    .plus-icon {
+    color: var(--yellow);
+}
+.businesses-section-wrapper .accordion-collapse {
+    transition: height 0.35s ease;
+}
+.businesses-section-wrapper .accordion-body {
+    padding: 0 1rem 1.5rem 0;
+}
+.business-accordion-wrapper {
+    margin: 0 auto;
+    padding: 6rem;
+    background: var(--white);
+    border-radius: 10px;
+    top: -5rem;
+    position: relative;
+    z-index: 2;
+}
+.business-accordion-header {
+    margin-bottom: 4rem;
+}
+.minus-margin-top.businesses-section-container {
+    padding-top: 15rem;
+    margin-top: -5rem;
+}
+.business-accordion-header h2 {
+    font-weight: 400;
+    color: var(--blue);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.business-accordion-header h2 .subtitle {
+    display: inline-block;
+    font-size: var(--fs-xxlarge);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--turquoise);
+    font-family: var(--font-secondary);
+    position: relative;
+}
+.business-accordion-header .title {
+    position: relative;
+}
 /* .business-accordion-header .title:after{content:'/';color:var(--blue)} */
-.intro-text{font-size:1.5rem;color:var(--charcoal);max-width:900px;margin:0;line-height:1.6}
-.business-accordion-container{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start}
-.business-image-preview picture{border-radius:8px;overflow:hidden;display: block;}
-.business-image { display: none; }
-.business-image-container{position:relative;width:100%;height:100%;border-radius:10px;overflow:hidden}
-.desktop-business-image{position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;visibility:hidden;transition:opacity .5s ease-in-out,visibility .5s ease-in-out;z-index:1}
-.desktop-business-image.active{opacity:1;visibility:visible;z-index:2}
-.desktop-business-image img{width:100%;height:100%;object-fit:cover;display:block}
-.business-title{flex:1;text-align:left;padding-right:1rem;font-weight:300;font-size:1.8rem}
-.businesses-section-wrapper .accordion-item.active .business-title{font-weight:400}
-.business-description{font-size:1.125rem;line-height:1.4;color:var(--black);margin-bottom:1.5rem;max-width:450px}
-.business-description p{margin:0 0 1rem 0}
-.business-description p:last-child{margin-bottom:0}
-.mobile-business-image{display:none;margin:1.5rem 0;border-radius:8px;overflow:hidden}
-.mobile-business-image img{width:100%;height:auto;max-height:300px;object-fit:cover;display:block}
-.business-image img {margin:1.5rem 0;border-radius:8px;overflow:hidden}
-@media (max-width:991px){
-.business-accordion-container{grid-template-columns:1fr;gap:2rem}
-.business-accordion-header h2{font-size:2rem}
-.business-accordion-header h2 span{font-size:1.25rem}
-.accordion-button{padding:1.25rem 0;font-size:1.125rem}
-.business-image-preview{display: none;}
-.business-image { display: block; }
+.intro-text {
+    font-size: var(--fs-large);
+    color: var(--charcoal);
+    max-width: 900px;
+    margin: 0;
+    line-height: 1.6;
 }
-@media (max-width:767px){
-.businesses-section-wrapper{background-color:var(--sky-blue)}
-.business-accordion-wrapper{padding:3rem 1rem;width:90%;margin:auto;box-shadow:0 0 10px rgba(0,51,102,.1);margin-top:-5rem}
-.business-accordion-header{margin-bottom:2rem}
-.mobile-business-image img{max-height:200px}
-.business-cta .btn{width:100%;display:flex}
-.business-accordion-header h2{font-size:1.75rem;flex-direction:column;align-items:flex-start}
-.businesses-section-wrapper .accordion-button{padding:1rem 0;font-size:1rem}
-.businesses-section-wrapper .accordion-body{padding:0}
-.business-description{font-size:.9375rem}
-.businesses-section-wrapper .accordion-item{padding:0}
-.businesses-section-wrapper .accordion-item:first-child{border-top:1px solid var(--turquoise)}
-.business-title{font-size:1.25rem}
-.businesses-section-wrapper .accordion-button .accordion-icon{width:1.75rem;height:1.75rem}
-.businesses-section-wrapper .accordion-button,.businesses-section-wrapper .accordion-button:not(.collapsed){padding:1.5rem 0}
+.business-accordion-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
 }
-.collapsing{position:relative;height:0;overflow:hidden;transition:height .35s ease}
-.businesses-section-wrapper .accordion-button:focus-visible{outline:2px solid #007bff;outline-offset:2px}
-.desktop-business-image img.loading,.mobile-business-image img.loading{background:linear-gradient(90deg,#f0f0f0 25%,#e0e0e0 50%,#f0f0f0 75%);background-size:200% 100%;animation:loading 1.5s infinite}
-@keyframes loading{
-0%{background-position:200% 0}
-100%{background-position:-200% 0}
+.business-image-preview picture {
+    border-radius: 8px;
+    overflow: hidden;
+    display: block;
 }
-@media print{
-.business-accordion-container{grid-template-columns:1fr}
-.business-image-preview{display:none}
-.mobile-business-image{display:block!important}
-.businesses-section-wrapper .accordion-button::after{display:none!important}
-.businesses-section-wrapper .accordion-collapse{display:block!important;height:auto!important}
+.business-image {
+    display: none;
 }
+.business-image-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.desktop-business-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+        opacity 0.5s ease-in-out,
+        visibility 0.5s ease-in-out;
+    z-index: 1;
+}
+.desktop-business-image.active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 2;
+}
+.desktop-business-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.business-title {
+    flex: 1;
+    text-align: left;
+    padding-right: 1rem;
+    font-weight: 300;
+    font-size: var(--fs-xlarge);
+}
+.businesses-section-wrapper .accordion-item.active .business-title {
+    font-weight: 400;
+}
+.business-description {
+    font-size: var(--fs-normal);
+    line-height: 1.4;
+    color: var(--black);
+    margin-bottom: 1.5rem;
+    max-width: 450px;
+}
+.business-description p {
+    margin: 0 0 1rem 0;
+}
+.business-description p:last-child {
+    margin-bottom: 0;
+}
+.mobile-business-image {
+    display: none;
+    margin: 1.5rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.mobile-business-image img {
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+    object-fit: cover;
+    display: block;
+}
+.business-image img {
+    margin: 1.5rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+@media (max-width: 1199px) {
+    .business-accordion-wrapper {
+        padding: 4rem;
+    }
+}
+@media (max-width: 991px) {
+    .business-accordion-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    .business-accordion-header h2 {
+        font-size: var(--fs-xxlarge);
+    }
+    .business-accordion-header .title {
+        text-transform: none;
+    }
+    .business-accordion-header h2 .subtitle {
+        font-size: var(--fs-large);
+    }
+    .accordion-button {
+        padding: 1.25rem 0;
+        font-size: var(--fs-medium);
+    }
+    .business-image-preview {
+        display: none;
+    }
+    .business-image {
+        display: block;
+    }
+    .business-accordion-wrapper {
+        padding: 2rem;
+    }
+    .business-accordion-header {
+        margin-bottom: 2rem;
+    }
+}
+@media (max-width: 767px) {
+    .businesses-section-wrapper {
+        background-color: var(--sky-blue);
+    }
+    .business-accordion-wrapper {
+        padding: 3rem 1rem;
+        width: 100%;
+        margin: auto;
+        box-shadow: 0 0 10px rgba(0, 51, 102, 0.1);
+        top: -3rem;
+    }
+    .business-accordion-header {
+        margin-bottom: 2rem;
+    }
+    .mobile-business-image img {
+        max-height: 200px;
+    }
+    /* .business-cta .btn{width:100%;display:flex} */
+    .business-accordion-header h2 {
+        font-size: 1.75rem;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .businesses-section-wrapper .accordion-button {
+        padding: 1rem 0;
+        font-size: var(--fs-normal);
+    }
+    .businesses-section-wrapper .accordion-body {
+        padding: 0;
+    }
+    .business-description {
+        font-size: var(--fs-normal);
+    }
+    .businesses-section-wrapper .accordion-item {
+        padding: 0;
+    }
+    .businesses-section-wrapper .accordion-item:first-child {
+        border-top: 1px solid var(--turquoise);
+    }
+    .business-title {
+        font-size: var(--fs-large);
+    }
+    .businesses-section-wrapper .accordion-button .accordion-icon {
+        width: 1.75rem;
+        height: 1.75rem;
+    }
+    .businesses-section-wrapper .accordion-button,
+    .businesses-section-wrapper .accordion-button:not(.collapsed) {
+        padding: 1.5rem 0;
+    }
+}
+.collapsing {
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    transition: height 0.35s ease;
+}
+.businesses-section-wrapper .accordion-button:focus-visible {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+}
+.desktop-business-image img.loading,
+.mobile-business-image img.loading {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+@keyframes loading {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+@media print {
+    .business-accordion-container {
+        grid-template-columns: 1fr;
+    }
+    .business-image-preview {
+        display: none;
+    }
+    .mobile-business-image {
+        display: block !important;
+    }
+    .businesses-section-wrapper .accordion-button::after {
+        display: none !important;
+    }
+    .businesses-section-wrapper .accordion-collapse {
+        display: block !important;
+        height: auto !important;
+    }
+}
+
+
+.page-our-portfolio .business-accordion-wrapper {
+    background: none;
+    padding: 0;
+}
+
+.page-our-portfolio .businesses-section-container {
+    background-color: var(--lpink);
+}
+
+.page-our-portfolio .businesses-section-wrapper {
+    @media (max-width: 767px) {
+
+        background-color: var(--lpink);
+    }}
+   
+
+.page-our-portfolio .business-accordion-wrapper {
+    @media (max-width: 767px) {
+        box-shadow: none;
+    }
+}    

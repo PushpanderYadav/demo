@@ -1,7 +1,7 @@
 import { loadCSS, loadScript } from "../../../scripts/aem.js";
 
-const SWIPER_JS = "../../../scripts/swiper-bundle.min.js";
-const SWIPER_CSS = "../../../styles/swiper-bundle.min.css";
+const SWIPER_JS = "https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js";
+const SWIPER_CSS = "https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css";
 
 export default async function decorate(block) {
   const rows = [...block.children];
@@ -27,16 +27,16 @@ export default async function decorate(block) {
     <section class="sec-expertise spacer">
       <div class="container">
         <div class="row">
-          <div class="col-12">
+          <div class="col-12"> 
 
             <div class="row">
-              <div class="col-md-7 text-center mx-auto mb-5">
+              <div class="col-md-7 text-center mx-auto mb-3">
                 <h2 class="sec-title">${sectionTitle}</h2>
                 <div class="sec-desc">${sectionDesc}</div>
               </div>
             </div>
 
-            <div class="row cards-row"></div>
+            <div class="row cards-row justify-content-center"></div>
 
           </div>
         </div>
@@ -53,25 +53,33 @@ export default async function decorate(block) {
      ================================ */
   cardRows.forEach((row) => {
     const cells = [...row.children];
+
     const img = cells[0]?.querySelector("img");
-    const title = cells[1]?.textContent?.trim() || "";
-    const desc = cells[2]?.textContent?.trim() || "";
+    const altText = cells[1]?.textContent?.trim() || "";
+    const title = cells[2]?.textContent?.trim() || "";
+    const desc = cells[3]?.innerHTML?.trim() || "";
 
     const col = document.createElement("div");
-    col.className = "col-md-4 mt-4";
+    col.className = "col-md-6 col-lg-4 mt-4";
 
     col.innerHTML = `
       <div class="card card-ui-one">
         ${
           img
             ? `<div class="card-img">
-                <img src="${img.src}" alt="${img.alt || ""}">
-              </div>`
+                 <img src="${img.src}" alt="${altText || title}">
+               </div>`
             : ""
         }
         <div class="card-body">
           <h3 class="card-title">${title}</h3>
-          <p class="card-desc">${desc}</p>
+          ${
+          desc
+            ? `
+          <div class="card-desc">${desc}</div>
+          `
+            : ""
+        }
         </div>
       </div>
     `;
@@ -112,9 +120,11 @@ export default async function decorate(block) {
      ================================ */
   cardRows.forEach((row) => {
     const cells = [...row.children];
+
     const img = cells[0]?.querySelector("img");
-    const title = cells[1]?.textContent?.trim() || "";
-    const desc = cells[2]?.textContent?.trim() || "";
+    const altText = cells[1]?.textContent?.trim() || "";
+    const title = cells[2]?.textContent?.trim() || "";
+    const desc = cells[3]?.textContent?.trim() || "";
 
     const slide = document.createElement("div");
     slide.className = "swiper-slide";
@@ -124,8 +134,8 @@ export default async function decorate(block) {
         ${
           img
             ? `<div class="card-img">
-                <img src="${img.src}" alt="${img.alt || ""}">
-              </div>`
+                 <img src="${img.src}" alt="${altText || title}">
+               </div>`
             : ""
         }
         <div class="card-body">
@@ -139,7 +149,7 @@ export default async function decorate(block) {
   });
 
   /* ================================
-     6️⃣ Init Swiper (mobile only shown)
+     6️⃣ Init Swiper
      ================================ */
   await loadCSS(SWIPER_CSS);
   await loadScript(SWIPER_JS);

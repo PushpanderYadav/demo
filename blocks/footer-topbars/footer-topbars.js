@@ -1,106 +1,85 @@
 export default function decorate(block) {
   const authoredRows = [...block.children];
 
-  // Extract first row fields
+  // Detect AEM editor mode
+  const isEditor = document.documentElement.classList.contains(
+    "aem-AuthorLayer-Edit",
+  );
+
+  // Extract authoring data BEFORE removing nodes
   const firstRow = authoredRows[0];
   const cells = firstRow ? [...firstRow.children] : [];
 
-  // Prevent duplicated logo image: extract only src
-  let image = "";
-  if (cells[0]) {
-    const img = cells[0].querySelector("img");
-    image = img ? img.src : "";
-  }
+  const imageSrc = cells[0]?.querySelector("img")?.src || "";
+  const linkedin = cells[1]?.innerText.trim() || "";
+  const facebook = cells[2]?.innerText.trim() || "";
+  const youtube = cells[3]?.innerText.trim() || "";
+  const buttonLabel = cells[4]?.innerText.trim() || "";
+  const textHtml = cells[5]?.innerHTML || "";
 
-  const linkedin = cells[1] ? cells[1].innerText.trim() : "";
-  const facebook = cells[2] ? cells[2].innerText.trim() : "";
-  const youtube = cells[3] ? cells[3].innerText.trim() : "";
-  const buttonLabel = cells[4] ? cells[4].innerText.trim() : "";
-  const textHtml = cells[5] ? cells[5].innerHTML : "";
+  /* -----------------------------
+     BUILD ENHANCED UI
+  --------------------------------*/
+  const wrapper = document.createElement("div");
+  wrapper.className = "footer-enhanced-wrapper";
 
-  const blueStrip = document.createElement("div");
-  blueStrip.classList.add("footer-top", "bg-primary");
+  wrapper.innerHTML = `
+    <div class="footer-top bg-primary">
+      <div class="container d-flex flex-wrap align-items-md-start align-items-center gap-2">
 
-  const blueContainer = document.createElement("div");
-  blueContainer.classList.add("container");
+        <div class="footertopbar-image">
+          ${imageSrc ? `<img src="${imageSrc}" alt="">` : ""}
+        </div>
 
-  const item = document.createElement("div");
-  item.classList.add("d-flex", "gap-2");
+        <div class="ms-md-auto social-links d-flex gap-2">
+          ${linkedin ? `<a href="${linkedin}"><img src="/icons/linkedin-icon.svg"></a>` : ""}
+          ${facebook ? `<a href="${facebook}"><img src="/icons/facebook-icon.svg"></a>` : ""}
+          ${youtube ? `<a href="${youtube}"><img src="/icons/youtube-icon.svg"></a>` : ""}
+        </div>
 
-  item.innerHTML = `
-      <div class="footertopbar-image">
-        ${image ? `<img src="${image}" alt="">` : ""}
+        <div class="group-btn ms-md-0 ms-auto">
+          ${
+            buttonLabel
+              ? `<button class="btn btn-primary" type="button"
+                   data-bs-toggle="collapse"
+                   data-bs-target="#groupCollapse">${buttonLabel} <span></span></button>`
+              : ""
+          }
+        </div>
+
+        <div class="footertopbar-text">${textHtml}</div>
       </div>
+    </div>
 
-      <div class="ms-auto social-links d-flex gap-2">
-        ${
-          linkedin
-            ? `<a href="${linkedin}"><img src="/icons/linkedin-icon.svg" alt="Linkedin" /></a>`
-            : ""
-        }
-        ${
-          facebook
-            ? `<a href="${facebook}"><img src="/icons/facebook-icon.svg" alt="Facebook" /></a>`
-            : ""
-        }
-        ${
-          youtube
-            ? `<a href="${youtube}"><img src="/icons/youtube-icon.svg" alt="YouTube" /></a>`
-            : ""
-        }
+    <div id="groupCollapse" class="footer-collapse collapse bg-royal-blue text-white">
+      <div class="container py-5">
+        <div class="row"></div>
       </div>
+    </div>
+  `;
 
-      <div class="group-btn">
-        ${
-          buttonLabel
-            ? `<button class="btn btn-primary" type="button" data-bs-toggle="collapse"
-                 data-bs-target="#groupWebsiteCollapse" aria-expanded="false"
-                 aria-controls="groupWebsiteCollapse">${buttonLabel} <span></span></button>`
-            : ""
-        }
-      </div>
+  // Insert wrapper
+  block.appendChild(wrapper);
 
-      <div class="footertopbar-text">
-        ${textHtml}
-      </div>
-    `;
+  const loopRow = wrapper.querySelector(".row");
 
-  blueContainer.appendChild(item);
-  blueStrip.appendChild(blueContainer);
-
-  const collapseSection = document.createElement("div");
-  collapseSection.classList.add(
-    "footer-collapse",
-    "bg-royal-blue",
-    "text-white",
-    "collapse"
-  );
-  collapseSection.id = "groupWebsiteCollapse";
-
-  const collapseContainer = document.createElement("div");
-  collapseContainer.classList.add("container", "py-5");
-
-  const loopRow = document.createElement("div");
-  loopRow.classList.add("row", "g-5");
-
+  // Build extra columns based on authored rows
   authoredRows.slice(1).forEach((row) => {
-    const loopItem = document.createElement("div");
-    loopItem.classList.add("loop-item", "col-md-3");
+    const col = document.createElement("div");
+    col.classList.add("col-md-3", "loop-item");
 
-    while (row.firstChild) {
-      loopItem.appendChild(row.firstChild);
-    }
+    [...row.children].forEach((child) => {
+      col.appendChild(child.cloneNode(true));
+    });
 
-    loopRow.appendChild(loopItem);
+    loopRow.appendChild(col);
   });
 
-  collapseContainer.appendChild(loopRow);
-  collapseSection.appendChild(collapseContainer);
-
-  // Replace content
-  block.innerHTML = "";
-  block.appendChild(blueStrip);
-  block.appendChild(collapseSection);
+  /* -----------------------------
+     REMOVE authored table on LIVE
+     KEEP visible inside AEM editor
+  --------------------------------*/
+  if (!isEditor) {
+    authoredRows.forEach((r) => r.remove());
+  }
 }
-
-

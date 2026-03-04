@@ -1,0 +1,29 @@
+.media-contact-wrapper {
+  background: #e6dccb;
+  padding: 60px 40px;
+  border-radius: 12px;
+}
+
+.media-contact-cards {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.media-card {
+  background: #f3f3f3;
+  padding: 20px;
+  border-radius: 10px;
+  flex: 1;
+  min-width: 280px;
+}
+
+.media-card h3 {
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.media-card-content {
+  color: #444;
+  line-height: 1.5;
+}

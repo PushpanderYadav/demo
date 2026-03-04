@@ -1,0 +1,131 @@
+{
+  "definitions": [
+    {
+      "title": "Corporate Governance",
+      "id": "corporate-governance",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "corporate-governance",
+              "model": "corporate-governance",
+              "filter": "corporate-governance"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Governance Section",
+      "id": "governance-section",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "governance-section",
+              "model": "governance-section"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "corporate-governance",
+      "fields": [
+        {
+          "component": "richtext",
+          "name": "introMainText",
+          "label": "Intro Paragraphs"
+        },
+        {
+          "component": "text",
+          "name": "sectionSubtitle",
+          "label": "Section Subtitle"
+        },
+        {
+          "component": "reference",
+          "name": "desktopImage",
+          "label": "Desktop Image"
+        },
+        {
+          "component": "text",
+          "name": "imageAlt",
+          "label": "Alt Text"
+        }
+      ]
+    },
+    {
+      "id": "governance-section",
+      "itemLabel": "categoryTitle",
+      "fields": [
+        {
+          "component": "select",
+          "name": "colorTheme",
+          "label": "Section Color",
+          "options": [
+            { "name": "Red", "value": "red" },
+            { "name": "Yellow", "value": "yellow" },
+            { "name": "Blue", "value": "blue" }
+          ]
+        },
+        {
+          "component": "reference",
+          "name": "imagePrimary",
+          "label": "Primary Image / Cube Icon"
+        },
+        {
+          "component": "text",
+          "name": "imageAlt",
+          "label": "Alt Text"
+        },
+        {
+          "component": "text",
+          "name": "categoryTitle",
+          "label": "Category Title"
+        },
+        {
+          "component": "text",
+          "name": "point1",
+          "label": "Point 1 (Optional)"
+        },
+        {
+          "component": "text",
+          "name": "point2",
+          "label": "Point 2 (Optional)"
+        },
+        {
+          "component": "text",
+          "name": "point3",
+          "label": "Point 3 (Optional)"
+        },
+        {
+          "component": "text",
+          "name": "point4",
+          "label": "Point 4 (Optional)"
+        },
+        {
+          "component": "text",
+          "name": "point5",
+          "label": "Point 5 (Optional)"
+        },
+        {
+          "component": "text",
+          "name": "point6",
+          "label": "Point 6 (Optional)"
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "corporate-governance",
+      "components": [
+        "governance-section"
+      ]
+    }
+  ]
+}

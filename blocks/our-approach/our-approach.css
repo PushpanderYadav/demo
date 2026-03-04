@@ -1,6 +1,7 @@
 /* BLOCK ROOT — MANDATORY */
 .our-approach {
   padding: 80px 0;
+  background:var( --lgrey);
 }
 
 /* WRAPPER */
@@ -23,26 +24,32 @@
   margin-bottom: 20px;
 }
 
-.our-approach .our-approach-left p,
-.our-approach .our-approach-left h3 {
-  font-size: 26px;
-  color: #003366;
-  line-height: 1.4;
+.our-approach-heading P{
+  color: var(--black);
+  font-weight: 400;
+  font-size: 48px;
+}
+
+.our-approach-title P{
+  color: var(--blue);
+  font-weight: 400;
+  font-size: 32px;
 }
 
 /* RIGHT COLUMN */
 .our-approach .our-approach-right {
   font-size: 18px;
-  line-height: 1.7;
+  /* line-height: 1.7; */
   color: #444;
 }
 
 /* IMAGE BELOW */
 .our-approach .our-approach-image img {
-  width: 100%;
-  height: auto;
+  width: 930px;
+  height: 650px;
   display: block;
   border-radius: 14px;
+  margin-left: 145px;
 }
 
 /* MOBILE */

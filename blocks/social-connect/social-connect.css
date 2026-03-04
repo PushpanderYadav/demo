@@ -1,0 +1,49 @@
+.social-connect-icons .icon {
+    background-color: #f6f6f6;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 1rem;
+    min-width: 3rem;
+    min-height: 3rem;
+    display: inline-flex;
+    border: solid 2px transparent;
+    transition-duration: 0.3s;
+    background-size: 22px;
+}
+.social-connect-icons .icon:hover {
+    border-color: var(--blue);
+}
+
+.social-connect-title h4 {
+    font-size: var(--fs-xlarge);
+    color: var(--black);
+}
+
+.icon-instagram {
+    background-image: url(../../icons/instagram-icon.svg);
+    background-size: 28px !important;
+}
+.icon-x {
+    background-image: url(../../icons/x-icon.svg);
+}
+.icon-linkedin {
+    background-image: url(../../icons/in-icon.svg);
+}
+.icon-x {
+    background-image: url(../../icons/x-icon.svg);
+}
+.icon-youtube {
+    background-image: url(../../icons/ytube-icon.svg);
+}
+.icon-whatsapp {
+    background-image: url(../../icons/whatsapp-icon.svg);
+}
+.icon-facebook {
+    background-image: url(../../icons/fb-icon.svg);
+    background-size: 14px !important;
+}
+@media (max-width: 767px) {
+    .social-connect-title {
+        text-align: center;
+    }
+}

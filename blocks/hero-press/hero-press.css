@@ -1,0 +1,73 @@
+.press-hero{background: url(../../icons/banner-pattern.svg) no-repeat top right var(--blue);
+    color: var(--white);
+    position: relative;
+    height: 100px;
+    padding: 0 0 28%;
+    overflow: hidden;
+    font-size: var(--fs-medium);
+    margin-top: -40px;}
+.press-hero-media {position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.press-hero-media:before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    background: linear-gradient(90deg, rgba(0, 0, 0, .7) 0, rgba(0, 0, 0, 0) 80%);
+}
+.press-hero-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 1;
+    z-index: 1;
+}
+.press-hero-content{position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 2rem 0;
+    z-index: 3;}
+
+.press-hero-back{background:var(--lorange);border:none;color:var(--black);padding:.45rem .9rem;border-radius:6px;font-size:.85rem;margin-bottom:1rem;cursor:pointer}
+.press-hero-tag{display:inline-flex;align-items:center;height:28px;background:#00b3c7;color:var(--white);padding:0 .75rem;border-radius:6px;font-size:.8rem;font-weight:500;margin-bottom:.75rem}
+.press-hero-title{font-size: var(--fs-xl);
+    line-height: 1.25;
+    font-weight: 300;
+    max-width: 700px;
+    margin-bottom: 0;
+    padding: 1.5rem 0;}
+.press-hero-meta{display:flex;align-items:center;gap:1rem;font-size:var(--fs-regular);flex-wrap:wrap}
+.press-hero-meta span{display:inline-flex;align-items:center;height:28px;gap:.35rem;margin-bottom:2px}
+.press-hero-meta i{display:inline-flex;align-items:center;font-size:var(--fs-regular);line-height:1}
+.press-hero-content .btn-primary.btn-sm svg {
+    max-width: 15px;
+}
+.press-hero-media img { filter: blur(6px); transform: scale(1.05); }
+.press-hero-meta svg {
+    max-width: 15px;
+}
+@media (max-width: 767px) {
+    .press-hero {
+        margin-top: 0;
+        padding: 0 0 150%;
+    }
+    .press-hero-content {
+        align-items: flex-start;
+    }
+    .section.press-hero-container {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    .press-hero-media:before {
+        background: linear-gradient(180deg, rgba(0, 0, 0, .7) 0, rgba(0, 0, 0, 0) 80%);
+    }
+}

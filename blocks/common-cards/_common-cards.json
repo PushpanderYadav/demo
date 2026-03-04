@@ -1,0 +1,94 @@
+{
+  "definitions": [
+    {
+      "title": "Common Cards",
+      "id": "common-cards",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "common-cards",
+              "model": "common-cards",
+              "filter": "only-common-items"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Card Item",
+      "id": "common-card-item",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "common-card-item",
+              "model": "common-card-item"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "common-cards",
+      "fields": [
+        {
+          "component": "text",
+          "name": "sectionTitle",
+          "label": "Section Title",
+          "valueType": "string",
+          "defaultValue": "Group Holding Board"
+        }
+      ]
+    },
+    {
+      "id": "common-card-item",
+      "itemLabel": "cardTitle",
+      "fields": [
+        {
+          "component": "reference",
+          "name": "cardImage",
+          "label": "Card Image",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "cardTitle",
+          "label": "Main Title (Name)",
+          "valueType": "string"
+        },
+        {
+          "component": "richtext",
+          "name": "subTitle",
+          "label": "Sub-Title (Designation)",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "actionText",
+          "label": "Action Link Text",
+          "valueType": "string",
+          "defaultValue": "READ PROFILE"
+        },
+        {
+          "component": "text",
+          "name": "actionLink",
+          "label": "Action Link (URL)",
+          "valueType": "string"
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "only-common-items",
+      "components": [
+        "common-card-item"
+      ]
+    }
+  ]
+}

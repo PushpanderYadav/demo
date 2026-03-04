@@ -1,0 +1,126 @@
+/* ===============================
+   SECTION BACKGROUND
+=============================== */
+.fraud-tabs-runtime {
+    /* background: linear-gradient(180deg, #06c 0, #1e3c6b 100%); */
+    position: relative;
+    padding: 60px 0;
+    color: var(--white);
+}
+
+/* background pattern */
+.fraud-tabs-runtime::before {
+    position: absolute;
+    content: "";
+    inset: 0;
+    /* background: url("../../img/listed-bg.svg") no-repeat center; */
+    background-size: 100%;
+    z-index: 1;
+}
+
+.fraud-tabs-runtime .container {
+    position: relative;
+    z-index: 2;
+}
+
+.fraud-tab-pane p {
+    font-weight: 400;
+    font-size: 19px;
+}
+
+.fraud-tab-inside-title {
+    font-weight: 400;
+    font-size: 40px;
+}
+
+
+/* ===============================
+     TITLE
+  =============================== */
+.sec-title {
+    text-align: center;
+    margin-bottom: 32px;
+    color: var(--white);
+}
+
+
+/* ===============================
+     TAB NAV
+  =============================== */
+.fraud-tabs-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+}
+
+.fraud-tab-btn {
+    padding: 10px 22px;
+    border: 1px solid var(--yellow);
+    background: transparent;
+    color: var(--yellow);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+}
+
+.fraud-tab-btn:hover {
+    background: var(--yellow);
+    color: var(--charcoal);
+}
+
+.fraud-tab-btn.active {
+    background: var(--charcoal);
+    border-color: var(--charcoal);
+    color: var(--white);
+}
+
+
+/* ===============================
+     TAB CONTENT
+  =============================== */
+.fraud-tabs-content {
+    max-width: 1440px;
+    margin: 0 auto;
+    font-weight: 300;
+    color: var(--black);
+    margin-top: 2rem;
+}
+
+
+/* ===============================
+     MOBILE
+  =============================== */
+@media (max-width: 767px) {
+    .fraud-tabs-nav {
+        gap: 16px;
+    }
+
+    .fraud-tab-btn {
+        border: none;
+        padding: 6px 0;
+        position: relative;
+        font-weight: 700;
+    }
+
+    .fraud-tab-btn::after {
+        content: "";
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--white);
+        transition: width 0.3s ease;
+    }
+
+    .fraud-tab-btn.active {
+        color: var(--white);
+    }
+
+    .fraud-tab-btn.active::after {
+        width: 100%;
+    }
+}

@@ -1,0 +1,8 @@
+.investors-trust-wrapper{max-width:900px;margin:0 auto;text-align:center;padding:80px 20px}
+.investors-title{font-size:40px;font-weight:500;margin-bottom:20px}
+.investors-title strong{font-weight:700}
+.investors-desc{font-size:18px;line-height:1.6;color:#444;max-width:700px;margin:0 auto 40px}
+.investors-cta{display:flex;justify-content:center;gap:20px;flex-wrap:wrap}
+.investors-cta .cta{padding:14px 26px;border-radius:8px;font-size:16px;font-weight:600;text-decoration:none}
+.investors-cta .cta.primary{background:#2d2d2d;color:#fff}
+.investors-cta .cta.secondary{border:2px solid #ff8c00;color:#ff8c00;background:#fff}

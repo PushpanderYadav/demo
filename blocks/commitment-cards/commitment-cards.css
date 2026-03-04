@@ -4,6 +4,7 @@
     color: var(--white);
     position: relative;
 }
+
 .sec-commitment:before {
     position: absolute;
     content: "";
@@ -18,6 +19,7 @@
     z-index: 1;
     pointer-events: none;
 }
+.bg-sky-blue.commitment-cards-container .sec-commitment:before { display:none; }
 .sec-commitment .container {
     position: relative;
     z-index: 2;
@@ -26,6 +28,9 @@
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
+}
+.comm-card .button-container {
+    margin: 0;
 }
 .comm-card-img {
     position: relative;
@@ -48,11 +53,55 @@
     color: var(--charcoal);
     border-radius: 0.5rem;
     padding: 2rem;
-    font-size: 1.125rem;
+    font-size: var(--fs-medium);
     flex-grow: 1;
 }
 .comm-card-body h3 {
     font-family: var(--font-secondary);
     color: var(--blue);
     font-weight: 400;
+}
+.alignment-center.commitment-cards-container .default-content-wrapper {
+    text-align: center;
+    padding-top: 5rem; width: 94%;
+    max-width: 755px; margin: auto;
+}
+.alignment-center.commitment-cards-container .default-content-wrapper h2 {
+    font-weight: var(--fw-regular);
+}
+.alignment-center.commitment-cards-container .default-content-wrapper p {
+    font-size: var(--fs-medium);
+    color: var(--charcoal);
+}
+@media (max-width: 991px) {
+    .alignment-center.commitment-cards-container .default-content-wrapper {
+    padding-top: 60px;
+}
+}
+@media (max-width: 767.5px) {
+    .sec-commitment {
+        background: url(../../img/bg-outline-mob.jpg) no-repeat bottom left
+            var(--blue);
+        background-size: 100%;
+        position: relative;
+    }
+    .sec-commitment:before {
+        content: "";
+        width: 100%;
+        height: 100%;
+        background: url(../../icons/banner-pattern.svg) no-repeat top right;
+        background-size: 60%;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .comm-card-body {
+        padding: 24px 16px;
+    }
+    .sec-commitment .col-md-6.comm-card:last-child {
+        margin-bottom: 0 !important;
+    }
+        .alignment-center.commitment-cards-container .default-content-wrapper p {
+        font-size: var(--fs-normal);
+    }
 }

@@ -63,6 +63,11 @@
           "label": "Mobile Banner Image",
           "valueType": "string",
           "comment": "Recommended size: 768px width"
+        },
+        {
+          "component": "text",
+          "name": "imageAlt",
+          "label": "Alt Text"
         }
       ]
     }

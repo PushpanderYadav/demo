@@ -1,12 +1,12 @@
 /* =====================================================
-   Hide authored rows (Success Stories pattern)
+   HIDE AUTHORED CONTENT
 ===================================================== */
 .sdg-themes.sdg-themes-initialized > :not(.sdg-themes-runtime) {
   display: none;
 }
 
 /* =====================================================
-   Section wrapper
+   SECTION
 ===================================================== */
 .sdg-themes-runtime {
   padding: 80px 0;
@@ -19,152 +19,214 @@
   padding: 0 24px;
 }
 
-/* =====================================================
-   Section title
-===================================================== */
 .sdg-title {
   text-align: center;
-  font-size: 42px;
-  font-weight: 500;
-  color: #1a1a1a;
-  margin-bottom: 56px;
+  font-size: 48px;
+  font-weight: 400;
+  color: #000;
+  margin-bottom: 40px;
 }
 
 /* =====================================================
-   Responsive auto grid (ANY NUMBER OF ITEMS)
+   GRID (MATCH REFERENCE)
 ===================================================== */
 .sdg-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 32px;
+  grid-template-columns: repeat(4, 260px);
+  gap: 24px;
+  justify-content: center;
 }
 
 /* =====================================================
-   Card
+   CARD BASE
 ===================================================== */
 .sdg-card {
   position: relative;
-  border-radius: 16px;
+  cursor: pointer;
+  border-radius: 8px;
   overflow: hidden;
-  background: #ffffff;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
 }
 
 /* =====================================================
-   Image container
+   IMAGE
 ===================================================== */
 .sdg-image {
-  position: relative;
-  height: 260px;
-  background: linear-gradient(135deg,#0b2e4f 0%,#0a3d62 45%,#0f4c81 100%);;
+  height: 225px;
+  background: #fff;
+  border-radius: 8px;
   overflow: hidden;
+  margin-bottom: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .sdg-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover; 
   display: block;
 }
 
 /* =====================================================
-   Gradient overlay (for title readability)
-===================================================== */
-.sdg-image::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0.65),
-    rgba(0, 0, 0, 0.25),
-    transparent
-  );
-  z-index: 1;
-}
-
-/* =====================================================
-   Item number (top-right)
-===================================================== */
-.sdg-number {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  z-index: 2;
-  font-size: 32px;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.7);
-}
-
-/* =====================================================
-   Content container
-   (kept only for title overlay positioning)
+   BOTTOM BAR (DEFAULT STATE)
 ===================================================== */
 .sdg-content {
-  padding: 0;
-}
-
-/* =====================================================
-   Title ON IMAGE (bottom-left)
-===================================================== */
-.sdg-card .sdg-content h3 {
   position: absolute;
-  bottom: 20px;
-  left: 20px;
-  right: 20px;
-  z-index: 2;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 52px;
+  background: var(--blue);
+  color: #fff;
+  padding: 0 16px;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 0 0 8px 8px;
+  z-index: 4;
+}
 
+.sdg-content h3 {
   margin: 0;
-  font-size: 20px;
-  font-weight: 500;
-  color: #ffffff;
-  line-height: 1.3;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* PLUS ICON */
+.sdg-content::after {
+  content: "+";
+  width: 24px;
+  height: 24px;
+  color: #faa519;
+  font-size: 18px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  flex-shrink: 0;
+  border: 2px solid #faa519;
 }
 
 /* =====================================================
-   Description (hidden – matches reference)
-   Enable later if needed
+   EXPANDED OVERLAY (REFERENCE STYLE)
 ===================================================== */
-.sdg-desc {
+.sdg-overlay {
+  position: absolute;
+  inset: 0;
+  background: var(--blue);
+  color: #fff;
+  padding: 56px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  border-radius: 8px;
+  z-index: 3;
+}
+
+.sdg-overlay p {
+  font-size: 16px;
+  font-weight: 100;
+}
+
+/* =====================================================
+   ACTIVE STATE
+===================================================== */
+.sdg-card.active .sdg-overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
+.sdg-card.active .sdg-content {
   display: none;
 }
 
-/* =====================================================
-   Hover effect (subtle)
-===================================================== */
-.sdg-card:hover img {
-  transform: scale(1.04);
-  transition: transform 0.4s ease;
+/* MINUS ICON (TOP RIGHT) */
+.sdg-card.active::after {
+  content: "–";
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 28px;
+  height: 28px;
+  background: #faa519;
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  z-index: 6;
 }
 
 /* =====================================================
-   Responsive adjustments
+   SDG COLOR VARIANTS
+===================================================== */
+.sdg-card.sdg-1 .sdg-content,
+.sdg-card.sdg-1 .sdg-overlay { background: #E5243B; }
+
+.sdg-card.sdg-2 .sdg-content,
+.sdg-card.sdg-2 .sdg-overlay { background: #DDA63A; }
+
+.sdg-card.sdg-3 .sdg-content,
+.sdg-card.sdg-3 .sdg-overlay { background: #4C9F38; }
+
+.sdg-card.sdg-5 .sdg-content,
+.sdg-card.sdg-5 .sdg-overlay { background: #EF402C; }
+
+.sdg-card.sdg-6 .sdg-content,
+.sdg-card.sdg-6 .sdg-overlay { background: #27BFE6; }
+
+.sdg-card.sdg-7 .sdg-content,
+.sdg-card.sdg-7 .sdg-overlay { background: #FBC412; }
+
+.sdg-card.sdg-8 .sdg-content,
+.sdg-card.sdg-8 .sdg-overlay { background: #A21942; }
+
+/* =====================================================
+   RESPONSIVE
 ===================================================== */
 @media (max-width: 1024px) {
-  .sdg-title {
-    font-size: 36px;
-  }
-
-  .sdg-image {
-    height: 240px;
+  .sdg-grid {
+    grid-template-columns: repeat(2, 260px);
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 640px) {
+  .sdg-grid {
+    grid-template-columns: 1fr;
+  }
+
   .sdg-title {
-    font-size: 32px;
-    margin-bottom: 40px;
+    font-size: 28px;
   }
 
   .sdg-image {
-    height: 220px;
+    height: 200px;
+    margin-bottom: 48px;
+  }
+}
+
+
+/* =====================================================
+   SPECIAL CASE – 7 CARDS (CENTER LAST ROW)
+===================================================== */
+@media (min-width: 1200px) {
+  .sdg-grid:has(> .sdg-card:nth-child(7)) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
   }
 
-  .sdg-card .sdg-content h3 {
-    font-size: 18px;
-  }
-
-  .sdg-number {
-    font-size: 26px;
+  .sdg-grid:has(> .sdg-card:nth-child(7)) > .sdg-card {
+    flex: 0 0 260px;
   }
 }

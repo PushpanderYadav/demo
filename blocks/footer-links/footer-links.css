@@ -70,3 +70,98 @@
     background: url(../../icons/arrow-right-yellow.svg) no-repeat center;
     background-size: 100%;
 }
+.footer-nav h4 strong {
+    font-weight: var(--fw-medium);
+    color: var(--charcoal);
+}
+
+@media screen and (max-width: 991.5px) {
+    .footer-nav h4 {
+        font-size: 1rem;
+    }
+    .footer-nav ul li a::after,
+    .footer-nav h4 a::after {
+        width: 3px;
+        height: 6px;
+        right: -0.5rem;
+    }
+}
+
+@media screen and (min-width: 767.5px) {
+    .footer-nav ul {
+        max-height: inherit !important;
+    }
+}
+@media screen and (max-width: 767.5px) {
+    .footer-links-wrapper {
+        padding: 2rem 0;
+    }
+    .w-20 {
+        max-width: 100% !important;
+    }
+    .footer-nav ul {
+        transition: max-height 0.35s ease;
+        margin: 0;
+    }
+    .footer-nav ul.active {
+        display: block;
+        margin: 0 0 1rem;
+    }
+    .footer-nav h4 {
+        margin: 0;
+    }
+    .footer-nav h4 strong {
+        display: block;
+        position: relative;
+        padding: 0.75rem 2rem 0.75rem 0;
+        cursor: pointer;
+    }
+    .footer-nav h4 strong:after,
+    .footer-nav h4 a:after {
+        content: "";
+        background: url(../../icons/arrow-right-yellow.svg) no-repeat center;
+        background-size: auto;
+        background-size: 100%;
+        width: 6px;
+        height: 16px;
+        transition-duration: 0.3s;
+        position: absolute;
+        top: 0.75rem;
+        right: 0.5rem;
+        transform: rotate(90deg);
+    }
+    .footer-nav h4.active strong:after {
+        transform: rotate(270deg);
+    }
+    .footer-nav h4 a,
+    .footer-nav h4 a:hover {
+        display: block;
+        color: var(--charcoal);
+        padding: 0.75rem 0;
+    }
+    .footer-nav h4 a:before,
+    .footer-nav ul li a:before {
+        display: none;
+    }
+    .footer-nav h4 a:after {
+        transform: rotate(0);
+    }
+    .footer-nav h4 a:hover:after {
+        right: 0.5rem;
+    }
+
+    .footer-nav ul li a {
+        display: block;
+        font-size: 0.85rem;
+        padding: 0.5rem 0;
+    }
+    .footer-nav ul li a:after,
+    .footer-nav ul li a:hover:after {
+        right: 0.5rem;
+        background: url(../../icons/arrow-right-yellow.svg) no-repeat center;
+        background-size: auto;
+        background-size: 100%;
+        width: 6px;
+        height: 16px;
+    }
+}

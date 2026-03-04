@@ -55,14 +55,26 @@
         {
           "component": "reference",
           "valueType": "string",
-          "name": "logo",
-          "label": "Logo Image"
+          "name": "logo1st",
+          "label": "Logo Image 1st"
         },
         {
           "component": "text",
           "valueType": "string",
-          "name": "logoLink",
-          "label": "Logo Link"
+          "name": "logoLink1",
+          "label": "Logo Link 1"
+        },
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "logo2nd",
+          "label": "Logo Image 2nd"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "logoLink2",
+          "label": "Logo Link 2"
         },
         {
           "component": "reference",

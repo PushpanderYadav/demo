@@ -1,0 +1,21 @@
+.integrity-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.integrity-decision-container .default-content-wrapper { text-align: center; padding-bottom: 80px; }
+.integrity-decision-container .default-content-wrapper .button-container { margin-bottom: 0; }
+.integrity-decision-container .default-content-wrapper .button { height: 44px; display: inline-flex; align-items: center; padding: 0 1.25rem; border-radius: .5rem; font-weight: var(--fw-semi-bold); gap: .5rem; justify-content: center; text-decoration: none; }
+.integrity-decision-container .default-content-wrapper .primary { background-color: var(--lorange); border:1px solid var(--lorange); color: var(--black); }
+.integrity-decision-container .default-content-wrapper .primary:hover { background-color: var(--white); }
+.integrity-card { background: linear-gradient(312deg, var(--S_Turquoise, #00ABC5) 0%, var(--S_Royal-Blue, #305FAB) 100%); border-radius: 8px; padding: 32px; color: var(--white); }
+.integrity-cards .card-icon { text-align: right; margin-bottom: 1rem; }
+.integrity-cards .card-icon img { max-height: 80px; min-height: 80px; }
+.integrity-cards .card-title { margin-bottom: 8px; }
+.integrity-cards .card-desc p { font-size: var(--fs-normal); margin-bottom: 0; }
+.integrity-card { position: relative; }
+.card-action .btn-link { color: var(--white); }
+.card-action .btn-link::before { background-color: var(--white); }
+.card-action .btn-link:after { background:url(../../icons/arrow-right-white.svg) no-repeat center;background-size:100%; }
+
+@media (max-width:767px){
+.integrity-cards{grid-template-columns:repeat(1,1fr);gap:24px}
+.integrity-card { padding: 24px; position: relative; padding-left: 100px; }
+.integrity-cards .card-icon { text-align: left; margin-bottom: 0; max-width: 56px; position: absolute; left: 24px; top: 16px; }
+}

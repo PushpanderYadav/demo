@@ -1,0 +1,292 @@
+/* ===============================
+   SECTION BACKGROUND
+================================ */
+.gal-investor-wrapper {
+  /* padding: 90px 0; */
+  margin-top: 50px;
+}
+
+/* ===============================
+   TOP TRUST SECTION
+================================ */
+.investors-trust-wrapper {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 70px auto;
+}
+
+.investors-title {
+  font-size: 34px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #111;
+}
+
+.investors-desc {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #666;
+  margin-bottom: 28px;
+}
+
+/* Toggle Buttons */
+.investors-cta {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.cta {
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+/* Active */
+.cta.primary {
+  background: #2d2d2d;
+  color: #fff;
+}
+
+/* Outline */
+.cta.secondary {
+  border: 1px solid #f4a340;
+  color: #f4a340;
+  background: transparent;
+}
+
+.cta.secondary:hover {
+  background: #f4a340;
+  color: #fff;
+}
+
+/* ===============================
+   MAIN GRID
+================================ */
+.gal-main {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 50px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ===============================
+   LEFT SIDE
+================================ */
+.gal-left h3 {
+  font-size: 20px;
+  margin-bottom: 14px;
+  font-weight: 600;
+}
+
+.gal-desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.gal-content {
+  margin-bottom: 80px;
+}
+
+/* Stock Card */
+.gal-market {
+  background: #fff;
+  border-radius: 14px;
+  padding: 22px;
+  border: 1px solid #eee;
+  margin-bottom: 28px;
+}
+
+.market-symbol {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Website Button */
+.gal-cta {
+  display: inline-block;
+  padding: 12px 26px;
+  background: #f4a340;
+  color: #000;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 14px;
+  transition: 0.3s ease;
+}
+
+.gal-cta:hover {
+  background: #e5952c;
+}
+
+/* ===============================
+   RIGHT SIDE STAT GRID
+================================ */
+.gal-right {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.gal-stat-card {
+  position: relative;
+  background: linear-gradient(135deg, #1c6fd5, #0bb3c6);
+  color: #fff;
+  padding: 26px;
+  border-radius: 8px;
+  min-height: 135px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Icon Top Right */
+.stat-image {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+}
+
+.stat-image img {
+  height: 38px;
+  width: auto;
+}
+
+/* Stat Text */
+.stat-text {
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+@media (max-width: 992px) {
+  .gal-main {
+    grid-template-columns: 1fr;
+  }
+
+  .gal-right {
+    grid-template-columns: 1fr;
+  }
+
+  .investors-title {
+    font-size: 28px;
+  }
+}
+
+
+
+
+.cta {
+  cursor: pointer;
+  border: none;
+}
+
+.cta.active {
+  background: #2d2d2d;
+  color: #fff;
+}
+
+.cta.secondary.active {
+  background: #f4a340;
+  color: #fff;
+}
+
+/* ===============================
+   MARKET DATA STYLING
+================================ */
+
+.gal-market .market-title {
+  font-weight: 600;
+  font-size: 12px;
+  color: #1c6fd5;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.gal-market .as-on {
+  font-size: 11px;
+  color: #666;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.gal-market .exchanges {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 10px;
+}
+
+.gal-market .exchange-row {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 calc(50% - 8px);
+}
+
+.gal-market .exchange {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.gal-market .exchange_price {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.gal-market .price {
+  font-weight: 700;
+  font-size: 16px;
+  color: #111;
+}
+
+.gal-market .change {
+  font-weight: 600;
+  font-size: 13px;
+  text-align: right;
+}
+
+.gal-market .positive {
+  color: #2e7d32;
+}
+
+.gal-market .negative {
+  color: #d32f2f;
+}
+
+.gal-market .volume {
+  font-size: 13px;
+  color: #666;
+  font-weight: 500;
+  opacity: 0.8;
+  margin-top: 8px;
+}
+
+/* Loading / Error */
+
+.gal-market .stock-error {
+  color: #d32f2f;
+  font-size: 13px;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.gal-market .loading {
+  text-align: center;
+  font-size: 13px;
+  color: #444;
+}
+
+
+
+

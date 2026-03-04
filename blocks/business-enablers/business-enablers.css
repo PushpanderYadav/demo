@@ -1,0 +1,112 @@
+.business-enablers {
+    padding: 80px 0;
+    background-color: #f9f9f9;
+}
+
+.business-enablers-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.business-enablers-description {
+    font-size: 1.125rem;
+    color: #666;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.business-enablers-btn {
+    padding: 12px 30px;
+    border: 1px solid #efb22a;
+    background: transparent;
+    color: #efb22a;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border-radius: 6px;
+    min-width: 180px;
+}
+
+.business-enablers-btn.active {
+    background-color: #333;
+    color: #fff;
+    border-color: #333;
+}
+
+.business-enablers-btn:hover:not(.active) {
+    background-color: #fcefd4;
+}
+
+.business-enablers-panel {
+    display: none;
+    animation: fadeIn 0.4s ease;
+}
+
+.business-enablers-panel.active {
+    display: block;
+}
+
+.placeholder-content {
+    padding: 40px;
+    text-align: center;
+    border: 2px dashed #ccc;
+    color: #999;
+    border-radius: 8px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Nested Component Spacing Overrides */
+.business-enablers-panel .sec-corporate-governance,
+.business-enablers-panel .sec-expertise {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.business-enablers-panel .sec-corporate-governance.spacer,
+.business-enablers-panel .sec-expertise.spacer {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.business-enablers-panel .fragment-wrapper {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Hide nested titles/intros if redundant, but KEEP the images */
+.business-enablers-panel .cg-intro,
+.business-enablers-panel .cg-subtitle,
+.business-enablers-panel .sec-expertise .sec-title,
+.business-enablers-panel .sec-expertise .sec-desc,
+.business-enablers-panel .sec-expertise .text-center.mb-3,
+.business-enablers-panel .sec-expertise .text-center.mb-4 {
+    display: none !important;
+}
+
+/* Ensure images always show */
+.business-enablers-panel .cg-hero-image,
+.business-enablers-panel .card-img {
+    display: block !important;
+}
+
+
+/* Ensure Corporate Governance sections look good in tabs */
+.business-enablers-panel .cg-sections {
+    padding-top: 20px;
+}
+
+/* Swiper height Fix for All Business Cards in Tabs */
+.business-enablers-panel .expertise-swiper {
+    min-height: 300px;
+}

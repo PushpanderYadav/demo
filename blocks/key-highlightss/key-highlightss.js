@@ -1,66 +1,136 @@
 export default function decorate(block) {
-  // Destructure first two children as header content
   const [titleEl, descEl, ...items] = [...block.children];
 
   block.classList.add("key-highlights");
 
-  /* ---------- Wrapper ---------- */
+  /* ================================
+     Section Wrapper
+  ================================ */
   const section = document.createElement("div");
   section.className = "sec-key spacer";
 
   const wrapper = document.createElement("div");
   wrapper.className = "key-highlights-wrapper container";
 
-  /* ---------- Header ---------- */
+  /* ================================
+     Header Section
+  ================================ */
   const headerRow = document.createElement("div");
   headerRow.className = "row";
 
   const header = document.createElement("div");
   header.className = "col-md-7 text-center mx-auto mb-5";
 
-  const title = titleEl ? titleEl.textContent.trim() : "";
-  const description = descEl ? descEl.innerHTML.trim() : "";
+  const sectionTitle = titleEl?.textContent?.trim() || "";
+  const sectionDesc = descEl?.innerHTML?.trim() || "";
 
-  if (title || description) {
+  if (sectionTitle || sectionDesc) {
     header.innerHTML = `
-      ${title ? `<h2 class="sec-title">${title}</h2>` : ""}
-      ${description ? `<div class="sec-desc">${description}</div>` : ""}
+      ${sectionTitle ? `<h2 class="sec-title">${sectionTitle}</h2>` : ""}
+      ${sectionDesc ? `<div class="sec-desc">${sectionDesc}</div>` : ""}
     `;
   }
 
   headerRow.append(header);
   wrapper.append(headerRow);
 
-  /* ---------- Grid ---------- */
+  /* ================================
+     Cards Grid
+  ================================ */
   const grid = document.createElement("div");
   grid.className = "key-row row g-4 justify-content-center";
 
   items.forEach((item) => {
     if (!item || !item.children.length) return;
 
-    const [imgEl, titleEl, descEl] = [...item.children];
+    /*
+      Expected AEM field order:
+      0 → image
+      1 → alt text (optional)
+      2 → title
+      3 → description
+      4 → button label (NEW)
+      5 → button url (NEW)
+    */
+    const [
+      imgCell,
+      altCell,
+      titleCell,
+      descCell,
+      labelCell,
+      urlCell,
+    ] = [...item.children];
 
-    const imgContent = imgEl ? imgEl.innerHTML.trim() : "";
-    const cardTitle = titleEl ? titleEl.textContent.trim() : "";
-    const cardDesc = descEl ? descEl.innerHTML.trim() : "";
+    const authoredAlt = altCell?.textContent?.trim() || "";
+    const cardTitle = titleCell?.textContent?.trim() || "";
+    const cardDesc = descCell?.innerHTML?.trim() || "";
 
-    // IMPORTANT: class applied on grid child itself
-    item.className = "key-col col-md-4";
+    /* ================================
+       NEW BUTTON FIELDS
+    ================================ */
+    const btnLabel = labelCell?.textContent?.trim() || "";
+    const btnUrl = urlCell?.textContent?.trim() || "";
 
+    /* ================================
+       Image Alt Fallback
+    ================================ */
+    const finalAlt = authoredAlt || cardTitle || "";
+
+    item.className = "key-col col-md-6 col-lg-4 mt-4";
+
+    /* ================================
+       Image Processing (accessibility safe)
+    ================================ */
+    let imgHtml = imgCell?.innerHTML?.trim() || "";
+
+    if (imgHtml) {
+      const temp = document.createElement("div");
+      temp.innerHTML = imgHtml;
+
+      const img = temp.querySelector("img");
+
+      if (img) {
+        img.setAttribute("alt", finalAlt);
+        imgHtml = temp.innerHTML;
+      }
+    }
+
+    /* ================================
+       Card Markup
+    ================================ */
     item.innerHTML = `
-    <div class="card card-ui-three">
-      ${imgContent ? `<div class="card-img">${imgContent}</div>` : ""}
-      <div class="card-body">
-      ${cardTitle ? `<h3>${cardTitle}</h3>` : ""}
-      ${cardDesc || ""}
+      <div class="card card-ui-three h-100">
+
+        ${imgHtml ? `<div class="card-img">${imgHtml}</div>` : ""}
+
+        <div class="card-body d-flex flex-column">
+
+          ${cardTitle ? `<h3>${cardTitle}</h3>` : ""}
+
+          ${cardDesc || ""}
+
+          ${
+            btnLabel && btnUrl
+              ? `
+                <div class="pt-3">
+                  <a href="${btnUrl}"
+                     class="btn-link"
+                     aria-label="${btnLabel}">
+                    ${btnLabel}
+                  </a>
+                </div>
+              `
+              : ""
+          }
+
+        </div>
       </div>
-    </div>`;
+    `;
   });
 
   grid.append(...items);
   wrapper.append(grid);
 
-  /* ---------- Replace block content ---------- */
   block.innerHTML = "";
   section.append(wrapper);
   block.append(section);

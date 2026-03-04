@@ -1,0 +1,6 @@
+window.APP_CONFIG = {
+  ALGOLIA_APP_ID: "8XGPJG5JSP",
+  ALGOLIA_SEARCH_KEY: "99e6ab6d1e66a074409e4a7ad15752c1",
+  ALGOLIA_INDEX: "site_pages"
+};
+

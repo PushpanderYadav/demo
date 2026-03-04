@@ -1,8 +1,34 @@
-.sec-key {
-    background-color: var(--lpink);
+.card-ui-three .card-body h3 {
+    font-size: var(--fs-large);
+    font-weight: 500;
 }
-@media screen and (min-width: 768px) {
+
+.card-ui-three .card-body p {
+    font-size: var(--fs-normal);
+    font-weight: 400;
+    color: var(--light-grey);
+}
+
+
+.sec-key {
+    background-color: var(--lpink)
+}
+
+.bg-sky-blue.key-highlightss-container .sec-key {
+    background-color: transparent
+}
+
+@media screen and (min-width:768px) {
     .sec-grid-2 .key-col {
-        width: 34%;
+        width: 34%
+    }
+}
+
+@media (max-width:991px) {
+    .sec-key.spacer {
+        padding-bottom: 120px
+    }
+    .bg-white.key-highlightss-container .sec-key.spacer {
+        padding-bottom: 60px
     }
 }

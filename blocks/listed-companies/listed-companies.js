@@ -1,38 +1,67 @@
 // listed-companies.js
-// Combined version with API integration
+// Combined version – WORKING + FIXED + localStorage CACHED (60s)
 
-const STOCK_API_URL = 'http://13.200.106.168:4000/api/share/get-latest-share-price';
-const AUTH_TOKEN = 'U2FsdGVkX1+IAunex0zJueoZQpRBfpUm/DSQSMufK69HpTEh4abfdnhz0fQ+jbSmPrqojCZOhYZ6/mvA28aQxw';
+const STOCK_API_URL =
+  "https://gmrapi.itsneobot.com/api/share/get-latest-share-price";
+const AUTH_TOKEN =
+  "U2FsdGVkX1+IAunex0zJueoZQpRBfpUm/DSQSMufK69HpTEh4abfdnhz0fQ+jbSmPrqojCZOhYZ6/mvA28aQxw";
 
 // ────────────────────────────────────────────────
-// Utility: Fetch stock data
+// Cache Configuration
 // ────────────────────────────────────────────────
-async function fetchStockPrices() {
+const CACHE_KEY = "listed-companies-stock-data";
+const CACHE_TIME_KEY = "listed-companies-stock-data-time";
+const CACHE_TTL = 60 * 1000; // 60 seconds
+
+// ────────────────────────────────────────────────
+// Utility: Fetch stock data with localStorage cache
+// ────────────────────────────────────────────────
+async function fetchStockPrices(skipCache = false) {
   try {
-    const response = await fetch(STOCK_API_URL, {
-      method: 'GET',
-      headers: {
-        'Authorization': AUTH_TOKEN,
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      mode: 'cors',
-      cache: 'no-store'
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}`);
+    if (!skipCache) {
+      const cached = localStorage.getItem(CACHE_KEY);
+      const cachedTime = localStorage.getItem(CACHE_TIME_KEY);
+      if (cached && cachedTime) {
+        const age = Date.now() - Number(cachedTime);
+        if (age < CACHE_TTL) {
+          return JSON.parse(cached);
+        }
+      }
     }
 
-    const json = await response.json();
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 5000); // 5s timeout
 
+    const response = await fetch(STOCK_API_URL, {
+      signal: controller.signal,
+      method: "GET",
+      headers: {
+        Authorization: AUTH_TOKEN,
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      mode: "cors",
+      cache: "no-store",
+    });
+    clearTimeout(timeoutId);
+
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+    const json = await response.json();
     if (!json.success || !Array.isArray(json.data)) {
-      throw new Error('Invalid response format');
+      throw new Error("Invalid response format");
+    }
+
+    if (json.data.length > 0) {
+      localStorage.setItem(CACHE_KEY, JSON.stringify(json.data));
+      localStorage.setItem(CACHE_TIME_KEY, Date.now().toString());
     }
 
     return json.data;
   } catch (err) {
-    console.error('[Stock API] Fetch failed:', err);
+    console.error("[Stock API] Fetch failed:", err);
+    const fallback = localStorage.getItem(CACHE_KEY);
+    if (fallback) return JSON.parse(fallback);
     throw err;
   }
 }
@@ -45,53 +74,52 @@ function renderStockOverview(companyData, displayName) {
     return `<div class="error">No market data available for ${displayName}</div>`;
   }
 
-  // Format timestamp
-  let displayTime = 'Latest';
+  let displayTime = "Latest";
   if (companyData.fetchedAt) {
     try {
       const dt = new Date(companyData.fetchedAt);
-      displayTime = dt.toLocaleString('en-IN', {
-        day: 'numeric',
-        month: 'short',
-        year: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit',
-        hour12: true
+      displayTime = dt.toLocaleString("en-IN", {
+        day: "numeric",
+        month: "short",
+        year: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: true,
       });
     } catch { }
   }
 
   let html = `
-    <div class="d-flex align-items-center">  
+    <div class="d-sm-flex align-items-center">
       <div class="market-title">${displayName} - MARKET OVERVIEW</div>
-      <div class="as-on">As on ${displayTime}</div>
+      <div class="as-on mt-sm-0 mt-2">As on ${displayTime}</div>
     </div>
     <div class="exchanges">
   `;
 
-  // Show NSE and BSE (first two exchanges)
-  companyData.exchanges.slice(0, 2).forEach(ex => {
+  companyData.exchanges.slice(0, 2).forEach((ex) => {
     const isNegative = ex.change < 0;
-    const arrow = isNegative ? '↓' : '↑';
-    const changeAbs = Math.abs(ex.change).toFixed(2);
-    const pctAbs = Math.abs(ex.changePercent).toFixed(2);
-    const volumeFormatted = ex.volume ? ex.volume.toLocaleString('en-IN') : '—';
+    const arrow = isNegative ? "↓" : "↑";
 
     html += `
       <div class="exchange-row">
         <div class="exchange">${ex.exchange}</div>
         <div class="exchange_price">
-          <div class="price"><span class="arrow ${isNegative ? 'negative' : 'positive'}">${arrow}</span> ₹${ex.lastTradedPrice.toFixed(2)}</div>
-          <div class="change ${isNegative ? 'negative' : 'positive'}">
-            ${changeAbs} (${pctAbs}%)
+          <div class="price">
+            <span class="arrow ${isNegative ? "negative" : "positive"}">${arrow}</span>
+            ₹${ex.lastTradedPrice.toFixed(2)}
+          </div>
+          <div class="change ${isNegative ? "negative" : "positive"}">
+            ${Math.abs(ex.change).toFixed(2)} (${Math.abs(ex.changePercent).toFixed(2)}%)
           </div>
         </div>
       </div>
     `;
   });
 
-  // Volume from NSE or first available
-  const mainVolume = companyData.exchanges[0]?.volume?.toLocaleString('en-IN') || '—';
+  const mainVolume =
+    companyData.exchanges[0]?.volume?.toLocaleString("en-IN") || "—";
+
   html += `
     </div>
     <div class="volume">Volume ${mainVolume}</div>
@@ -101,7 +129,7 @@ function renderStockOverview(companyData, displayName) {
 }
 
 // ────────────────────────────────────────────────
-// Main decorate function - Your code with API integration
+// Main decorate function
 // ────────────────────────────────────────────────
 export default async function decorate(block) {
   const children = [...block.children];
@@ -110,217 +138,172 @@ export default async function decorate(block) {
      HEADER
   =============================== */
 
-  const header = document.createElement('header');
-  header.className = 'd-md-flex align-items-center gap-3';
+  const header = document.createElement("header");
+  header.className = "d-md-flex align-items-center gap-3";
 
-  const entryContainer = document.createElement('div');
-  entryContainer.className = 'entry-container fullCont mb-5';
+  const entryContainer = document.createElement("div");
+  entryContainer.className = "entry-container fullCont mb-md-5";
 
-  // Title + description (wrap first child in <h2>)
   if (children[0]) {
-    const h2 = document.createElement('h2');
-    while (children[0].childNodes.length > 0) {
-      h2.appendChild(children[0].childNodes[0]);
+    const h2 = document.createElement("h2");
+    while (children[0].firstChild) {
+      h2.appendChild(children[0].firstChild);
     }
     entryContainer.appendChild(h2);
   }
 
-  // Append second child (description) as-is
   if (children[1]) entryContainer.appendChild(children[1]);
-
   header.appendChild(entryContainer);
 
-  // CTA button (children[2] = label, children[3] = href)
   if (children[2] && children[3]) {
-    const btnLabel = children[2].textContent.trim();
-    const btnHref = children[3].textContent.trim() || '#';
-
-    const btnAnchor = document.createElement('a');
-    btnAnchor.href = btnHref;
-    btnAnchor.title = btnLabel;
-    btnAnchor.className = 'btn btn-orange';
-    btnAnchor.textContent = btnLabel;
-
-    header.appendChild(btnAnchor);
+    const btn = document.createElement("a");
+    btn.href = children[3].textContent.trim() || "#";
+    btn.className = "btn btn-primary";
+    btn.textContent = children[2].textContent.trim();
+    header.appendChild(btn);
   }
 
   /* ===============================
-     COMPANIES - Modified to include API data
+     COMPANIES GRID
   =============================== */
 
-  const companiesCol = document.createElement('div');
-  companiesCol.className = 'companiesCol';
+  const companiesCol = document.createElement("div");
+  companiesCol.className = "companiesCol";
 
-  const row = document.createElement('div');
-  row.className = 'row';
+  const row = document.createElement("div");
+  row.className = "row";
 
-  // Map to store stock divs by symbol for later population
   const stockDivsMap = new Map();
 
   for (let i = 4; i < children.length; i++) {
     const companyItem = children[i];
-
     if (!companyItem || companyItem.children.length < 3) continue;
 
-    companyItem.classList.add('listed-company-item');
+    companyItem.classList.add("listed-company-item");
 
-    const col = document.createElement('div');
-    col.className = 'col-md-6 mb-4';
+    const col = document.createElement("div");
+    col.className = "col-lg-6 mt-4";
 
-    const companiesGrid = document.createElement('div');
-    companiesGrid.className = 'companiesGrid';
+    const companiesGrid = document.createElement("div");
+    companiesGrid.className = "companiesGrid";
 
-    // Wrap the first child in <h3> (companyName)
-    const firstChild = companyItem.children[0];
-    let companySymbol = null;
+    const h3 = document.createElement("h3");
+    const p = companyItem.children[0].querySelector("p");
+    h3.textContent = p
+      ? p.textContent.trim()
+      : companyItem.children[0].textContent.trim();
+    companyItem.replaceChild(h3, companyItem.children[0]);
 
-    if (firstChild) {
-      const h3 = document.createElement('h3');
-      const p = firstChild.querySelector('p');
-      h3.textContent = p ? p.textContent.trim() : firstChild.textContent.trim();
+    const symbol = companyItem.children[2]?.textContent.trim();
 
-      // Extract symbol from stockSymbol field (child index 2)
-      const stockSymbolEl = companyItem.children[2];
-      if (stockSymbolEl) {
-        companySymbol = stockSymbolEl.textContent.trim();
-      }
+    [...companyItem.children].forEach((child, index) => {
+      if (index > 1) child.style.display = "none";
+    });
 
-      companyItem.replaceChild(h3, firstChild);
+    const companiesStock = document.createElement("div");
+    companiesStock.className = "companiesStock";
+    companiesStock.innerHTML =
+      '<div class="loading">Loading market data...</div>';
 
-      /* ===============================
-         HIDE ALL BUT h3 + NEXT DIV
-         (DO NOT REMOVE — AEM SAFE)
-      =============================== */
-      [...companyItem.children].forEach((child, index) => {
-        if (index > 1) {
-          child.style.display = 'none';
-        }
-      });
-    }
+    if (symbol) stockDivsMap.set(symbol, companiesStock);
 
+    const btnContainer = document.createElement("div");
+    btnContainer.className = "companies-links mt-5 mb-4";
 
-    // Create stock div placeholder - will be populated with API data
-    const companiesStock = document.createElement('div');
-    companiesStock.className = 'companiesStock';
-    companiesStock.innerHTML = '<div class="loading">Loading market data...</div>';
-
-    // Store reference for later if we have a symbol
-    if (companySymbol) {
-      stockDivsMap.set(companySymbol, companiesStock);
-    }
-
-    // Process buttons - CORRECTED INDICES BASED ON JSON
-    // child 3 = visitWebsiteText, child 4 = visitWebsiteUrl
-    // child 5 = exploreHighlightsText, child 6 = exploreHighlightsUrl
-    const btnContainer = document.createElement('div');
-    btnContainer.className = 'companies-links mt-5 mb-4';
-
-    // First button pair: Visit Website
     if (companyItem.children[3] && companyItem.children[4]) {
-      const btnLabel = companyItem.children[3].textContent.trim() || 'Visit Website';
-      const btnHref = companyItem.children[4].textContent.trim() || '#';
+      const a = document.createElement("a");
+      a.href = companyItem.children[4].textContent.trim() || "#";
+      a.className = "btn btn-circle";
+      a.textContent = companyItem.children[3].textContent.trim();
 
-      const btnAnchor = document.createElement('a');
-      btnAnchor.href = btnHref;
-      btnAnchor.title = btnLabel;
-      btnAnchor.className = 'btn btn-circle';
-      btnAnchor.textContent = btnLabel;
-      btnContainer.appendChild(btnAnchor);
+      // Open in new tab
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+
+      btnContainer.appendChild(a);
     }
 
-    // Second button pair: Explore Highlights
     if (companyItem.children[5] && companyItem.children[6]) {
-      const btnLabel = companyItem.children[5].textContent.trim() || 'Explore Highlights';
-      const btnHref = companyItem.children[6].textContent.trim() || '#';
-
-      const btnAnchor = document.createElement('a');
-      btnAnchor.href = btnHref;
-      btnAnchor.title = btnLabel;
-      btnAnchor.className = 'btn btn-circle';
-      btnAnchor.textContent = btnLabel;
-      btnContainer.appendChild(btnAnchor);
+      const a = document.createElement("a");
+      a.href = companyItem.children[6].textContent.trim() || "#";
+      a.className = "btn btn-circle";
+      a.textContent = companyItem.children[5].textContent.trim();
+      btnContainer.appendChild(a);
     }
 
-    // Append companyItem into companiesGrid
     companiesGrid.appendChild(companyItem);
-    // Append button container after content
     companiesGrid.appendChild(btnContainer);
-
     col.appendChild(companiesGrid);
-
-    // Append companiesStock outside of companiesGrid
-    if (companiesStock) col.appendChild(companiesStock);
-
+    col.appendChild(companiesStock);
     row.appendChild(col);
   }
 
   companiesCol.appendChild(row);
-
-  /* ===============================
-     FINAL - Replace children
-  =============================== */
-
   block.replaceChildren(header, companiesCol);
 
   /* ===============================
-     API CALL - Fetch and populate stock data
+     API CALL – CACHED + BY CODE
   =============================== */
 
-  // Only fetch if we have symbols to look up
-  if (stockDivsMap.size > 0) {
-    try {
-      const rawData = await fetchStockPrices();
-      const dataByName = {};
+  // Defer execution to avoid blocking rendering with SWR
+  (async () => {
+    const CACHE_KEY = "listed-companies-stock-data";
+    const CACHE_TIME_KEY = "listed-companies-stock-data-time";
+    const TTL = 60000; // 60 seconds
 
-      // Create lookup map by company name
-      rawData.forEach(item => {
-        // Store by company name for lookup
-        dataByName[item.companyName] = item;
+    const cached = localStorage.getItem(CACHE_KEY);
+    const cachedTime = localStorage.getItem(CACHE_TIME_KEY);
+    let isStale = true;
 
-        // Also store by uppercase name without spaces for easier matching
-        const cleanName = item.companyName.toUpperCase().replace(/\s+/g, '');
-        dataByName[cleanName] = item;
+    const symbolToCompanyCode = {
+      GAL: "15210029",
+      GPUIL: "15131133",
+    };
+
+    const updateUI = (data) => {
+      const apiDataByCode = {};
+      data.forEach((item) => {
+        if (item.companyCode) {
+          apiDataByCode[String(item.companyCode)] = item;
+        }
       });
 
-      // Map symbols to company names
-      const symbolToCompanyMap = {
-        'GAL': 'GMR INFRA',    // Symbol GAL maps to "GMR INFRA" in API
-        'GPUIL': 'GPUIL'        // Symbol GPUIL maps to "GPUIL" in API
-      };
-
-      // Update each stock div with real data
       for (const [symbol, stockDiv] of stockDivsMap.entries()) {
-        let companyData = null;
+        const code = symbolToCompanyCode[symbol];
+        const companyData = code ? apiDataByCode[code] : null;
 
-        // Try exact mapping first
-        const mappedName = symbolToCompanyMap[symbol];
-        if (mappedName) {
-          companyData = dataByName[mappedName] || dataByName[mappedName.toUpperCase().replace(/\s+/g, '')];
-        }
-
-        // If not found, try direct match
-        if (!companyData) {
-          companyData = dataByName[symbol] || dataByName[symbol.toUpperCase()];
-        }
-
-        if (companyData) {
-          stockDiv.innerHTML = renderStockOverview(companyData, symbol);
-        } else {
-          stockDiv.innerHTML = `<div class="error">No data found for ${symbol}</div>`;
-        }
+        stockDiv.innerHTML = companyData
+          ? renderStockOverview(companyData, symbol)
+          : `<div class="error">No data found for ${symbol}</div>`;
       }
-    } catch (err) {
-      console.error('[Stock API] Failed to load data:', err);
+    };
 
-      // Show error in all stock divs
-      for (const [symbol, stockDiv] of stockDivsMap.entries()) {
-        stockDiv.innerHTML = `
-          <div class="error">
-            Market data unavailable<br>
-            <small style="opacity:0.7;">${err.message}</small>
-          </div>
-        `;
+    if (cached && cachedTime) {
+      try {
+        const data = JSON.parse(cached);
+        updateUI(data);
+        const age = Date.now() - Number(cachedTime);
+        if (age < TTL) isStale = false;
+        console.log(`[Listed Companies] Cache found (age: ${Math.round(age / 1000)}s), stale: ${isStale}`);
+      } catch (e) {
+        console.error("Cache Parse Error:", e);
       }
     }
-  }
+
+    // Always revalidate if stale or missing
+    if (isStale || !cached) {
+      try {
+        const freshData = await fetchStockPrices(true);
+        updateUI(freshData);
+        console.log("[Listed Companies] UI refreshed with fresh data");
+      } catch (err) {
+        console.error("[Stock API] Failed to load fresh data:", err);
+        if (!cached) {
+          for (const stockDiv of stockDivsMap.values()) {
+            stockDiv.innerHTML = '<div class="error">Market data unavailable</div>';
+          }
+        }
+      }
+    }
+  })();
 }

@@ -1,5 +1,1 @@
-#!/bin/sh
-#
-# HUSKY-SKIP
-#
-exit 0
+node .husky/pre-commit.mjs

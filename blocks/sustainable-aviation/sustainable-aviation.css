@@ -3,6 +3,26 @@
   background: #f7f8f5;
 }
 
+ .background-pink.sustainable-aviation-container .sustainable-aviation-runtime {
+  background-color: var(--lpink);
+}
+
+.alignment-center.sustainable-aviation-container .sustainable-aviation-runtime .sa-container .sa-header{
+display: block;
+}
+
+.alignment-center.sustainable-aviation-container .sustainable-aviation-runtime .sa-container .sa-header h2 {
+  width: 100%;
+  text-align: center;
+  font-size: 44px;
+}
+
+.alignment-center.sustainable-aviation-container .sustainable-aviation-runtime .sa-container .sa-header .sa-description {
+  margin-left: 300px;
+  width: 50%;
+  text-align: center;
+}
+
 .sa-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -15,10 +35,15 @@
   margin-bottom: 64px;
 }
 
-.sa-header h2 {
-  font-size: 44px;
+.sa-title strong {
   font-weight: 600;
-  color: #0b2e2a;
+}
+
+.sa-header h2 {
+  font-size: 48px;
+  font-weight: 400;
+  color:var(--black);
+
 }
 
 .sa-description {
@@ -30,43 +55,62 @@
 .sa-items {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 36px;
+  gap: 20px;
 }
 
 .sa-card {
-  background: #fff;
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  /* box-shadow: 0 10px 30px rgba(0,0,0,0.08); */
   transition: transform .3s ease, box-shadow .3s ease;
 }
 
 .sa-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+  /* box-shadow: 0 18px 40px rgba(0,0,0,0.12); */
 }
 
 .sa-card-image img {
   width: 100%;
   height: 260px;
   object-fit: cover;
+  margin-bottom: 8px;
 }
 
 .sa-card-content {
-  padding: 24px 26px 30px;
+  padding: 1.25rem;
+  background-color: var(--white );
+  /* min-height: 230px; */
+}
+
+.page-gal .sa-card-content {
+  /* min-height: 230px; */
+    padding: 20px 34px 10px;
+
+}
+
+.page-gpuil .sa-card-content {
+  min-height: 200px;
+      padding: 20px 25px 0px;
+
+}
+
+.page-gmr-on-campus .sa-card-content {
+  /* min-height: 224px; */
+  padding: 20px 43px 15px;
+
 }
 
 .sa-card-content h3 {
-  font-size: 22px;
-  margin-bottom: 12px;
-  color: #0b2e2a;
+      font-size: var(--fs-medium);
+    font-weight: var(--fw-semi-bold);
 }
 
 .sa-card-content p {
   font-size: 16px;
-  color: #666;
-  line-height: 1.6;
+  color: var(--charcoal);
 }
+
 
 @media (max-width: 992px) {
   .sa-header {
@@ -81,4 +125,26 @@
 /* 🔑 THIS IS THE FIX */
 .sustainable-aviation.sa-initialized > :not(.sustainable-aviation-runtime) {
   display: none;
+}
+
+
+
+/* Center 5th card when total cards = 5 (desktop only) */
+@media (min-width: 993px) {
+  .sa-items > .sa-card:last-child:nth-child(5) {
+    grid-column: 1 / -1;      
+    max-width: 50%;           
+    justify-self: center;     
+  }
+}
+
+/* ================================
+   Center last card if total is odd (Desktop only)
+================================ */
+@media (min-width: 993px) {
+  .sa-items > .sa-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;   /* Take full row */
+    max-width: 50%;        /* Same width as one card */
+    justify-self: center;  /* Center it */
+  }
 }

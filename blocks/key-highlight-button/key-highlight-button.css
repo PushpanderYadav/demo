@@ -1,0 +1,58 @@
+.career-card-img img {
+    border-radius: 8px;
+}
+
+.career-card-overlay {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+}
+
+
+.career-link {
+    text-decoration: none;
+    color: var(--yellow);
+}
+
+.mb-1 {
+    font-size: 20px;
+    font-weight: 500;
+    color: #ffffff;
+    margin: 0;
+}
+
+
+.background-pink.key-highlight-button-container .sec-key{
+    background: var(--lpink);
+}
+
+
+.career-card-overlay a.career-link {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #f5b400;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.3s ease;
+}
+
+/* Arrow */
+.career-card-overlay a.career-link::after {
+  content: ">";
+  font-size: 13px;
+  transition: transform 0.3s ease;
+}
+
+/* Hover */
+.career-card-overlay a.career-link:hover {
+  color: #ffcc33;
+}
+
+.career-card-overlay a.career-link:hover::after {
+  transform: translateX(4px);
+}

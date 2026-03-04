@@ -1,0 +1,352 @@
+/* =========================================
+   SECTION BASE
+========================================= */
+.internal-slider-wrapper {
+  background: var(--lpink);
+  /* padding: 100px 20px; */
+  position: relative;
+  overflow: hidden;
+}
+
+
+.internal-slider-wrapper::before {
+  content: "";
+  position: absolute;
+  background: url("../../img/Groupb.png") no-repeat center;
+  background-size: contain;
+
+  width: 900px;   /* bigger like design */
+  height: 478px;
+
+  top: 57%;
+  left: 50%;      /* move from 50% → 30% */
+
+  transform: translate(-50%, -50%);
+  opacity: 1;  /* subtle */
+  z-index: 0;
+  pointer-events: none;
+}
+
+
+
+
+/* =========================================
+   HEADER
+========================================= */
+.internal-slider-header {
+  text-align: center;
+  max-width: 425px;
+  margin: 60px auto 70px auto;
+  position: relative;
+  z-index: 2;
+  /* top: 25px; */
+}
+
+.internal-slider-eyebrow {
+  display: inline-block;
+  background: #2f5ea7;
+  color: #fff;
+  padding: 4px 12px;
+  font-size: 12px;
+  border-radius: 4px;
+  margin-bottom: 18px;
+}
+
+.internal-slider-title {
+  font-size: 34px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #1d1d1d;
+}
+
+.internal-slider-subtitle {
+  font-size: 14px;
+  color: #5c5c5c;
+  line-height: 1.6;
+}
+
+/* =========================================
+   SWIPER CONTAINER
+========================================= */
+.internal-slider-container {
+  position: relative;
+  /* max-width: 1150px; */
+  margin: auto;
+  z-index: 2;
+ 
+}
+
+.internal-swiper {
+  padding-bottom: 60px;
+}
+
+/* =========================================
+   SLIDE LAYOUT
+========================================= */
+.internal-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+  margin-left: 240px;
+  margin-bottom: 150px;
+}
+
+
+.swiper-pagination {
+  margin-bottom: 55px;
+}
+/* =========================================
+   CONTENT CARD (LEFT)
+========================================= */
+.internal-slide-content {
+  max-width: 380px;
+  position: relative;
+  z-index: 3;
+  margin-right: -90px; /* overlap effect */
+  padding: 50px;
+}
+
+.internal-slide-badge {
+  display: inline-block;
+  background: var(--royal-blue);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 4px;
+  margin-bottom: 14px;
+}
+
+.internal-slide-title {
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 12px;
+  color: var(--turquoise);
+}
+
+.internal-slide-description {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--charcoal);
+  background: white;
+  padding: 10px;
+  border-radius: 10px;
+  width: 325px;
+}
+
+.internal-slide.reverse-layout {
+  margin-left: 260px;
+}
+
+.internal-slide.reverse-layout .internal-slide-description {
+  margin-left: -40px;
+}
+
+.internal-slide-index {
+  position: absolute;
+  right: -45px;
+  bottom: -25px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #8fb3d9;
+}
+
+/* =========================================
+   IMAGE (RIGHT)
+========================================= */
+.internal-slide-image img {
+  width: 530px;
+  height: 360px;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+
+.internal-slider-navigation .swiper-button-prev,
+.internal-slider-navigation .swiper-button-next {
+  color: #d6a554;
+  width: 42px;
+  height: 42px;
+}
+
+.internal-slider-navigation .swiper-button-prev::after,
+.internal-slider-navigation .swiper-button-next::after {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.swiper-button-prev {
+  left: -60px;
+}
+
+.swiper-button-next {
+  right: -60px;
+}
+
+.swiper-pagination {
+  bottom: 0 !important;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  background: #f2b866;
+  opacity: 0.5;
+  border-radius: 50%;
+}
+
+.swiper-pagination-bullet-active {
+  background: #f29c1f;
+  opacity: 1;
+}
+
+
+
+.internal-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+}
+
+
+.reverse-layout {
+  flex-direction: row-reverse;
+}
+
+
+.internal-slide-content {
+  margin-right: -90px;
+}
+
+.reverse-layout .internal-slide-content {
+  margin-right: 0;
+  margin-left: -90px;
+}
+
+
+.internal-slider-navigation {
+ display: flex; gap: 10px; justify-content: space-between; position: absolute; top: 35%; transform: translateY(-50%); z-index: 6; width: 100%; margin: auto; max-width: 1200px; left: 0; right: 0;
+}
+
+.internal-slider-navigation .swiper-button-prev {
+  border: none;
+}
+
+.internal-slider-navigation .swiper-button-next {
+  border: none;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+@media (max-width: 1024px) {
+
+  .internal-slide {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .internal-slide-content {
+    margin-right: 0;
+    margin-bottom: -40px;
+  }
+
+  .internal-slide-image img {
+    width: 100%;
+    height: auto;
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    display: none;
+  }
+}
+
+
+.swiper-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 20px;
+}
+
+
+.internal-bullet {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  background: none !important;
+  width: auto !important;
+  height: auto !important;
+  opacity: 1 !important;
+}
+
+
+.internal-bullet-number {
+  font-size: 12px;
+  margin-bottom: 6px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+
+.swiper-pagination-bullet-active .internal-bullet-number {
+  opacity: 1;
+  font-weight: 600;
+}
+
+
+.internal-bullet-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #f4a300; 
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.swiper-pagination-bullet-active .internal-bullet-dot {
+  background: #faa519;
+  transform: scale(1.2);
+}
+
+
+
+
+
+
+/* =========================================
+   REVERSE LAYOUT FIX (ONLY SECOND SLIDE)
+========================================= */
+
+/* Use row-reverse to put Image on Left and Content on Right */
+.internal-slide.reverse-layout {
+  flex-direction: row-reverse;
+  margin-left: 230px; /* Matching your first slide base alignment */
+}
+
+/* Adjust overlap: Content is now on the right, so pull it LEFT to overlap the image */
+.internal-slide.reverse-layout .internal-slide-content {
+  margin-right: 0;
+  margin-left: -110px; /* Pulls the content box over the image from the right */
+  text-align: right;   /* Aligns the Badge and Title to the right per design */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* Ensures badge and title stack to the right */
+}
+
+/* Ensure the white description box text remains left-aligned inside the right-aligned container */
+.internal-slide.reverse-layout .internal-slide-description {
+  text-align: left;
+  margin-left: 0; /* Reset any previous offsets */
+}
+
+/* Adjust the decorative background circle for the reverse layout */
+.internal-slide.reverse-layout .internal-slider-wrapper::before {
+  left: 65%; /* Shifts the background graphic to follow the content */
+}

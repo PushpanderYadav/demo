@@ -46,7 +46,7 @@ export default function decorate(block) {
   accordion.className = "accordion";
   accordion.id = "businessAccordion";
 
-  const businessItems = children.slice(3); // skip header + intro
+  const businessItems = children.slice(3);
 
   businessItems.forEach((item, index) => {
     item.classList.add("accordion-item");
@@ -73,10 +73,12 @@ export default function decorate(block) {
       itemChildren[1] ||
       itemChildren[0];
 
+    const businessTitle =
+      titleEl?.textContent?.trim() || `Business ${index + 1}`;
+
     const titleSpan = document.createElement("span");
     titleSpan.className = "business-title";
-    titleSpan.textContent =
-      titleEl?.textContent?.trim() || `Business ${index + 1}`;
+    titleSpan.textContent = businessTitle;
     button.appendChild(titleSpan);
 
     /* ---------- Icons ---------- */
@@ -90,14 +92,14 @@ export default function decorate(block) {
     const plusIcon = document.createElement("span");
     plusIcon.className = `plus-icon ${index === 0 ? "d-none" : ""}`;
     plusIcon.innerHTML = `
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
         <path d="M5 12h14m-7 7V5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
       </svg>`;
 
     const minusIcon = document.createElement("span");
     minusIcon.className = `minus-icon ${index === 0 ? "" : "d-none"}`;
     minusIcon.innerHTML = `
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
         <path d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
       </svg>`;
 
@@ -140,27 +142,37 @@ export default function decorate(block) {
     if (ctaLabelEl) {
       const a = document.createElement("a");
       a.href = (ctaLinkEl?.textContent || "#").trim();
-      a.className = "btn btn-transparent";
+      a.className = "btn-link";
       a.textContent = ctaLabelEl.textContent.trim();
       ctaDiv.appendChild(a);
     }
     accordionBody.appendChild(ctaDiv);
 
-    /* ---------- Image (shared logic) ---------- */
+    /* ---------- Image (ONLY ALT ADDED) ---------- */
 
     const imgEl = item.querySelector('[name="image"]') || itemChildren[0];
 
-    let imageClone = null;
+let imageClone = null;
 
-    if (imgEl) {
-      imageClone = imgEl.cloneNode(true);
+if (imgEl) {
+  imageClone = imgEl.cloneNode(true);
 
-      // Image inside accordion
-      const imgDiv = document.createElement("div");
-      imgDiv.className = "business-image";
-      imgDiv.appendChild(imageClone.cloneNode(true));
-      accordionBody.appendChild(imgDiv);
+  const img = imageClone.querySelector("img");
+  if (img) {
+    const currentAlt = img.getAttribute("alt")?.trim();
+
+    // ✅ If alt is blank → fallback to business title
+    if (!currentAlt) {
+      img.alt = businessTitle;
     }
+  }
+
+  const imgDiv = document.createElement("div");
+  imgDiv.className = "business-image";
+  imgDiv.appendChild(imageClone.cloneNode(true));
+  accordionBody.appendChild(imgDiv);
+}
+
 
     /* ---------- Default preview image ---------- */
 

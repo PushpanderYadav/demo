@@ -1,0 +1,29 @@
+.sec-image-slider {
+    background: var(--lpink);
+    overflow: hidden;
+    padding: 80px 0 7rem;
+}
+
+.image-slider-swiper {
+    width: calc(100vw - ((100vw - 1320px) / 2));
+    margin-left: auto;
+    display: flex!important;
+    flex-wrap: wrap; 
+    gap: 1rem;
+    justify-content: center;
+}
+
+.sec-image-slider img {
+    width: 100%;
+}
+
+.sec-image-slider .swiper-button-next,
+.sec-image-slider .swiper-button-prev {
+    margin: 2rem 0 !important;
+}
+
+@media (max-width:767px) {
+    .image-slider-swiper {
+        width: 100%;
+    }
+}

@@ -63,6 +63,11 @@
         },
         {
           "component": "text",
+          "name": "imageAlt",
+          "label": "Alt Text"
+        },
+        {
+          "component": "text",
           "name": "cardTitle",
           "label": "Card Title",
           "valueType": "string"

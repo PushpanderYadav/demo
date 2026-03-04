@@ -64,6 +64,11 @@
         },
         {
           "component": "text",
+          "name": "imageAlt1",
+          "label": "Alt-Text"
+        },
+        {
+          "component": "text",
           "name": "title",
           "label": "Highlight Title",
           "valueType": "string"
@@ -72,6 +77,18 @@
           "component": "richtext",
           "name": "description",
           "label": "Highlight Description",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "buttonLabel",
+          "label": "Link Text / Button Label",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "buttonUrl",
+          "label": "Link URL / Button Link",
           "valueType": "string"
         }
       ]

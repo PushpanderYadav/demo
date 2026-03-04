@@ -1,0 +1,147 @@
+/* ===============================
+   SECTION WRAPPER
+================================ */
+
+.career-faqs {
+  background: #f5f5f5;
+  padding: 80px 0;
+}
+
+.career-faqs__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 80px;
+}
+
+/* LEFT SIDE */
+.career-faqs__left {
+  flex: 0 0 400px;
+}
+
+/* RIGHT SIDE */
+.career-faqs__right {
+  flex: 1;
+}
+
+
+/* ===============================
+   LEFT SIDE
+================================ */
+
+.career-faqs__title {
+  font-size: 40px;
+  font-weight: 400;
+  margin: 0 0 20px;
+}
+
+.career-faqs__desc {
+  font-size: 19px;
+  color: #666;
+  font-weight: 400;
+}
+
+/* ===============================
+   RIGHT SIDE ACCORDION
+================================ */
+
+.career-faqs__accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.career-faqs__item {
+  background: white;
+  border-radius: 6px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+/* Active state (blue border like image) */
+.career-faqs__item.active {
+  background: #ffffff;
+  /* border-color: #1f6ed4; */
+}
+
+/* ===============================
+   QUESTION
+================================ */
+
+.career-faqs__question {
+  width: 100%;
+  padding: 18px 20px;
+  border: none;
+  background: transparent;
+  font-size: 20px;
+  font-weight: 400;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* ===============================
+   ICON
+================================ */
+
+.career-faqs__icon {
+  width: 24px;
+  height: 24px;
+  background: #faa519;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 18px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ===============================
+   ANSWER
+================================ */
+
+.career-faqs__answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+  padding: 0 60px 0 20px;
+}
+
+.career-faqs__answer p {
+  /* margin: 15px 0; */
+  font-size: 15px;
+  /* line-height: 1.6; */
+  color: #333333;
+  font-weight: 400;
+}
+
+/* Open state */
+.career-faqs__item.active .career-faqs__answer {
+  max-height: 500px;
+  padding-bottom: 20px;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 991px) {
+  .career-faqs__container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .career-faqs__title {
+    font-size: 28px;
+  }
+}
+

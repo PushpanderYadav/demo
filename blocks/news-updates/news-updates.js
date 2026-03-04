@@ -1,25 +1,8 @@
 import { getApiHost } from "../../scripts/api.js";
-
-/* ================================
-   Date formatter
-   ================================ */
-function formatDate(dateString) {
-  if (!dateString) return "";
-
-  const date = new Date(dateString);
-  if (Number.isNaN(date.getTime())) return "";
-
-  return date.toLocaleDateString("en-GB", {
-    day: "2-digit",
-    month: "short",
-    year: "numeric",
-  });
-}
+import { slugToTitle } from "../../scripts/common.js";
+import { formatDate } from "../../scripts/common.js";
 
 export default async function decorate(block) {
-  /* ================================
-     1️⃣ Read dialog fields (UE)
-     ================================ */
   const [titleEl, descEl, ctaTextEl, ctaLinkEl, categoryEl, limitEl] = [
     ...block.children,
   ];
@@ -31,14 +14,8 @@ export default async function decorate(block) {
   const category = categoryEl?.textContent?.trim() || "";
   const limit = limitEl?.textContent?.trim() || "3";
 
-  /* ================================
-     2️⃣ Clear author HTML
-     ================================ */
   block.innerHTML = "";
 
-  /* ================================
-     3️⃣ Build section header
-     ================================ */
   const section = document.createElement("section");
   section.className = "sec-news bg-sky-blue spacer";
 
@@ -46,14 +23,14 @@ export default async function decorate(block) {
   wrapper.className = "container";
 
   wrapper.innerHTML = `
-    <div class="news-header d-flex justify-content-between align-items-end gap-4 mb-5">
+    <div class="news-header d-md-flex justify-content-between align-items-end gap-4 mb-md-5 mb-4">
       <div class="news-header-left">
         <h2 class="text-primary sec-title">${sectionTitle}</h2>
         <div class="sec-desc">${sectionDescription}</div>
       </div>
       ${
         ctaText
-          ? `<a class="btn btn-primary mb-3" href="${ctaLink}">${ctaText}</a>`
+          ? `<a class="btn btn-primary mb-md-3 mt-4 mt-md-0" href="${ctaLink}">${ctaText}</a>`
           : ""
       }
     </div>
@@ -67,14 +44,13 @@ export default async function decorate(block) {
   const cardsWrapper = wrapper.querySelector(".row");
 
   /* ================================
-     4️⃣ Fetch news from serverless
-     ================================ */
+    Fetch news from serverless
+  ================================ */
   try {
     const apiUrl =
-      `${getApiHost()}/api/v1/web/gmr/news-update` +
+      `${getApiHost()}/api/v1/web/gmr-api/news-update` +
       `?category=${encodeURIComponent(category)}` +
       `&limit=${encodeURIComponent(limit)}`;
-
     const res = await fetch(apiUrl);
     if (!res.ok) throw new Error(`API error ${res.status}`);
 
@@ -85,34 +61,32 @@ export default async function decorate(block) {
       cardsWrapper.innerHTML = "<p>No news found.</p>";
       return;
     }
+    console.log("_____________________", items);
+    
 
     /* ================================
-       5️⃣ Render news cards
-       ================================ */
+      Render news cards
+    ================================ */
     items.forEach((item) => {
-      const publishDateRaw =
-        item.publishDate?.iso ||
-        item.publishDate?.value ||
-        item.publishDate ||
-        "";
+      const publishDateRaw = item.publishMonth + " " + item.publishYear;  
 
       const publishDateFormatted = formatDate(publishDateRaw);
 
       const card = document.createElement("div");
-      card.className = "col-md-4";
+      card.className = "col-md-6 col-lg-4 mt-4";
 
       card.innerHTML = `
         <div class="card card-news">
           <div class="card-img">
             <img src="${item.cardImage?._publishUrl || ""}" alt="${
-        item.title || ""
-      }">
+              item.title || ""
+            }">
           </div>
 
           <div class="card-body">
             <div class="card-meta d-flex gap-4 align-items-center mb-3">
               <span class="badge ${item.category || ""}">
-                ${item.category || ""}
+                ${slugToTitle(item.category) || ""}
               </span>
               <span class="meta-date">
                 ${publishDateFormatted}
@@ -126,7 +100,7 @@ export default async function decorate(block) {
             </p>
 
             <div class="card-cta">
-              <a class="btn-link" href="${item.ctaLink || "#"}">
+              <a class="btn-link" href="/en/news-update?post=${encodeURIComponent(item.slugUrl)}">
                 ${item.ctaLabel || "READ MORE"}
               </a>
             </div>

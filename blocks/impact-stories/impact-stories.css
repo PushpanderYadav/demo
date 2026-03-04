@@ -1,0 +1,52 @@
+/* ===== Modal Only Styling ===== */
+
+.gmr-modal .modal-content {
+  border-radius: 0;
+  padding: 2rem 5rem; background: url(../../icons/mframe.svg) no-repeat left bottom; background-size: 300px; background-color: var(--lpink);
+  border: 0;
+}
+
+.gmr-modal .modal-close {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  z-index: 10;
+}
+.card-ui-two .card-title {
+    min-height: 51px;
+}
+
+.gmr-modal-inner {
+  align-items: flex-start;
+}
+
+.gmr-modal-img {
+  flex: 0 0 260px;
+}
+
+.gmr-modal-img img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.gmr-modal-title {
+  font-size: var(--fs-xxlarge);
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.gmr-modal-desc {
+  max-height: 350px;
+  overflow-y: auto;
+  line-height: 1.7;
+  color: #555;
+}
+
+/* optional scroll style */
+.gmr-modal-desc::-webkit-scrollbar {
+  width: 6px;
+}
+.gmr-modal-desc::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 6px;
+}

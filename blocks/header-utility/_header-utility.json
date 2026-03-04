@@ -1,0 +1,54 @@
+{
+  "definitions": [
+    {
+      "title": "Header Utility",
+      "id": "header-utility",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "header-utility",
+              "model": "header-utility"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "header-utility",
+      "fields": [
+        {
+          "component": "text",
+          "name": "stockSymbol1",
+          "label": "Stock API Symbol 1 (e.g., GAL)",
+          "valueType": "string",
+          "required": true
+        },
+        {
+          "component": "text",
+          "name": "stockSymbol2",
+          "label": "Stock API Symbol 2 (e.g., GPUIL)",
+          "valueType": "string",
+          "required": true
+        },
+        {
+          "component": "text",
+          "name": "contactLabel",
+          "label": "Contact Label",
+          "valueType": "string",
+          "defaultValue": "CONTACT"
+        },
+        {
+          "component": "text",
+          "name": "contactUrl",
+          "label": "Button Link (URL)",
+          "valueType": "string"
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

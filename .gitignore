@@ -10,4 +10,4 @@ helix-importer-ui
 .well-known
 fstab.yaml
 paths.json
-scripts/*
+

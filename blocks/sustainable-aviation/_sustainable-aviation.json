@@ -37,14 +37,14 @@
     {
       "id": "sustainable-aviation",
       "fields": [
-        { "component": "text", "valueType": "string", "name": "sectionTitle", "label": "Section Title" },
+        { "component": "richtext", "valueType": "string", "name": "sectionTitle", "label": "Section Title" },
         { "component": "richtext", "valueType": "string", "name": "sectionDescription", "label": "Section Description" }
       ]
     },
     {
       "id": "sustainable-aviation-item",
       "fields": [
-        { "component": "image", "valueType": "string", "name": "image", "label": "Image" },
+        { "component": "reference", "valueType": "string", "name": "image", "label": "Image" },
         { "component": "text", "valueType": "string", "name": "title", "label": "Title" },
         { "component": "text", "valueType": "string", "name": "description", "label": "Description" }
       ]
@@ -58,4 +58,3 @@
     }
   ]
 }
-  

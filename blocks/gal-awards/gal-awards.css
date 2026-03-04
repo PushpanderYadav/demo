@@ -1,11 +1,13 @@
 .gal-awards-wrapper {
   text-align: center;
   padding: 80px 0;
+  background: var(--lgrey);
 }
 
 .gal-awards-title {
-  font-size: 40px;
+  font-size: 48px;
   margin-bottom: 48px;
+  font-weight: 400;
 }
 
 .gal-awards-viewport {
@@ -28,11 +30,13 @@
   width: 100%;
   border-radius: 16px;
   display: block;
+  height: 300px;
 }
 
 .gal-award-card p {
   margin-top: 16px;
-  font-size: 18px;
+  font-size: 24px;
+  font-weight: 500;
 }
 
 .gal-awards-dots {
@@ -60,7 +64,7 @@
   display: inline-block;
   margin-top: 32px;
   padding: 14px 28px;
-  background: #fbbf24;
+  background: #fbbb53;
   border-radius: 12px;
   color: #000;
   font-weight: 600;

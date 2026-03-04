@@ -2,15 +2,18 @@
 <html>
 
 <head>
+  <meta http-equiv="Content-Security-Policy"
+    content="script-src 'nonce-aem' 'strict-dynamic' 'unsafe-inline' http: https:; base-uri 'self'; object-src 'none';"
+    move-to-http-header="true">
   <title>Page not found</title>
-  <script type="text/javascript">
+  <script nonce="aem" type="text/javascript">
     window.isErrorPage = true;
     window.errorCode = '404';
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta property="og:title" content="Page not found">
-  <script src="/scripts/scripts.js" type="module"></script>
-  <script type="module">
+  <script nonce="aem" src="/scripts/scripts.js" type="module"></script>
+  <!-- <script nonce="aem" type="module">
     window.addEventListener('load', () => {
       if (document.referrer) {
         const { origin, pathname } = new URL(document.referrer);
@@ -25,41 +28,185 @@
         }
       }
     });
-  </script>
-  <script type="module">
+  </script> -->
+  <script nonce="aem" type="module">
     import { sampleRUM } from '/scripts/aem.js';
     sampleRUM('404', { source: document.referrer });
   </script>
   <link rel="stylesheet" href="/styles/styles.css">
   <style>
-    main.error {
-      min-height: calc(100vh - var(--nav-height));
-      display: flex;
-      align-items: center;
+    /* hide breadcrumb */
+    main.error .breadcrumb,
+    main.error nav.breadcrumb,
+    main.error .breadcrumbs {
+      display: none !important;
     }
 
-    main.error .error-number {
+    /* main layout */
+    main.error {
+      min-height: calc(100vh - var(--nav-height, 80px));
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 20px;
+    }
+
+    /* wrapper */
+    .error-wrapper {
+      text-align: center;
+      max-width: 760px;
       width: 100%;
     }
 
-    main.error .error-number text {
-      font-family: monospace;
+    /* big 404 */
+    .error-number {
+      font-size: 180px;
+      font-weight: 800;
+      color: rgba(0, 0, 0, 0.07);
+      line-height: 1;
+      letter-spacing: 4px;
+      margin-bottom: 10px;
+    }
+
+    /* heading */
+    .error-title {
+      font-size: 32px;
+      font-weight: 400;
+      color: var(--charcoal);
+      margin: 10px 0 12px;
+    }
+
+    /* description */
+    .error-description {
+      font-size: 18px;
+      color: var(--charcoal);
+      line-height: 1.6;
+      max-width: 520px;
+      margin: 0 auto 40px;
+    }
+
+    /* button */
+    .error-button {
+      display: inline-block;
+      background: #f4b548;
+      color: #000;
+      padding: 14px 38px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      transition: all 0.25s ease;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    }
+
+    .error-button:hover {
+      background: #e8a93d;
+      transform: translateY(-2px);
+    }
+
+    /* divider */
+    .error-divider {
+      width: 100%;
+      max-width: 640px;
+      height: 1px;
+      background: var(--turquoise);
+      margin: 20px auto;
+    }
+
+    /* bottom links */
+    .error-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    /* links style */
+    .error-links a {
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--yellow);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      transition: 0.2s ease;
+    }
+
+    /* arrow */
+    .error-links a::after {
+      content: "›";
+      margin-left: 8px;
+      font-size: 18px;
+    }
+
+    /* hover */
+    .error-links a:hover {
+      color: var(--black);
+    }
+
+    /* responsive */
+    @media (max-width: 768px) {
+      .error-number {
+        font-size: 120px;
+      }
+
+      .error-title {
+        font-size: 26px;
+      }
+
+      .error-description {
+        font-size: 16px;
+      }
+
+      .error-links {
+        gap: 25px;
+      }
     }
   </style>
-  <link rel="stylesheet" href="/styles/lazy-styles.css">
+
+  <link rel="stylesheet" href="/styles/bootstrap.min.css" />
+  <link rel="stylesheet" href="/styles/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="/styles/styles.css" />
 </head>
 
 <body>
   <header></header>
   <main class="error">
-    <div class="section">
-      <svg viewBox="1 0 38 18" class="error-number">
-        <text x="0" y="17">404</text>
-      </svg>
-      <h2 class="error-message">Page Not Found AEM 2</h2>
-      <p class="button-container">
-        <a href="/" class="button secondary error-button-home">Go home New</a>
+    <div class="error-wrapper">
+
+      <div class="error-number">404</div>
+
+      <h2 class="error-title">
+        This page is no longer available.
+      </h2>
+
+      <p class="error-description">
+        The content you’re looking for may have been updated or
+        relocated as part of our continued growth.
       </p>
+
+      <div class="button-container">
+        <a href="/en/" class="btn btn-primary">
+          Return to Homepage
+        </a>
+      </div>
+
+      <div class="error-divider"></div>
+
+      <div class="error-links">
+        <a href="/en/investor-relations">INVESTOR RELATIONS</a>
+        <a href="/en/sustainability">SUSTAINABILITY</a>
+        <a href="/en/careers">CAREERS</a>
+        <a href="/en/airports-and-aero-services">AIRPORT &amp; AERO SERVICES</a>
+        <a href="/en/energy">ENERGY</a>
+        <a href="/en/transportation">TRANSPORTATION &amp; URBAN INFRA</a>
+        <a href="/en/sports">SPORTS</a>
+        <a href="/en/other-services">OTHER SERVICES</a>
+      </div>
+
+      <div class="error-divider"></div>
+
     </div>
   </main>
   <footer></footer>
