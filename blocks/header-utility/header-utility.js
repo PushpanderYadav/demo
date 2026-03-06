@@ -1036,8 +1036,8 @@ function updateLanguageIndicator(langCode, container) {
 async function fetchStockData(skipCache = false) {
   const API_URL =
     "https://gmrapi.itsneobot.com/api/share/get-latest-share-price";
-  const AUTH_TOKEN =
-    "U2FsdGVkX1+IAunex0zJueoZQpRBfpUm/DSQSMufK69HpTEh4abfdnhz0fQ+jbSmPrqojCZOhYZ6/mvA28aQxw";
+    const apiKey = document.querySelector('meta[name="api-key"]').getAttribute('content');
+  const AUTH_TOKEN = apiKey;
 
   const CACHE_KEY = "header-stock-data";
   const CACHE_TIME_KEY = "header-stock-data-time";
