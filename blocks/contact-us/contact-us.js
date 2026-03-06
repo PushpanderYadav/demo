@@ -443,6 +443,9 @@ export default function decorate(block) {
       message: fd.get("message"),
     };
 
+        const apiKey = document.querySelector('meta[name="api-key"]').getAttribute('content');
+      const AUTH_TOKEN = apiKey;
+
     try {
       const gmrPromise = fetch(
         "http://13.200.106.168:4000/api/enquiry/save-enquery",
@@ -450,7 +453,7 @@ export default function decorate(block) {
           method: "POST",
           headers: {
             Authorization:
-              "U2FsdGVkX1+IAunex0zJueoZQpRBfpUm/DSQSMufK69HpTEh4abfdnhz0fQ+jbSmPrqojCZOhYZ6/mvA28aQxw",
+              AUTH_TOKEN,
             "Content-Type": "application/json",
           },
           body: JSON.stringify(payload),
